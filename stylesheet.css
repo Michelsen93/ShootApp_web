@@ -1,6 +1,43 @@
+
+/*Logg inn siden*/
+.outerBackground{
+    position: absolute;
+    height: 100%;
+    width:100%;
+    background-color: rgba(139, 30, 19, 0.78);
+}
+
+.innerBackground{
+    position: absolute;
+    background-color: whitesmoke;
+    height: 100%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.headline{
+
+    text-align: center;
+}
+
+.menu{
+
+    text-align: center;
+}
+
+.loggInn{
+
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+
+}
+
 .div1{
     width: 300px;
     height: 100px;
     border: 1px solid blue;
     color: blue;
 }
+
