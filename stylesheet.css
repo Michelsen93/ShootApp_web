@@ -1,6 +1,7 @@
 
 /*Logg inn siden*/
 .outerBackground{
+    vertical-align: top;
     position: absolute;
     height: 100%;
     width:100%;
@@ -39,5 +40,16 @@
     height: 100px;
     border: 1px solid blue;
     color: blue;
+}
+/*  Tenker en footer er kult å ha, men sliter med at den ikke går over noe annet */
+.footer{
+    height: 4%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
 }
 
