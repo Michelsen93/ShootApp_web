@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <meta charset="UTF-8">
-    <title>Nytt stevne</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script></head>
+    <title>Nytt Stevne</title>
+</head>
 <body>
 
 <div class="outerBackgroundAlt">
@@ -44,27 +40,9 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-5">
-                <p>Stevnenummer: <br> <input type="text" placeholder="00000000" name="stevnenummer" required></p>
-
+                <p>Stevnenummer: <br> <input type="text" placeholder="Skriv stevnenummer" name="stevnenummer" required>
+                </p>
                 <p>Dato: <br> <input type="date" name="date" required></p>
-
-                <p>Klubb: <br> <input type="text" placeholder="Åsane pk" name="klubb" required><br>
-
-                <p>Sted: <br> <input type="text" placeholder="Villaveien 1" name="sted" required><br>
-
-                <p>Stevnetype <br> <input type="text" placeholder="KM" name="stevneType" required><br>
-
-                <p>Disiplin <br> <input type="text" placeholder="Felt" name="disiplin" required><br>
-
-                <p>Program <br> <input type="text" placeholder="??" name="program" required><br>
-
-
-
-
-
-
-            </div>
-            <div class="col-md-5">
 
                 <p>Våpengruppe: <br></p>
 
@@ -83,11 +61,13 @@
 
                 <textarea rows="4" cols="20"></textarea>
 
-                <p>Antall standplasser<br></p>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popUpStandplass">
-                    Registrer standplasser
-                </button><br>
+
+
+
+            </div>
+            <div class="col-md-5">
+                <p>Adresse: <br> <input type="text" placeholder="Skriv Adresse" name="adress" required><br>
+                <p>Antall standplasser: <br> <input type="text" placeholder="Antall standplasser" name="adress" required>
 
             </div>
 
@@ -174,47 +154,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Legg til ny våpengruppe</button>
                 <button type="button" class="btn btn-primary">Legg til klasser</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal standplass -->
-<div class="modal fade" id="popUpStandplass"  role="dialog" >
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h5>Velg Klasser som skal være med</h5>
-
-
-            </div>
-            <div class="modal-body">
-
-                <p>Standplass 1 <br></p>
-                <p>Max treff <input type="text" placeholder="??" name="program" required></p>
-                <p>Antall figurer <input type="text" placeholder="??" name="program" required> </p>
-                <p>Max innertreff <input type="text" placeholder="??" name="program" required> </p>
-                <p>Tid (sekunder) <input type="text" placeholder="??" name="program" required> </p>
-                <br>
-                <p>Standplass 2 <br></p>
-                <p>Max treff <input type="text" placeholder="??" name="program" required></p>
-                <p>Antall figurer <input type="text" placeholder="??" name="program" required> </p>
-                <p>Max innertreff <input type="text" placeholder="??" name="program" required> </p>
-                <p>Tid (sekunder) <input type="text" placeholder="??" name="program" required> </p>
-                <br>
-                <p>Standplass 3 <br></p>
-                <p>Max treff <input type="text" placeholder="??" name="program" required></p>
-                <p>Antall figurer <input type="text" placeholder="??" name="program" required> </p>
-                <p>Max innertreff <input type="text" placeholder="??" name="program" required> </p>
-                <p>Tid (sekunder) <input type="text" placeholder="??" name="program" required> </p>
-                <br><br><br><br>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Legg til standplass</button>
-                <button type="button" class="btn btn-primary">Fulfør</button>
             </div>
         </div>
     </div>
