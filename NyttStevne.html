@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <script type="text/javascript "src="NyttStevneJs.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <meta charset="UTF-8">
     <title>Nytt stevne</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script></head>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
 <body>
 
 <div class="outerBackgroundAlt">
@@ -60,6 +62,8 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-5">
+
+
                 <p>Stevnenummer: <br> <input type="text" placeholder="00000000" name="stevnenummer" required></p>
 
                 <p>Dato: <br> <input type="date" name="date" required></p>
@@ -88,7 +92,7 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popUpVapengruppe">
                     Velg våpengrupper
                 </button><br>
-                <textarea rows="4" cols="20"></textarea>
+                <textarea rows="4" cols="20" id="vapentxt"></textarea>
 
 
                 <p><br>Klasse: <br></p>
@@ -128,28 +132,31 @@
 
             </div>
             <div class="modal-body">
+                <form id="vapengr1_form">
+                <div class="col-md-6">
+                    <div id="vapengruppe1">
 
-                <div class="col-md-6">
-                    <p>
-                        <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                        <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                        <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                        <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
-                    </p>
+                            <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
+                            <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
+
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <p>
-                        <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                        <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                        <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                        <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
-                    </p>
+                    <div id="vapengruppe2">
+
+                            <input type="checkbox" name="vehicle1" value="Kake"> I have a bike<br>
+                            <input type="checkbox" name="vehicle2" value="Pizza"> I have a car<br>
+
+                    </div>
                 </div>
+                </form>
                 <br><br><br><br>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Legg til ny våpengruppe</button>
-                <button type="button" class="btn btn-primary">Legg til våpengrupper</button>
+                <div id="footerVapen">
+                <button type="button" class="btn btn-secondary" onClick="nyVapengruppe()">Legg til ny våpengruppe</button>
+                <button type="button" class="btn btn-primary" onClick="fillVapenBox()" data-dismiss="modal">Legg til våpengrupper</button>
+                </div>
             </div>
         </div>
     </div>
@@ -208,28 +215,12 @@
 
             </div>
             <div class="modal-body">
+                <div id="standplass">
 
-                <p>Standplass 1 <br></p>
-                <p>Max treff <input type="text" placeholder="??" name="program" required></p>
-                <p>Antall figurer <input type="text" placeholder="??" name="program" required> </p>
-                <p>Max innertreff <input type="text" placeholder="??" name="program" required> </p>
-                <p>Tid (sekunder) <input type="text" placeholder="??" name="program" required> </p>
-                <br>
-                <p>Standplass 2 <br></p>
-                <p>Max treff <input type="text" placeholder="??" name="program" required></p>
-                <p>Antall figurer <input type="text" placeholder="??" name="program" required> </p>
-                <p>Max innertreff <input type="text" placeholder="??" name="program" required> </p>
-                <p>Tid (sekunder) <input type="text" placeholder="??" name="program" required> </p>
-                <br>
-                <p>Standplass 3 <br></p>
-                <p>Max treff <input type="text" placeholder="??" name="program" required></p>
-                <p>Antall figurer <input type="text" placeholder="??" name="program" required> </p>
-                <p>Max innertreff <input type="text" placeholder="??" name="program" required> </p>
-                <p>Tid (sekunder) <input type="text" placeholder="??" name="program" required> </p>
-                <br><br><br><br>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Legg til standplass</button>
+                <button type="button" class="btn btn-secondary" onClick="addStandplass()">Legg til standplass</button>
                 <button type="button" class="btn btn-primary">Fulfør</button>
             </div>
         </div>
