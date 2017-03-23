@@ -10,10 +10,10 @@
     <title>Registrer ny bruker</title>
 </head>
 <body>
-<div class="outerBackgroundAlt">
-    <div class="container">
+
+    <div class="container wrapper">
         <div class="headlineAlt">
-            <h1>Registrer ny bruker</h1>
+            <h1>Overskrift</h1>
         </div>
 
 
@@ -23,32 +23,33 @@
 
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a href="#" class="navbar-brand">Sindre</a>
+                    <a href="#" class="navbar-brand">Styrk H. Finne</a>
                 </div>
 
                 <!-- Menu Items -->
                 <div>
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Hjem</a></li>
-                        <li><a href="#">Om</a></li>
-                        <li><a href="#">Kontakt</a></li>
-
-                        <!-- drop down menu -->
-                        <!-- Ikke i bruk nødvendigvis, men greit å ha oppskriften hvis det blir aktuelt?
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Min profil<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stevne<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Friends</a></li>
-                                <li><a href="#">Photos</a></li>
-                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Nytt Stevne</a></li>
+                                <li><a href="#">Registrerte stevner</a></li>
+                                <li><a href="#">Registrer lag</a></li>
                             </ul>
-                        </li> -->
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resultater<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Live</a></li>
+                                <li><a href="#">Tidligere</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Registrer ny utøver</a></li>
                     </ul>
 
                     <!--right align -->
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Logg ut</a></li>
-                    </ul>
                     </ul>
                 </div>
 
@@ -56,25 +57,87 @@
         </nav>
 
         <!-- Main content -->
-        <div class="container" style="text-align: center">
-            <form method="get" action="BrukerLagret.html">
-            <h1>Registrer informasjon</h1>
-            <p>Fornavn: <br> <input type="text" name="fornavn" required></p>
-            <p>Etternavn: <br> <input type="text" name="etternavn" required></p>
-            <p>Skytter nummer: <br> <input type="text" name="skytter_id" required></p>
-            <p>Klubb: <br> <input type="text" name="klubb" required></p>
-            <p>Email: <br> <input type="text" name="email" required></p>
-            <p>Telefonnummer: <br> <input type="text" name="tlfnr" required></p>
-                <button type="submit">Lagre</button>
-            </form>
-        </div>
+        <form class="form-horizontal" method="post" action="BrukerLagret.html">
+            <fieldset>
+        <!-- Registrer ny bruker -->
+        <legend>Registrer ny bruker</legend>
+                <!-- Fornavn -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Fornavn</label>
+                    <div class="col-md-4">
+                        <input id="fnavn" name="fornavn" type="text" placeholder="Jan" class="form-control input-md" required>
+                    </div>
+                </div>
+                <!-- Etternavn -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Etternavn</label>
+                    <div class="col-md-4">
+                        <input id="enavn" name="etternavn" type="text" placeholder="Johansen" class="form-control input-md" required>
+                    </div>
+                </div>
+                <!-- Email -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Email</label>
+                    <div class="col-md-4">
+                        <input id="email" name="email" type="text" placeholder="example@address.com" class="form-control input-md" required>
+                    </div>
+                </div>
+                <!-- Skytternr -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Skytter nr</label>
+                    <div class="col-md-4">
+                        <input id="skytterNr" name="skytterNr" type="text" placeholder="xxxxxxxxx" class="form-control input-md" required>
+                    </div>
+                </div>
+                <!-- Tlfnr -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Telefonnummer</label>
+                    <div class="col-md-4">
+                        <input id="tlfnr" name="tlfnr" type="text" placeholder="12345678" class="form-control input-md" required>
+                    </div>
+                </div>
+                <!-- Klubb -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Klubb</label>
+                    <div class="col-md-4">
+                        <input id="klubb" name="klubb" type="text" placeholder="Åsane Pistolklubb" class="form-control input-md" required>
+                    </div>
+                </div>
+                <!-- Passord-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Passord</label>
+                    <div class="col-md-4">
+                        <input id="passord" name="passordInput" type="password" placeholder="Minst 6 karakterer" class="form-control input-md" required>
+                    </div>
+                </div>
+                <!-- Bekreft passord-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Bekreft passord</label>
+                    <div class="col-md-4">
+                        <input id="BekreftPassord" name="BekreftpassordInput" type="password" class="form-control input-md" required>
+                    </div>
+                </div>
+                <!-- Knapper -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="button1id"></label>
+                    <div class="col-md-10 col-md-offset-5">
+                        <button type="submit" id="button1id" name="button1id" class="btn btn-success">Lagre</button>
+                        <button type="reset" id="button2id" name="button2id" class="btn btn-danger">Avbryt</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
 
-        <!-- Footer (må få teksten pushet litt opp og ikke bruke fulle bredden) -->
+        <!-- Footer -->
         <footer class="footer" style="position: fixed">
             <p class="text-muted">Bachelorprosjekt gruppe 4 ved HVL</p>
         </footer>
 
+        <!-- Footer -->
+        <div class="push"></div>
     </div>
-</div>
+    <footer class="footer">
+        <p class="text-muted">Bachelorprosjekt gruppe 4 ved HVL</p>
+    </footer>
 </body>
 </html>

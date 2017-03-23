@@ -10,61 +10,95 @@
     <title>Bruker lagret</title>
 </head>
 <body>
-<div class="outerBackgroundAlt">
-    <div class="container">
-        <div class="headlineAlt">
-            <h1>Lagret</h1>
-        </div>
-
-        <!-- Top menu bar -->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-
-                <!-- Logo -->
-                <div class="navbar-header">
-                    <a href="#" class="navbar-brand">Sindre</a>
-                </div>
-
-                <!-- Menu Items -->
-                <div>
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Hjem</a></li>
-                        <li><a href="#">Om</a></li>
-                        <li><a href="#">Kontakt</a></li>
-
-                        <!-- drop down menu -->
-                        <!-- Ikke i bruk nødvendigvis, men greit å ha oppskriften hvis det blir aktuelt?
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Min profil<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Friends</a></li>
-                                <li><a href="#">Photos</a></li>
-                                <li><a href="#">Settings</a></li>
-                            </ul>
-                        </li> -->
-                    </ul>
-
-                    <!--right align -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Logg ut</a></li>
-                    </ul>
-                    </ul>
-                </div>
-
-            </div>
-        </nav>
-
-        <div class="alert alert-success">
-            <strong> Ny bruker lagret </strong>
-        </div>
-        
-        <p style="text-align: center;"> Skrive brukerinformasjonen her? </p>
-
-        <!-- Footer (må få teksten pushet litt opp og ikke bruke fulle bredden) -->
-        <footer class="footer" style="position: fixed">
-            <p class="text-muted">Bachelorprosjekt gruppe 4 ved HVL</p>
-        </footer>
+<div class="container wrapper">
+    <div class="headlineAlt">
+        <h1>Overskrift</h1>
     </div>
+
+    <!-- Top menu bar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+
+            <!-- Logo -->
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">Brukernavn</a>
+            </div>
+
+            <!-- Menu Items -->
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stevne<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Nytt Stevne</a></li>
+                            <li><a href="#">Registrerte stevner</a></li>
+                            <li><a href="#">Registrer lag</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resultater<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Live</a></li>
+                            <li><a href="#">Tidligere</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">Registrer ny utøver</a></li>
+                </ul>
+
+                <!--right align -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Logg ut</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="alert alert-success">
+        <strong> Ny bruker lagret </strong>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><p>Fornavn</p></div>
+        <div class="panel-body">
+            <p>Jan</p>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><p>Etternavn</p></div>
+        <div class="panel-body">
+            <p>Johansen</p>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><p>Email</p></div>
+        <div class="panel-body">
+            <p>example@address.com</p>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><p>Skytternummer</p></div>
+        <div class="panel-body">
+            <p>xxxxxxx</p>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><p>Klubb</p></div>
+        <div class="panel-body">
+            <p>Åsane pistolklubb</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="push"></div>
 </div>
+<footer class="footer">
+    <p class="text-muted">Bachelorprosjekt gruppe 4 ved HVL</p>
+</footer>
 </body>
 </html>
