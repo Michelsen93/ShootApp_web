@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/Michelsen93/ShootApp_web/issues"
   },
-  "homepage": "https://github.com/Michelsen93/ShootApp_web#readme"
+  "homepage": "https://github.com/Michelsen93/ShootApp_web#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "ottoman": "^1.0.4"
+  }
 }
