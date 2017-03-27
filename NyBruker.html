@@ -33,16 +33,16 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stevne<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="NyttStevne.html">Nytt Stevne</a></li>
-                                <li><a href="#">Registrerte stevner</a></li>
-                                <li><a href="#">Registrer lag til stevne</a></li>
+                                <li><a href="RegistrerteStevner.html">Registrerte stevner</a></li>
+                                <li><a href="RegistrerLag.html">Registrer lag til stevne</a></li>
                                 <li><a href="NyBruker.html">Registrer ny utøver til stevne</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resultater<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Live</a></li>
-                                <li><a href="#">Tidligere</a></li>
+                                <li><a href="Live.html">Live</a></li>
+                                <li><a href="Tidligere.html">Tidligere</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -86,7 +86,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Skytter nr</label>
                     <div class="col-md-4">
-                        <input id="skytterNr" name="skytterNr" type="text" placeholder="xxxxxxxxx" class="form-control input-md" required>
+                        <input id="skytterNr" name="skytterNr" type="text" placeholder="1234567" class="form-control input-md" required>
                     </div>
                 </div>
                 <!-- Tlfnr -->
@@ -100,25 +100,25 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Klubb</label>
                     <div class="col-md-4">
-                        <input id="klubb" name="klubb" type="text" placeholder="Åsane Pistolklubb" class="form-control input-md" required>
+                        <input id="klubb" name="klubb" type="text" placeholder="Åsane PK" class="form-control input-md" required>
                     </div>
                 </div>
                 <!-- Passord-->
                 <div class="form-group">
                     <label class="col-md-4 control-label">Passord</label>
                     <div class="col-md-4">
-                        <input id="passord" name="passordInput" type="password" placeholder="Minst 6 karakterer" class="form-control input-md" required>
+                        <input id="passord" name="passordInput" type="password" placeholder="Minst 6 karakterer"
+                               class="form-control input-md" required>
                     </div>
                 </div>
                 <!-- Bekreft passord-->
                 <div class="form-group">
                     <label class="col-md-4 control-label">Bekreft passord</label>
                     <div class="col-md-4">
-                        <input id="BekreftPassord" name="BekreftpassordInput" type="password" class="form-control input-md"
-                               onChange="checkPasswordMatch()" required>
+                        <input id="BekreftPassord" name="BekreftpassordInput" type="password" class="form-control input-md" required>
                     </div>
                 </div>
-                <div class="registrationFormAlert" id="divCheckPasswordMatch"></div>
+
                 <!-- Knapper -->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="button1id"></label>
@@ -130,23 +130,6 @@
             </fieldset>
         </form>
     </div>
-
-    <!-- Passord sjekk - vil ha med ikoner, men ikke super viktig-->
-    <script>
-    function checkPasswordMatch() {
-    var password = $("#passord").val();
-    var confirmPassword = $("#BekreftPassord").val();
-
-    if (password != confirmPassword)
-    $("#divCheckPasswordMatch").html("Passwords do not match!");
-    else
-    $("#divCheckPasswordMatch").html("Passwords match.");
-    }
-
-    $(document).ready(function () {
-    $("#txtConfirmPassword").keyup(checkPasswordMatch);
-    });
-    </script>
 
         <!-- Footer -->
         <div class="push"></div>
