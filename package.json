@@ -1,0 +1,20 @@
+{
+  "name": "ShootApp_web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "NyttStevneJs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Michelsen93/ShootApp_web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Michelsen93/ShootApp_web/issues"
+  },
+  "homepage": "https://github.com/Michelsen93/ShootApp_web#readme"
+}
