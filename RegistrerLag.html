@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <script type="text/javascript "src="RegistrerLag.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,7 +63,7 @@
     <div class="panel panel-default">
         <!-- Table -->
         <div class="scrollable">
-            <table class="table table-striped text-center">
+            <table class="table table-hover text-center" id="myTable">
                 <thead>
                 <tr>
                     <th class="text-center">Firstname</th>
@@ -71,17 +72,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr class="clickable-row">
                     <td>John</td>
                     <td>Doe</td>
                     <td>john@example.com</td>
                 </tr>
-                <tr>
+                <tr class="clickable-row">
                     <td>Mary</td>
                     <td>Moe</td>
                     <td>mary@example.com</td>
                 </tr>
-                <tr>
+                <tr class="clickable-row">
                     <td>July</td>
                     <td>Dooley</td>
                     <td>july@example.com</td>
