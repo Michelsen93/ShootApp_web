@@ -5,7 +5,7 @@ var ottoman = require("ottoman");
 ottoman.bucket = require("./app").bucket;
 
 
-//Structure for person
+//Structure for persons
 var PersonModel = ottoman.model("Person", {
 
     //picture?
