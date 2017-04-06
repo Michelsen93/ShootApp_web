@@ -1,9 +1,15 @@
+//This class defines the model of the objects in the database
+
 var ottoman = require("ottoman");
 
 ottoman.bucket = require("./app").bucket;
 
+
+//Structure for person
 var PersonModel = ottoman.model("Person", {
-   timestamp: {
+
+    //picture?
+    timestamp: {
        type: "Date",
        default: function () { return new Date(); }
    },
@@ -11,15 +17,24 @@ var PersonModel = ottoman.model("Person", {
        first: "string",
         last: "string"
     },
+    shooterId: "string",
+    Club: "string",
     email: "string",
-    comments:[
+    phone: "string",
+    scoreCards:[
         {
-            ref: "Comment"
+            ref: "Scorecard",
+            standplassResult:{
+                hits: "integer",
+                figures: "integer",
+                bullseyes: "integer"
+            }
         }
     ]
 });
 
-var CommentModel = ottoman.model("Comment", {
+//Structure for scorecard
+var ScorecardModel = ottoman.model("Scorecard", {
     timestamp:{
         type: "Date",
         default: function(){return new Date();}
@@ -27,5 +42,142 @@ var CommentModel = ottoman.model("Comment", {
     message: "string"
 });
 
+//Structure for weaponClass
+var WeaponClassModel = ottoman.model("WeaponClass", {
+    timestamp:{
+        type: "Date",
+        default: function(){return new Date();}
+    },
+    description: "string",
+    weaponName: "string"
+    //Number of shots?
+
+});
+
+//Structure for weapongroup
+var WeaponGroupModel = ottoman.model("WeaponGroup", {
+    timestamp: {
+        type: "Date",
+        default: function () {
+            return new Date();
+        }
+    },
+    name: "string",
+    description: "string"
+});
+
+
+
+//Structure for team
+var TeamModel = ottoman.model("Team", {
+    timestamp:{
+        type: "Date",
+        default: function(){return new Date();}
+    },
+    teamNumber: "string",
+    competitionNumber: "string",
+    startTime: {
+        type: "Date"
+    },
+    competitors:[
+        {
+        ref: "Person"
+        }
+    ]
+
+});
+
+//Structure for club
+var ClubModel = ottoman.model("Club", {
+    timestamp:{
+        type: "Date",
+        default: function(){return new Date();}
+    },
+    mail: "string",
+    name: "string",
+    address: "string",
+    contactPersons:[
+        {
+            ref: "Person"
+        }
+    ],
+    competitions: [
+        {
+            ref: "Competition"
+        }
+    ]
+});
+
+//Structure for Standplass
+var StandplassModel = ottoman.model("Standplass", {
+    timestamp:{
+        type: "Date",
+        default: function(){return new Date();}
+    },
+    number: "integer",
+    maxHits: "integer",
+    numberOfFigures: "integer"
+});
+
+var CompetitionModel = ottoman.model("Competition", {
+    timestamp:{
+        type: "Date",
+        default: function(){return new Date();}
+    },
+    standplasses: [
+        {
+            ref: "Standplass"
+        }
+    ],
+    date:{
+        type: "Date"
+    },
+    weaponGroups: [
+        {
+            ref: "WeaponGroup"
+        }
+    ],
+    weaponClasses: [
+        {
+            ref: "WeaponClass"
+        }
+    ],
+    competitionNumber: "integer",
+    club:{
+        ref: "Club"
+    },
+    contestants:[
+        {
+            ref: "Person"
+        }
+    ],
+    teams: [
+        {
+            ref: "Team"
+        }
+    ],
+    referees:[
+        {
+            ref: "Person"
+        }
+    ],
+    competitionLeaders:[
+        {
+            ref: "Person"
+        }
+    ],
+    competitionType: "string",
+    program: "string",
+    location: "string",
+    discipline: "string",
+    active:{
+        type: "boolean",
+        default: true
+    }
+});
+
+
+
+
 module.exports.PersonModel = PersonModel;
-module.exports.CommentModel = CommentModel;
+module.exports.ScorecardModel = ScorecardModel;
