@@ -119,6 +119,7 @@ var StandplassModel = ottoman.model("Standplass", {
     numberOfFigures: "integer"
 });
 
+//Structure for competition
 var CompetitionModel = ottoman.model("Competition", {
     timestamp:{
         type: "Date",
@@ -181,3 +182,10 @@ var CompetitionModel = ottoman.model("Competition", {
 
 module.exports.PersonModel = PersonModel;
 module.exports.ScorecardModel = ScorecardModel;
+module.exports.CompetitionModel = CompetitionModel;
+module.exports.StandplassModel = StandplassModel;
+module.exports.WeaponClassModel = WeaponClassModel;
+module.exports.ClubModel = ClubModel;
+module.exports.TeamModel = TeamModel;
+module.exports.WeaponGroupModel = WeaponGroupModel;
+
