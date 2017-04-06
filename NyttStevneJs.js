@@ -2,7 +2,7 @@
  * Created by sondrefr on 22.03.2017.
  */
 
-var antallStandplass = 0
+var antallStandplass = 0;
 function addStandplass() {
     antallStandplass++;
     var div = document.createElement('div');
@@ -28,7 +28,7 @@ function nyVapengruppe(){
         div.innerHTML = '<br><input type="text" id="nyVapengruppe">  ' +
             '<input type="button" value="Legg til" onClick="addVapengruppe(this)"><br> ';
 
-        document.getElementById('footerVapen').appendChild(div)
+        document.getElementById('footerVapen').appendChild(div);
         i++;
     }
 
