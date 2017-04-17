@@ -8,7 +8,7 @@ ottoman.bucket = require("./app").bucket;
 //Structure for persons
 var PersonModel = ottoman.model("Person", {
 
-    //picture?
+
     timestamp: {
        type: "Date",
        default: function () { return new Date(); }
@@ -18,17 +18,13 @@ var PersonModel = ottoman.model("Person", {
         last: "string"
     },
     shooterId: "string",
-    Club: "string",
+    club: "string",
     email: "string",
     phone: "string",
     scoreCards:[
         {
-            ref: "Scorecard",
-            standplassResult:{
-                hits: "integer",
-                figures: "integer",
-                bullseyes: "integer"
-            }
+            ref: "Scorecard"
+
         }
     ]
 });
@@ -39,8 +35,27 @@ var ScorecardModel = ottoman.model("Scorecard", {
         type: "Date",
         default: function(){return new Date();}
     },
-    message: "string"
+    weaponClass: { ref: "WeaponClass"},
+    shootingGroup: { ref: "WeaponGroup"},
+    results: [
+        {
+            ref: "StandplassResult"
+        }
+    ],
+    competitor: {ref: "Person"}
+
 });
+
+var StandplassResultModel = ottoman.model("StandplassResult", {
+    timestamp:{
+        type: "Date",
+        default: function(){return new Date();}
+    },
+    hits: "integer",
+    figures: "integer",
+    bullseyes: "integer"
+})
+
 
 //Structure for weaponClass
 var WeaponClassModel = ottoman.model("WeaponClass", {

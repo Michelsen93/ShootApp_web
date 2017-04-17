@@ -1,10 +1,20 @@
 var PersonModel = require("./models").PersonModel;
-var CommentModel = require("./models").CommentModel;
+var CommentModel = require("./models").ScorecardModel;
+var CompetitionModel = require("./models").CompetitionModel;
+var StandplassModel = require("./models").StandplassModel;
+var WeapondClassModel = require("./models").WeaponClassModel;
+var ClubModel = require("./models").ClubModel;
+var TeamModel = require("./models").TeamModel;
+var WeaponGroupModel = require("./models").WeaponGroupModel;
 
 
 var appRouter = function(app) {
+
+    //GET
+
+    //Returns all people
     app.get("/person", function (req, res) {
-        PersonModel.find({}, {load: ["comments"]}, function(error, people){
+        PersonModel.find({}, function(error, people){
             if(error){
                 return res.status(400).send(error);
             }
@@ -12,33 +22,63 @@ var appRouter = function(app) {
         });
     });
 
+    //returns a person with the id provided
     app.get("/person/:id", function (req, res) {
         PersonModel.getById(req.params.id, function(error, person){
             if(error){
                 return res.status(400).send(error);
             }
             res.send(person);
-        })
+        });
     });
 
+    //Returns a person by email.
     app.get("/person/findByEmail/:email", function (req, res) {
         PersonModel.find({email: req.params.email}, {load: ["comments"]},  function(error, person){
             if(error){
                 return res.status(400).send(error);
             }
             res.send(person);
-        })
+        });
+    });
+
+    //Gets all competitions
+    app.get("/competition", function (req, res){
+        //Should maybe load stuff
+        CompetitionModel.find({}, function(error, competitions){
+            if(error){
+                return res.status(400).send(error);
+            }
+            res.send(competitions);
+        });
+    });
+
+    //Gets competition by id
+    app.get("/person/:id", function (req, res) {
+        CompetitionModel.getById(req.params.id, function(error, competition){
+            if(error){
+                return res.status(400).send(error);
+            }
+            res.send(competition);
+        });
     });
 
 
 
+    //POST
+
+    //Adds a person
     app.post("/person", function(req, res) {
         var person = new PersonModel({
             name: {
                 first: req.body.name.first,
                 last: req.body.name.last
             },
-            email: req.body.email
+            email: req.body.email,
+            shooterId: req.body.shooterId,
+            club: req.body.club,
+            phone: req.body.phone
+
         });
         person.save(function (error, result) {
             if(error){
@@ -48,7 +88,7 @@ var appRouter = function(app) {
         });
     });
 
-
+    //Saves a reference object
     //expects a person id in the json
     app.post("/comment", function (req, res) {
         var comment = new CommentModel({
