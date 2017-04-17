@@ -12,7 +12,7 @@ var appRouter = function(app) {
 
     //GET
 
-    //Returns all people
+    //Returns sall people
     app.get("/person", function (req, res) {
         PersonModel.find({}, function(error, people){
             if(error){
