@@ -1,5 +1,6 @@
 /**
  * Created by Sindre on 27.03.2017.
+ * Denne kan vi vel bare fjerne egentlig? Er ikke sikker på hva jeg har gjort her selv..
  */
 
 

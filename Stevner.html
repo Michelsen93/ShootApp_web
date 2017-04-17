@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <title>Registrer lag</title>
+    <title>Stevner</title>
 </head>
 <body>
 
@@ -31,17 +31,9 @@
             <!-- Menu Items -->
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stevne<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="NyttStevne.html">Nytt Stevne</a></li>
-                            <li><a href="RegistrerteStevner.html">Registrerte stevner</a></li>
-                            <li><a href="RegistrerLag.html">Registrer lag</a></li>
-                            <li><a href="NyBruker.html">Registrer ny utøver til stevne</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resultater<span class="caret"></span></a>
+                    <li class="active"> <a href="Stevner.html">Stevner</a> </li>
+                    <li> <a href="Utovere.html">Utøvere</a></li>
+                    <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resultater<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="Live.html">Live</a></li>
                             <li><a href="Tidligere.html">Tidligere</a></li>
@@ -58,17 +50,19 @@
         </div>
     </nav>
 
-<!-- Main content -->
-<legend>Registrer nytt lag</legend>
+    <!-- Main content -->
+    <legend>Stevner</legend>
     <div class="panel panel-default">
         <!-- Table -->
         <div class="scrollable">
             <table class="table table-hover text-center" id="myTable">
                 <thead>
                 <tr>
-                    <th class="text-center">Firstname</th>
-                    <th class="text-center">Lastname</th>
-                    <th class="text-center">Email</th>
+                    <th class="text-center">Nave</th>
+                    <th class="text-center">Stevnenummer</th>
+                    <th class="text-center">Dato</th>
+                    <th class="text-center">Rediger</th>
+                    <th class="text-center">Slett</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -76,6 +70,8 @@
                     <td>John</td>
                     <td>Doe</td>
                     <td>john@example.com</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" onclick="window.location.href='NyttStevne.html'">Rediger</button></td>
+                    <td><button type="button" class="close" data-toggle="modal" data-target="#popUpSlettStevne"><span aria-hidden="true">&times;</span></button></td>
                 </tr>
                 <tr class="clickable-row">
                     <td>Mary</td>
@@ -92,7 +88,11 @@
         </div>
     </div>
 
-    <legend>Valgte spillere</legend>
+    <!-- Nytt stevne knapp-->
+    <div style="padding-bottom: 10px">
+        <a href="NyttStevne.html" class="btn btn-primary btn-block" role="button">Nytt stevne </a>
+    </div>
+
 
 </div>
 <!-- Footer -->
@@ -100,6 +100,27 @@
 <footer class="footer">
     <p class="text-muted">Bachelorprosjekt gruppe 4 ved HVL</p>
 </footer>
+
+<!-- Modal SlettStevne -->
+<div class="modal fade" id="popUpSlettStevne"  role="dialog" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5>Er du sikker på at du vil slette dette stevnet?</h5>
+
+
+            </div>
+            <div class="modal-body">
+                <button type="button" class="btn btn-secondary">Ja</button>
+                <button type="button" class="btn btn-primary">Nei</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

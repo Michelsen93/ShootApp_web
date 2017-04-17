@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <script type="text/javascript" src="RegistrerLag.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <title>Utøvere</title>
+</head>
+<body>
+
+<div class="container wrapper">
+    <div class="headlineAlt">
+        <br>
+        <h1>Overskrift</h1>
+        <br>
+        <br>
+    </div>
+    <!-- Top menu bar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+
+            <!-- Logo -->
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">Styrk H. Finne</a>
+            </div>
+
+            <!-- Menu Items -->
+            <div>
+                <ul class="nav navbar-nav">
+                    <li> <a href="Stevner.html">Stevner</a> </li>
+                    <li class="active"> <a href="Utovere.html">Utøvere</a></li>
+                    <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resultater<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="Live.html">Live</a></li>
+                            <li><a href="Tidligere.html">Tidligere</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!--right align -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Logg ut</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+<!-- Main content -->
+<legend>Utøvere</legend>
+    <div class="panel panel-default">
+        <!-- Table -->
+        <div class="scrollable table-responsive">
+            <table class="table table-hover text-center" id="myTable buttons">
+                <thead>
+                <tr>
+                    <th class="text-center">Fornavn</th>
+                    <th class="text-center">Etternavn</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Rediger</th>
+                    <th class="text-center">Slett</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="clickable-row" data-toggle="modal" data-id="1" data-target="#PopUpUtoverInfo">
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" onclick="window.location.href='NyBruker.html'">Rediger</button></td>
+                    <td><button type="button" class="close" data-toggle="modal" data-target="#popUpSletteBruker"><span aria-hidden="true">&times;</span></button></td>
+                </tr>
+                <tr class="clickable-row">
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr class="clickable-row">
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Ny utøver knapp-->
+    <div>
+        <a href="NyBruker.html" class="btn btn-primary btn-block" role="button">Ny utøver </a>
+    </div>
+
+
+</div>
+<!-- Footer -->
+<div class="push"></div>
+<footer class="footer">
+    <p class="text-muted">Bachelorprosjekt gruppe 4 ved HVL</p>
+</footer>
+
+<!-- Modal UtoverInfo -->
+<div class="modal fade" id="PopUpUtoverInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Utøver navn</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    <li class="list-group-item">Fornavn: </li>
+                    <li class="list-group-item">Etternavn: </li>
+                    <li class="list-group-item">Email: </li>
+                    <li class="list-group-item">Skytternr: </li>
+                    <li class="list-group-item">Telefonnr: </li>
+                    <li class="list-group-item">Klubb: </li>
+
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal SlettUtøver -->
+<div class="modal fade" id="popUpSletteBruker"  role="dialog" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5>Er du sikker på at du vil slette denne brukeren?</h5>
+
+
+            </div>
+            <div class="modal-body">
+                <button type="button" class="btn btn-danger">Ja</button>
+                <button type="button" class="btn btn-primary">Nei</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

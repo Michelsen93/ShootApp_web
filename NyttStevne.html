@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <script type="text/javascript "src="NyttStevneJs.js"></script>
+    <script type="text/javascript" src="NyttStevneJs.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <meta charset="UTF-8">
     <title>Nytt stevne</title>
@@ -32,17 +32,9 @@
                 <!-- Menu Items -->
                 <div>
                     <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stevne<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="NyttStevne.html">Nytt Stevne</a></li>
-                                <li><a href="RegistrerteStevner.html">Registrerte stevner</a></li>
-                                <li><a href="RegistrerLag.html">Registrer lag</a></li>
-                                <li><a href="NyBruker.html">Registrer ny utøver til stevne</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resultater<span class="caret"></span></a>
+                        <li> <a href="Stevner.html">Stevner</a> </li>
+                        <li> <a href="Utovere.html">Utøvere</a></li>
+                        <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resultater<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="Live.html">Live</a></li>
                                 <li><a href="Tidligere.html">Tidligere</a></li>
@@ -64,21 +56,22 @@
             <div class="col-md-5">
 
 
-                <p>Stevnenummer: <br> <input type="text" placeholder="00000000" name="stevnenummer" required></p>
+                <p>Stevnenummer: <br> <input type="text" id="stevneNummer" placeholder="00000000" name="stevnenummer" required></p>
 
-                <p>Dato: <br> <input type="date" name="date" required></p>
+                <p>Dato: <br> <input type="date" id="dato" name="date" required></p>
 
                 <p>Klubb: <br> <input type="text" placeholder="Åsane pk" name="klubb" required><br>
 
                 <p>Sted: <br> <input type="text" placeholder="Villaveien 1" name="sted" required><br>
 
-                <p>Stevnetype <br> <input type="text" placeholder="KM" name="stevneType" required><br>
+                <p>Stevnetype: <br> <input type="text" placeholder="KM" name="stevneType" required><br>
 
-                <p>Disiplin <br> <input type="text" placeholder="Felt" name="disiplin" required><br>
+                <p>Disiplin: <br> <input type="text" placeholder="Felt" name="disiplin" required><br>
 
-                <p>Program <br> <input type="text" placeholder="??" name="program" required><br>
+                <p>Program: <br> <input type="text" placeholder="??" name="program" required><br><br>
 
-
+                <button type="submit" id="save" name="button1id" class="btn btn-success" onclick="window.location.href='StevneLagret.html', lagreStevne()">Lagre</button>
+                <button type="reset" id="cancel" name="button2id" class="btn btn-danger">Avbryt</button>
 
 
 
@@ -92,7 +85,7 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popUpVapengruppe">
                     Velg våpengrupper
                 </button><br>
-                <textarea rows="4" cols="20" id="vapentxt"></textarea>
+                <textarea rows="4" cols="20" id="vapentxt" readonly></textarea>
 
 
                 <p><br>Klasse: <br></p>
@@ -101,7 +94,7 @@
                     Velg klasse
                 </button><br>
 
-                <textarea rows="4" cols="20"></textarea>
+                <textarea rows="4" cols="20" id="klassetxt" readonly></textarea>
 
                 <p>Antall standplasser<br></p>
                 <!-- Button trigger modal -->
@@ -112,6 +105,7 @@
             </div>
 
             <div class="col-md-1"></div>
+
 
         </div>
 
@@ -136,16 +130,20 @@
                 <div class="col-md-6">
                     <div id="vapengruppe1">
 
-                            <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                            <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
+                            <input type="checkbox" name="vehicle1" value="Bike"> I have a bike
+                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
+                            <input type="checkbox" name="vehicle2" value="Car"> I have a car
+                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
 
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div id="vapengruppe2">
 
-                            <input type="checkbox" name="vehicle1" value="Kake"> I have a bike<br>
-                            <input type="checkbox" name="vehicle2" value="Pizza"> I have a car<br>
+                            <input type="checkbox" name="vehicle1" value="Kake"> I have a bike
+                            <button type="button" class="close"  aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
+                            <input type="checkbox" name="vehicle2" value="Pizza"> I have a car
+                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
 
                     </div>
                 </div>
@@ -175,28 +173,31 @@
 
             </div>
             <div class="modal-body">
+                <form id="klasse1_form">
+                    <div class="col-md-6">
+                        <div id="klasse1">
 
-                <div class="col-md-6">
-                    <p>
-                        <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                        <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                        <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                        <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <p>
-                        <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                        <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                        <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                        <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
-                    </p>
-                </div>
+                            <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
+                            <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="klasse2">
+
+                            <input type="checkbox" name="vehicle1" value="Kake"> I have a bike<br>
+                            <input type="checkbox" name="vehicle2" value="Pizza"> I have a car<br>
+
+                        </div>
+                    </div>
+                </form>
                 <br><br><br><br>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Legg til ny våpengruppe</button>
-                <button type="button" class="btn btn-primary">Legg til klasser</button>
+                <div id="footerKlasse">
+                <button type="button" class="btn btn-secondary" onClick="nyKlasse()">Legg til ny våpengruppe</button>
+                <button type="button" class="btn btn-primary" onClick="fillKlasseBox()" data-dismiss="modal">Legg til klasser</button>
+                </div>
             </div>
         </div>
     </div>
