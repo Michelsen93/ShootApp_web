@@ -18,13 +18,12 @@ var PersonModel = ottoman.model("Person", {
         last: "string"
     },
     shooterId: "string",
-    club: "string",
+    club: {ref: "Club"},
     email: "string",
     phone: "string",
     scoreCards:[
         {
             ref: "Scorecard"
-
         }
     ]
 });

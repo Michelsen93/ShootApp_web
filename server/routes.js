@@ -54,7 +54,7 @@ var appRouter = function(app) {
     });
 
     //Gets competition by id
-    app.get("/person/:id", function (req, res) {
+    app.get("/competition/:id", function (req, res) {
         CompetitionModel.getById(req.params.id, function(error, competition){
             if(error){
                 return res.status(400).send(error);
@@ -76,9 +76,7 @@ var appRouter = function(app) {
             },
             email: req.body.email,
             shooterId: req.body.shooterId,
-            club: req.body.club,
             phone: req.body.phone
-
         });
         person.save(function (error, result) {
             if(error){
