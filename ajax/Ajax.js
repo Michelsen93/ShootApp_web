@@ -3,7 +3,7 @@
  */
 
 
-var baseURL = "http://localhost:3000/";
+var baseURL = "http://158.37.224.27:3000/";
 
 
 /**
@@ -86,7 +86,9 @@ function getPerson(callback) {
  * @param callback
  */
 function postPerson(json, callback){
+
     var xhttp = new XMLHttpRequest();
+
     xhttp.open("POST", baseURL + "person", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(json));
