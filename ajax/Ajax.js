@@ -91,8 +91,57 @@ function getPersons(callback) {
 
         }
     };
+    xhttp.send();
 }
 
+/**
+ * Gets all competitions
+ * TODO handle exceptions
+ */
+function getCompetitions(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", baseURL + "competition", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        }
+    };
+    xhttp.send();
+}
+
+/**
+ * Gets competition by identifier
+ * TODO handle exceptions
+ */
+function getCompetitionById(id, callback){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", baseURL + "competition/" + id, true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        }
+    };
+    xhttp.send();
+}
+/**
+ * Saves a competition
+ * @param competitionJSON
+ * @param callback
+ */
+function postCompetition(competitionJSON, callback) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "competition", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(json));
+}
 
 /**
  * Saves a person in jsonformat to server
@@ -106,7 +155,7 @@ function postPerson(json, callback){
     xhttp.open("POST", baseURL + "person", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(json));
-    callback();
+
 }
 
 /**

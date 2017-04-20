@@ -110,6 +110,26 @@ var appRouter = function(app) {
         });
 
     });
+    //Saves competition without any references yet
+    //References will be saved afterwards
+    app.post("/competition", function (req, res) {
+        var competition = new CompetitionModel({
+            competitionType: req.body.competitionType,
+            program: req.body.program,
+            location: req.body.location,
+            discipline: req.body.discipline,
+            active: req.body.active,
+            competitionNumber: req.body.competitionNumber,
+            date: req.body.date
+        });
+        competition.save(function (error, result) {
+            if(error){
+                return res.status(400).send(error);
+            }
+            return result;
+        });
+
+    });
 };
 
 module.exports = appRouter;
