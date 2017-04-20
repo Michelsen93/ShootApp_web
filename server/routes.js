@@ -70,10 +70,9 @@ var appRouter = function(app) {
     //Adds a person
     app.post("/person", function(req, res) {
         var person = new PersonModel({
-            name: {
-                first: req.body.name.first,
-                last: req.body.name.last
-            },
+
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             email: req.body.email,
             shooterId: req.body.shooterId,
             phone: req.body.phone

@@ -4,17 +4,19 @@
 
 function saveJohn(){
     var John = new Object();
-    var namestruct = new Object();
-    name.first = "Jonh";
-    name.last = "Doe";
-    John.name = namestruct;
+
+    John.firstName = "John";
+    John.lastName = "Doe";
     John.phone = "123";
     John.mail = "me@you.us";
     John.shooterId = "xDragonSlayer69x";
 
 
-    postPerson(John, function(){
-        console.log("okokok");
+    //postPerson(John, function(){
+    //    console.log("okokok");
+    //});
+    postPerson(John, function () {
+        console.log(John)
     });
 }
 

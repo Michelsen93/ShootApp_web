@@ -13,10 +13,8 @@ var PersonModel = ottoman.model("Person", {
        type: "Date",
        default: function () { return new Date(); }
    },
-    name: {
-       first: "string",
-        last: "string"
-    },
+    firstName: "string",
+    lastName: "string",
     shooterId: "string",
     club: {ref: "Club"},
     email: "string",
