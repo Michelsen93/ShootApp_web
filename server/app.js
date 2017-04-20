@@ -9,6 +9,8 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
+//TODO - Set whitelist for cors when app is to be launched
+
 
 var cluster = new couchbase.Cluster("localhost:8091");
 
