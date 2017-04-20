@@ -60,15 +60,26 @@ function deleteTeam() {
  * Gets all persons
  *
  **/
-function getAllPersons() {
-    
+function getPersonByMail(mail, callback) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", baseURL + "person/findByEmail/" + mail, true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        }
+    };
+    xhttp.send();
 }
 
 /**
  * Gets a person
  * @param callback function to handle the response
  **/
-function getPerson(callback) {
+function getPersons(callback) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", baseURL + "person", true);
     xhttp.onreadystatechange = function() {
@@ -80,8 +91,8 @@ function getPerson(callback) {
 
         }
     };
-
 }
+
 
 /**
  * Saves a person in jsonformat to server
