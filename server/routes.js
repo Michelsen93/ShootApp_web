@@ -63,6 +63,25 @@ var appRouter = function(app) {
         });
     });
 
+    //Gets weapongroups
+    app.get("/weaponGroup", function (req, res) {
+        WeaponGroupModel.find({}, function (error, weaponGroup) {
+            if(error){
+                return res.status(400).send(error);
+            }
+            re.send(weaponGroup);
+        });
+    });
+
+    //Gets weaponClass
+    app.get("/weaponClass", function (req, res) {
+        WeaponGroupModel.find({}, function (error, weaponClass) {
+            if(error){
+                return res.status(400).send(error);
+            }
+            re.send(weaponClass);
+        });
+    });
 
 
     //POST
