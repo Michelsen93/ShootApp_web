@@ -69,7 +69,7 @@ var appRouter = function(app) {
             if(error){
                 return res.status(400).send(error);
             }
-            re.send(weaponGroup);
+            res.send(weaponGroup);
         });
     });
 
@@ -79,7 +79,7 @@ var appRouter = function(app) {
             if(error){
                 return res.status(400).send(error);
             }
-            re.send(weaponClass);
+            res.send(weaponClass);
         });
     });
 
