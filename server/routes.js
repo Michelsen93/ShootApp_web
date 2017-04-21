@@ -53,9 +53,9 @@ var appRouter = function(app) {
         });
     });
 
-    //Gets competition by id
-    app.get("/competition/:id", function (req, res) {
-        CompetitionModel.getById(req.params.id, function(error, competition){
+    //Gets competition by competitionNumber
+    app.get("/competition/findByCompetitionNumber/:competitionNumber", function (req, res) {
+        CompetitionModel.find({email: req.params.competitionNumber}, function(error, competition){
             if(error){
                 return res.status(400).send(error);
             }
@@ -149,6 +149,123 @@ var appRouter = function(app) {
         });
 
     });
+
+    //Saves a weapongroup
+    app.post("/weaponGroup", function (req, res) {
+        var weaponGroup = new WeaponGroupModel({
+            name: req.body.names,
+            description: req.body.description
+        });
+        weaponGroup.save(function (error, result) {
+            if(error){
+                return res.status(400).send(error);
+            }
+            return result;
+        });
+    });
+
+    //Saves a weaponclass
+    app.post("/weaponClass", function (req, res) {
+        var weaponClass = new WeapondClassModel({
+            description: req.body.description,
+            weaponName: req.body.weaponName
+        });
+        weaponClass.save(function (error, result) {
+            if(error){
+                return res.status(400).send(error);
+            }
+            return result;
+        });
+    });
+
+    //Saves a team to the competition with matching competitionnumber
+    app.post("/competition/team", function (req, res) {
+        var team = new TeamModel({
+            teamNumber: req.body.teamNumber,
+            competitionNumber: req.body.competitionNumber,
+            startTime: req.body.startTime
+        });
+        team.save(function(error, result){
+            if(error){
+                return res.status(400).send(error);
+            }
+            CompetitionModel.find({competitionNumber: req.params.competitionNumber}, function(error, competition){
+                if(error){
+                    return res.status(400).send(error);
+                }
+                competition.comments.push(team);
+                competition.save(function(error, result){
+                    if(error){
+                        return res.status(400).send(error);
+                    }
+                    res.send(competition);
+                });
+            });
+        });
+
+    });
+
+
+    //saves a standplass to a competition expects competition number in body
+    app.post("/competition/standplass", function (req, res) {
+        var standplass = new StandplassModel({
+            number: req.body.number,
+            maxHits: req.body.maxHits,
+            numberOfFigures: req.body.numberOfFigures
+        });
+        standplass.save(function(error, result){
+            if(error){
+                return res.status(400).send(error);
+            }
+            CompetitionModel.find({competitionNumber: req.params.competitionNumber}, function(error, competition){
+                if(error){
+                    return res.status(400).send(error);
+                }
+                competition.comments.push(standplass);
+                competition.save(function(error, result){
+                    if(error){
+                        return res.status(400).send(error);
+                    }
+                    res.send(competition);
+                });
+            });
+        });
+
+    });
+    //OBS! ikke save alt. bare save objektet referansen er i
+    app.post("/competition/club", function (req, res) {
+        var club = new ClubModel({
+            mail: req.body.mail,
+            name: req.body.name,
+            address: req.body.address,
+
+        });
+        club.save(function(error, result){
+            if(error){
+                return res.status(400).send(error);
+            }
+            CompetitionModel.find({competitionNumber: req.params.competitionNumber}, function(error, competition){
+                if(error){
+                    return res.status(400).send(error);
+                }
+                competition.club = club;
+                competition.save(function(error, result){
+                    if(error){
+                        return res.status(400).send(error);
+                    }
+                    res.send(competition);
+                });
+            });
+        });
+
+    });
+
+
+
+
+
 };
+
+
 
 module.exports = appRouter;
