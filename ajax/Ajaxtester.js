@@ -27,4 +27,60 @@ function testGetByEmail(){
 }
 
 
-testGetByEmail();
+function testPostStandplass(){
+    var standplass = new Object();
+    standplass.name = "test";
+    standplass.number = 1;
+    standplass.maxHits = 4;
+    standplass.numberOfFigures = 3;
+
+    postStandplass(standplass, function () {
+        console.log(standplass);
+    });
+}
+
+function testPostCompetition() {
+    var competition = new Object();
+    competition.date = new Date();
+    competition.competitionNumber = 1;
+    competition.competitionType = "standard";
+    competition.program = "vanlig program";
+    competition.discipline = "hard";
+    competition.active = true;
+    postCompetition(competition, function () {
+        console.log(competition);
+    })
+
+
+}
+
+function testAddStandplass() {
+    var ids = new Object();
+    ids.number = 1;
+    ids.competitionNumber = 1;
+    console.log(ids);
+    addStandplass(ids, function(){
+        console.log(ids);
+    })
+}
+
+testAddStandplass();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

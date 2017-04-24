@@ -126,6 +126,7 @@ var StandplassModel = ottoman.model("Standplass", {
         type: "Date",
         default: function(){return new Date();}
     },
+    name: "string",
     number: "integer",
     maxHits: "integer",
     numberOfFigures: "integer"

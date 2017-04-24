@@ -158,6 +158,31 @@ function postPerson(json, callback){
 
 }
 
+function postStandplass(json, callback){
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open("POST", baseURL + "standplass", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(json));
+}
+
+function postCompetition(json, callback) {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open("POST", baseURL + "competition", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(json));
+}
+
+function addStandplass(json, callback) {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open("POST", baseURL + "competition/standplass", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(json));
+}
+
+
 /**
  * Gets all weapongroups
  *
