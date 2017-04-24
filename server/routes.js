@@ -10,9 +10,11 @@ var WeaponGroupModel = require("./models").WeaponGroupModel;
 
 var appRouter = function(app) {
 
+
+    //TODO - load arrays for getters
     //GET
 
-    //Returns sall people
+    //Returns all people
     app.get("/person", function (req, res) {
         PersonModel.find({}, function(error, people){
             if(error){
@@ -34,7 +36,7 @@ var appRouter = function(app) {
 
     //Returns a person by email.
     app.get("/person/findByEmail/:email", function (req, res) {
-        PersonModel.find({email: req.params.email}, {load: ["comments"]},  function(error, person){
+        PersonModel.find({mail: req.params.mail}, {load: ["comments"]},  function(error, person){
             if(error){
                 return res.status(400).send(error);
             }
@@ -92,7 +94,7 @@ var appRouter = function(app) {
 
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            email: req.body.email,
+            mail: req.body.mail,
             shooterId: req.body.shooterId,
             phone: req.body.phone
         });
@@ -145,6 +147,7 @@ var appRouter = function(app) {
         });
 
     });
+
     //Saves competition without any references yet
     //References will be saved afterwards
     app.post("/competition", function (req, res) {
@@ -194,18 +197,90 @@ var appRouter = function(app) {
         });
     });
 
+    /**
+     * Save a club
+     */
+    app.post("/club", function (req, res) {
+        var club = new ClubModel({
+            mail: req.body.mail,
+            name: req.body.name,
+            address: req.body.address
+        });
+        club.save(function (error, result) {
+            if(error){
+                return res.status(400).send(error);
+            }
+            return result;
+        });
+    });
+
+    //Modify club
+
+    /**
+     * adds a contactperson expect clubname and person mail
+     */
+    app.post("/club/contactPerson", function (req, res) {
+        ClubModel.find({name: req.body.name}, function(error, club){
+            if(error){
+                return res.status(400).send(error);
+            }
+            PersonModel.find({mail: req.body.mail}, function(error, person){
+                if(error){
+                    return res.status(400).send(error);
+                }
+                club[0].contactPersons.push(person[0]);
+                club[0].save(function (error, result) {
+                    if(error){
+                        return res.status(400).send(error);
+                    }
+                    res.send(club[0]);
+                });
+            });
+        });
+    });
+
+    /**
+     * Adds a competition to the club, expexts competitionnumber and club name in body
+     */
+    app.post("club/competition", function (req, res) {
+        ClubModel.find({name: req.body.name}, function(error, club){
+            if(error){
+                return res.status(400).send(error);
+            }
+            CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
+                if(error){
+                    return res.status(400).send(error);
+                }
+                club[0].competitions.push(competition[0]);
+                club[0].save(function (error, result) {
+                    if(error){
+                        return res.status(400).send(error);
+                    }
+                    res.send(club[0]);
+                });
+            });
+        });
+    });
+
+
+
+
+
+    //Update competition:
+
     //Saves a team to the competition with matching competitionnumber
     app.post("/competition/team", function (req, res) {
         var team = new TeamModel({
             teamNumber: req.body.teamNumber,
             competitionNumber: req.body.competitionNumber,
-            startTime: req.body.startTime
+            startTime: req.body.startTime,
+            competitors: req.body.competitors
         });
         team.save(function(error, result){
             if(error){
                 return res.status(400).send(error);
             }
-            CompetitionModel.find({competitionNumber: req.params.competitionNumber}, function(error, competition){
+            CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
                 if(error){
                     return res.status(400).send(error);
                 }
@@ -226,8 +301,6 @@ var appRouter = function(app) {
      * standplass identified by number in body, competition identified by competitionNumber
      */
     app.post("/competition/standplass", function (req, res) {
-
-
             CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
                 if(error){
                     return res.status(400).send(error);
@@ -250,33 +323,149 @@ var appRouter = function(app) {
     });
 
 
-    //OBS! ikke save alt. bare save objektet referansen er i
+    /**
+     * Saves a club to a competition. requires clubName and competitionNumber
+     */
     app.post("/competition/club", function (req, res) {
-        var club = new ClubModel({
-            mail: req.body.mail,
-            name: req.body.name,
-            address: req.body.address,
-
-        });
-        club.save(function(error, result){
+        ClubModel.find({name: req.body.name}, function(error, club){
             if(error){
                 return res.status(400).send(error);
             }
-            CompetitionModel.find({competitionNumber: req.params.competitionNumber}, function(error, competition){
+            CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
                 if(error){
                     return res.status(400).send(error);
                 }
-                competition.club.push(club);
-                competition.save(function(error, result){
+                competition[0].club = club[0];
+                competition[0].save(function(error, result){
                     if(error){
                         return res.status(400).send(error);
                     }
-                    res.send(competition);
+                    res.send(competition[0]);
                 });
             });
         });
-
     });
+
+    /**
+     * Saves a competitor to a competition. requires mail and competitionNumber
+     */
+    app.post("/competition/competitor", function (req, res) {
+        PersonModel.find({mail: req.body.mail}, function(error, person){
+            if(error){
+                return res.status(400).send(error);
+            }
+            CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
+                if(error){
+                    return res.status(400).send(error);
+                }
+                competition[0].competitors.push(person[0]);
+                competition[0].save(function(error, result){
+                    if(error){
+                        return res.status(400).send(error);
+                    }
+                    res.send(competition[0]);
+                });
+            });
+        });
+    });
+
+    /**
+     * Adds a referee to competition. need mail and competitionnumber in body
+     */
+    app.post("/competition/referee", function (req, res) {
+        PersonModel.find({mail: req.body.mail}, function(error, person){
+            if(error){
+                return res.status(400).send(error);
+            }
+            CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
+                if(error){
+                    return res.status(400).send(error);
+                }
+                competition[0].referees.push(person[0]);
+                competition[0].save(function(error, result){
+                    if(error){
+                        return res.status(400).send(error);
+                    }
+                    res.send(competition[0]);
+                });
+            });
+        });
+    });
+
+    /**
+     * Adds a competitionleader to competition. need mail and competitionnumber in body
+     */
+    app.post("/competition/competitionLeader", function (req, res) {
+        PersonModel.find({mail: req.body.mail}, function(error, person){
+            if(error){
+                return res.status(400).send(error);
+            }
+            CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
+                if(error){
+                    return res.status(400).send(error);
+                }
+                competition[0].competitionLeaders.push(person[0]);
+                competition[0].save(function(error, result){
+                    if(error){
+                        return res.status(400).send(error);
+                    }
+                    res.send(competition[0]);
+                });
+            });
+        });
+    });
+
+    /**
+     * Adds a weaponclass to a competition. need name of weaponclass and competitionNumber in body
+     */
+    app.post("/competition/competitionLeader", function (req, res) {
+        WeapondClassModel.find({name: req.body.name}, function(error, weaponClass){
+            if(error){
+                return res.status(400).send(error);
+            }
+            CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
+                if(error){
+                    return res.status(400).send(error);
+                }
+                competition[0].weaponClasses.push(weaponClass[0]);
+                competition[0].save(function(error, result){
+                    if(error){
+                        return res.status(400).send(error);
+                    }
+                    res.send(competition[0]);
+                });
+            });
+        });
+    });
+
+    /**
+     * Adds a weaponGroup to competition. need weaponName and competitionnumber in body
+     */
+    app.post("/competition/competitionLeader", function (req, res) {
+        WeaponGroupModel.find({weaponName: req.body.weaponName}, function(error, weaponGroup){
+            if(error){
+                return res.status(400).send(error);
+            }
+            CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
+                if(error){
+                    return res.status(400).send(error);
+                }
+                competition[0].weaponGroups.push(weaponGroup[0]);
+                competition[0].save(function(error, result){
+                    if(error){
+                        return res.status(400).send(error);
+                    }
+                    res.send(competition[0]);
+                });
+            });
+        });
+    });
+
+
+
+
+
+
 
 
 

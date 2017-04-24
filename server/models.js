@@ -17,7 +17,7 @@ var PersonModel = ottoman.model("Person", {
     lastName: "string",
     shooterId: "string",
     club: {ref: "Club"},
-    email: "string",
+    mail: "string",
     phone: "string",
     scoreCards:[
         {
@@ -160,7 +160,7 @@ var CompetitionModel = ottoman.model("Competition", {
     club:{
         ref: "Club"
     },
-    contestants:[
+    competitors:[
         {
             ref: "Person"
         }

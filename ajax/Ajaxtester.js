@@ -64,7 +64,11 @@ function testAddStandplass() {
     })
 }
 
-testAddStandplass();
+function testAddClub(){
+
+}
+
+
 
 
 

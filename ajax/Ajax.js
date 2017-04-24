@@ -173,6 +173,14 @@ function postCompetition(json, callback) {
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(json));
 }
+function postClub(json, callback){
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open("POST", baseURL + "club", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(json));
+}
+
 
 function addStandplass(json, callback) {
     var xhttp = new XMLHttpRequest();
