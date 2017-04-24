@@ -418,7 +418,7 @@ var appRouter = function(app) {
     /**
      * Adds a weaponclass to a competition. need name of weaponclass and competitionNumber in body
      */
-    app.post("/competition/competitionLeader", function (req, res) {
+    app.post("/competition/weaponClass", function (req, res) {
         WeapondClassModel.find({name: req.body.name}, function(error, weaponClass){
             if(error){
                 return res.status(400).send(error);
@@ -441,7 +441,7 @@ var appRouter = function(app) {
     /**
      * Adds a weaponGroup to competition. need weaponName and competitionnumber in body
      */
-    app.post("/competition/competitionLeader", function (req, res) {
+    app.post("/competition/weaponGroup", function (req, res) {
         WeaponGroupModel.find({weaponName: req.body.weaponName}, function(error, weaponGroup){
             if(error){
                 return res.status(400).send(error);

@@ -6,55 +6,6 @@
 var baseURL = "http://localhost:3000/";
 
 
-/**
- * Gets a competition
- *
- **/
-function getCompetitionById(){
-    
-}
-
-/**
- * Gets all competitions
- *
- **/
-function getCompetitions(){
-    
-}
-
-/**
- * Saves a competition
- *
- **/
-function postCompetition() {
-    
-}
-
-/**
- * Creates a new user
- *
- **/
-function postUser() {
-    
-}
-
-
-/**
- * Adds a team to a competition
- *
- **/
-function postTeam(){
-    
-}
-
-/**
- * Removes a team
- *
- **/
-function deleteTeam() {
-    
-}
-
 
 /**
  * Gets all persons
@@ -127,7 +78,7 @@ function getCompetitionById(id, callback){
             console.log(xhttp.responseText);
             callback(xhttp.responseText);
 
-        }
+        };
     };
     xhttp.send();
 }
@@ -158,6 +109,12 @@ function postPerson(json, callback){
 
 }
 
+
+/**
+ * Saves a standplass
+ * @param json
+ * @param callback
+ */
 function postStandplass(json, callback){
     var xhttp = new XMLHttpRequest();
 
@@ -166,6 +123,11 @@ function postStandplass(json, callback){
     xhttp.send(JSON.stringify(json));
 }
 
+/**
+ * Saves a competition
+ * @param json
+ * @param callback
+ */
 function postCompetition(json, callback) {
     var xhttp = new XMLHttpRequest();
 
@@ -173,38 +135,168 @@ function postCompetition(json, callback) {
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(json));
 }
+
+/**
+ * Saves a club
+ * @param json
+ * @param callback
+ */
 function postClub(json, callback){
     var xhttp = new XMLHttpRequest();
-
     xhttp.open("POST", baseURL + "club", true);
     xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        };
+    };
     xhttp.send(JSON.stringify(json));
 }
 
 
+/**
+ * Adds a standplass to competition
+ * json must contain competitionNumber, and number of standplass
+ * @param json
+ * @param callback
+ */
 function addStandplass(json, callback) {
     var xhttp = new XMLHttpRequest();
-
     xhttp.open("POST", baseURL + "competition/standplass", true);
     xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        };
+    };
     xhttp.send(JSON.stringify(json));
 }
+
+/**
+ * Adds a contact person to cometition
+ * json must contain mail for person, competitionNumber
+ * @param json
+ * @param callback
+ */
+function addContactPerson(json, callback){
+
+}
+/**
+ * Sets the club for the competition
+ * json must contain name of club, competitionNumber
+ * @param json
+ * @param callback
+ */
+function addClub(json, callback){
+
+}
+
+/**
+ * adds a new team to competition
+ * json must contain a complete team json(see TeamModel in models.js), competitionNumber
+ * @param json
+ * @param callback
+ */
+function addTeam(json, callback){
+
+}
+
+/**
+ * adds a competitor to competition
+ * json must contain mail for person, competitionNumber
+ * @param json
+ * @param callback
+ */
+function addCompetitor(json, callback) {
+
+}
+/**
+ * adds a referee to competition
+ * json must contain mail for person, competitionNumber
+ * @param json
+ * @param callback
+ */
+function addReferee(json, callback) {
+
+}
+/**
+ * adds a leader to competition
+ * json must contain mail for person, competitionNumber
+ * @param json
+ * @param callback
+ */
+function addCompetitionLeader(json, callback) {
+
+}
+
+
+/**
+ * Adds a weaponClass to competition
+ * json must contain name of weaponClass, competitionNumber
+ * @param json
+ * @param callback
+ */
+function addWeaponClass(json, callback){
+
+}
+/**
+ * Adds a weapongroup to competition
+ * json must contain weaponName of weapongroup, competitionNumber
+ * @param json
+ * @param callback
+ */
+function addWeaponGroup(json, callback){
+
+}
+
 
 
 /**
  * Gets all weapongroups
  *
  **/
-function getWeaponGroups(){
-    
+function getWeaponGroups(json, callback){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "weaponGroup", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        };
+    };
+    xhttp.send(JSON.stringify(json));
 }
 
 /**
  * Gets all weapon classes
  *
  **/
-function getWeaponClasses() {
-    
+function getWeaponClasses(json, callback) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "weaponClass", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        };
+    };
+    xhttp.send(JSON.stringify(json));
 }
 
 /**
