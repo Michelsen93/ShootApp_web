@@ -14,7 +14,7 @@ var appRouter = function(app) {
     //TODO - load arrays for getters
     //GET
 
-    //Returns all people
+    //Returns all people, works
     app.get("/person", function (req, res) {
         PersonModel.find({}, function(error, people){
             if(error){
@@ -24,17 +24,9 @@ var appRouter = function(app) {
         });
     });
 
-    //returns a person with the id provided
-    app.get("/person/:id", function (req, res) {
-        PersonModel.getById(req.params.id, function(error, person){
-            if(error){
-                return res.status(400).send(error);
-            }
-            res.send(person);
-        });
-    });
 
-    //Returns a person by email.
+
+    //Returns a person by email. works
     app.get("/person/findByEmail/:email", function (req, res) {
         PersonModel.find({mail: req.params.mail}, {load: ["comments"]},  function(error, person){
             if(error){
@@ -44,7 +36,7 @@ var appRouter = function(app) {
         });
     });
 
-    //Gets all competitions
+    //Gets all competitions. works
     app.get("/competition", function (req, res){
         //Should maybe load stuff
         CompetitionModel.find({}, function(error, competitions){
@@ -55,7 +47,7 @@ var appRouter = function(app) {
         });
     });
 
-    //Gets competition by competitionNumber
+    //Gets competition by competitionNumber, works
     app.get("/competition/findByCompetitionNumber/:competitionNumber", function (req, res) {
         CompetitionModel.find({email: req.params.competitionNumber}, function(error, competition){
             if(error){
@@ -88,7 +80,7 @@ var appRouter = function(app) {
 
     //POST
 
-    //Adds a person
+    //Adds a person works
     app.post("/person", function(req, res) {
         var person = new PersonModel({
 
@@ -149,7 +141,7 @@ var appRouter = function(app) {
     });
 
     //Saves competition without any references yet
-    //References will be saved afterwards
+    //References will be saved afterwards works
     app.post("/competition", function (req, res) {
         var competition = new CompetitionModel({
             competitionType: req.body.competitionType,
@@ -169,7 +161,7 @@ var appRouter = function(app) {
 
     });
 
-    //Saves a weapongroup
+    //Saves a weapongroup works
     app.post("/weaponGroup", function (req, res) {
         var weaponGroup = new WeaponGroupModel({
             name: req.body.names,
@@ -183,7 +175,7 @@ var appRouter = function(app) {
         });
     });
 
-    //Saves a weaponclass
+    //Saves a weaponclass works
     app.post("/weaponClass", function (req, res) {
         var weaponClass = new WeapondClassModel({
             description: req.body.description,
@@ -198,7 +190,7 @@ var appRouter = function(app) {
     });
 
     /**
-     * Save a club
+     * Save a club works
      */
     app.post("/club", function (req, res) {
         var club = new ClubModel({
@@ -217,7 +209,7 @@ var appRouter = function(app) {
     //Modify club
 
     /**
-     * adds a contactperson expect clubname and person mail
+     * adds a contactperson expect clubname and person mail works
      */
     app.post("/club/contactPerson", function (req, res) {
         ClubModel.find({name: req.body.name}, function(error, club){
@@ -229,6 +221,7 @@ var appRouter = function(app) {
                     return res.status(400).send(error);
                 }
                 club[0].contactPersons.push(person[0]);
+                console.log(club[0]);
                 club[0].save(function (error, result) {
                     if(error){
                         return res.status(400).send(error);

@@ -64,9 +64,38 @@ function testAddStandplass() {
     })
 }
 
+
 function testAddClub(){
 
+    var club = new Object();
+    club.name = "Åsane";
+    club.address = "skytebane 1";
+    club.mail = "åpk@gmail.com";
+
+    postClub(club);
 }
+function testAddContactPerson(){
+    var adder = new Object();
+    adder.mail = "123@gmail.com";
+    adder.name = "Åsane";
+    addContactPersonToClub(adder);
+}
+
+function testPostWeaponClass(){
+    var weaponClass = new Object();
+    weaponClass.description = "Sier pang";
+    weaponClass.weaponName = "Bazooka";
+    postWeaponClass(weaponClass);
+}
+
+function testPostWeaponGroup(){
+    var weaponGroup = new Object();
+    weaponGroup.name = "Spesial";
+    weaponGroup.description = "for rike";
+    postWeaponGroup(weaponGroup);
+
+}
+
 
 
 

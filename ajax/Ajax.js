@@ -233,6 +233,27 @@ function postClub(json){
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(json));
 }
+/**
+ * post a new weaponclass
+ * @param json , must contain descriptio, weaponName
+ */
+function postWeaponClass(json){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "weaponClass", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(json));
+}
+/**
+ *
+ * @param json , must contain description, name
+ */
+function postWeaponGroup(json){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "weaponGroup", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    console.log(json);
+    xhttp.send(JSON.stringify(json));
+}
 
 
 /**
@@ -300,9 +321,8 @@ function addClub(json){
  * json must contain a complete team json, teamNumber, startTime, competitors
  * competitionNumber
  * @param json
- * @param callback
  */
-function addTeam(json, callback){
+function addTeam(json){
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", baseURL + "competition/team", true);
     xhttp.setRequestHeader("Content-type", "application/json");
@@ -313,9 +333,8 @@ function addTeam(json, callback){
  * adds a competitor to competition
  * json must contain mail for person, competitionNumber
  * @param json
- * @param callback
  */
-function addCompetitor(json, callback) {
+function addCompetitor(json) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", baseURL + "competition/competitor", true);
     xhttp.setRequestHeader("Content-type", "application/json");
@@ -325,9 +344,8 @@ function addCompetitor(json, callback) {
  * adds a referee to competition
  * json must contain mail for person, competitionNumber
  * @param json
- * @param callback
  */
-function addReferee(json, callback) {
+function addReferee(json) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", baseURL + "competition/referee", true);
     xhttp.setRequestHeader("Content-type", "application/json");
@@ -337,9 +355,8 @@ function addReferee(json, callback) {
  * adds a leader to competition
  * json must contain mail for person, competitionNumber
  * @param json
- * @param callback
  */
-function addCompetitionLeader(json, callback) {
+function addCompetitionLeader(json) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", baseURL + "competition/competitionLeader", true);
     xhttp.setRequestHeader("Content-type", "application/json");
@@ -351,9 +368,8 @@ function addCompetitionLeader(json, callback) {
  * Adds a weaponClass to competition
  * json must contain name of weaponClass, competitionNumber
  * @param json
- * @param callback
  */
-function addWeaponClass(json, callback){
+function addWeaponClass(json){
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", baseURL + "competition/weaponClass", true);
     xhttp.setRequestHeader("Content-type", "application/json");
@@ -363,9 +379,8 @@ function addWeaponClass(json, callback){
  * Adds a weapongroup to competition
  * json must contain weaponName of weapongroup, competitionNumber
  * @param json
- * @param callback
  */
-function addWeaponGroup(json, callback){
+function addWeaponGroup(json){
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", baseURL + "competition/weaponGroup", true);
     xhttp.setRequestHeader("Content-type", "application/json");
