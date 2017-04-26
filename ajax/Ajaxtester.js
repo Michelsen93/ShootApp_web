@@ -96,7 +96,14 @@ function testPostWeaponGroup(){
 
 }
 
+function testAddCompetitionToClub(){
+    var saver = new Object();
+    saver.name = "Fyllingen";
+    saver.competitionNumber = 1;
+    addCompetitionToClub(saver);
+}
 
+testAddCompetitionToClub();
 
 
 
