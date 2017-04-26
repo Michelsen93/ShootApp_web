@@ -240,7 +240,7 @@ var appRouter = function(app) {
     });
 
     /**
-     * Adds a competition to the club, expexts competitionnumber and club name in body
+     * Adds a competition to the club, expects competitionnumber and club name in body
      */
     app.post("club/competition", function (req, res) {
         ClubModel.find({name: req.body.name}, function(error, club){
