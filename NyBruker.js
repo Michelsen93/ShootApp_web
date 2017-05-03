@@ -3,7 +3,7 @@
  */
 
 function saveBruker(){
-
+/*
     var fnavn = document.getElementById("fnavn").value;
     var enavn = document.getElementById("enavn").value;
     var email = document.getElementById("email").value;
@@ -11,7 +11,7 @@ function saveBruker(){
     var tlfnr = document.getElementById("tlfnr").value;
     var klubb = document.getElementById("klubb").value;
     var passord = document.getElementById("passord").value;
-
+*/
     var bruker = {
         firstName: document.getElementById("fnavn").value,
         lastName: document.getElementById("enavn").value,
@@ -19,13 +19,19 @@ function saveBruker(){
         shooterId: document.getElementById("skytterNr").value,
         phone: document.getElementById("tlfnr").value,
 
-    }
-    var jsonBruker = JSON.stringify(bruker);
-    postPerson(bruker)
+    };
+
+    //var jsonBruker = JSON.stringify(bruker);
+    postPerson(bruker);
+    console.log(bruker);
 
 }
 
 function test(mail){
-    var testObjekt = getPersonByMail(mail)
-    alert (testObjekt)
+
+    getPersonByMail(mail, f);
+}
+
+function f(json){
+    console.log(json)
 }
