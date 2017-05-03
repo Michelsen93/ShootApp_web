@@ -90,7 +90,7 @@ function testPostWeaponClass(){
 
 function testPostWeaponGroup(){
     var weaponGroup = new Object();
-    weaponGroup.name = "Spesial";
+    weaponGroup.name = "Liten";
     weaponGroup.description = "for rike";
     postWeaponGroup(weaponGroup);
 
@@ -103,8 +103,8 @@ function testAddCompetitionToClub(){
     addCompetitionToClub(saver);
 }
 
-testAddCompetitionToClub();
 
+testPostWeaponGroup();
 
 
 

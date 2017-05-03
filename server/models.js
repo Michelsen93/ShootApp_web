@@ -183,7 +183,7 @@ var CompetitionModel = ottoman.model("Competition", {
     competitionType: "string",
     program: "string",
     location: "string",
-    discipline: "string",
+        discipline: "string",
     active:{
         type: "boolean",
         default: true

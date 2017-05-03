@@ -13,15 +13,19 @@ function saveBruker(){
     var passord = document.getElementById("passord").value;
 
     var bruker = {
-        fname: fnavn,
-        ename: enavn,
-        email: email,
-        skytterNr: skytterNr,
-        tlfnr: tlfnr,
-        klubb: klubb,
-        passord: passord
+        firstName: document.getElementById("fnavn").value,
+        lastName: document.getElementById("enavn").value,
+        mail: document.getElementById("email").value,
+        shooterId: document.getElementById("skytterNr").value,
+        phone: document.getElementById("tlfnr").value,
+
     }
     var jsonBruker = JSON.stringify(bruker);
+    postPerson(bruker)
 
-    alert (jsonBruker);
+}
+
+function test(mail){
+    var testObjekt = getPersonByMail(mail)
+    alert (testObjekt)
 }

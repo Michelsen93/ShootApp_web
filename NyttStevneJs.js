@@ -15,13 +15,24 @@ function lagreStevne(){
     k = JSON.parse(stevne1)
     alert(stevne1)
 }
-
+/**
+ * Adds a new standplass to the competition
+ *
+ * <div class="form-group">
+ <label class="col-md-4 control-label">Stevnenummer</label>
+ <div class="col-md-4">
+ <input  id="competitionNumber" type="text" placeholder="00000000" class="form-control input-md" required>
+ </div>
+ </div>
+ */
 var antallStandplass = 0;
 function addStandplass() {
     antallStandplass++;
     var div = document.createElement('div');
     div.innerHTML = '<br><b>Standplass '+antallStandplass+' </b><br> ' +
-        'Max treff: <input type="text"  name="maxTreff_'+antallStandplass+'"><br>' +
+        '<label class="col-md-2 control-label">Max treff:</label> '+
+        '<input  id="competitionNumber" type="number" placeholder="00" class="form-control input-md-4" required>'+
+        'Max treff: <input type="text"  class="form-control input-md" name="maxTreff_'+antallStandplass+'"><br>' +
         'Antall figurer: <input type="text" name="antFig_'+antallStandplass+'"><br>'+
         'Max innertreff: <input type="text"  name="maxinnertreff_'+antallStandplass+'"><br>'+
         'Tid (sekunder): <input type="text"  name="tid_'+antallStandplass+'"><br>'+
@@ -29,111 +40,116 @@ function addStandplass() {
 
     document.getElementById('standplass').appendChild(div);
 }
-
+/**
+ * Removes a standplass to the competition
+ */
 function removeStandplass(div){
     document.getElementById('standplass').removeChild(div.parentNode);
     antallStandplass--;
 }
 
+/**
+ * Creates a new weapongroup
+ */
 var i = 0;
-function nyVapengruppe(){
+function newWeapongroup(){
     if(i<1) {
         var div = document.createElement('div');
-        div.innerHTML = '<br><input type="text" id="nyVapengruppe">  ' +
-            '<input type="button" value="Legg til" onClick="addVapengruppe(this)"><br> ';
+        div.innerHTML = '<br><input type="text" id="newWeapongroup">  ' +
+            '<input type="button" value="Legg til" onClick="addWeapongroup(this)"><br> ';
 
-        document.getElementById('footerVapen').appendChild(div);
+        document.getElementById('footerWeapon').appendChild(div);
         i++;
     }
 
 }
 
-var antVapengrupper = 0;
-function addVapengruppe(div){
-    var p = document.getElementById('nyVapengruppe').value;
+var numWeapongroup = 0;
+function addWeapongroup(div){
+    var p = document.getElementById('newWeapongroup').value;
 
-    document.getElementById('footerVapen').removeChild(div.parentNode);
+    document.getElementById('footerWeapon').removeChild(div.parentNode);
     i--;
 
     var div = document.createElement('div');
     div.innerHTML = '<input type="checkbox" id="'+p+'" value="'+p+'"> '+p+'' +
-        '<button type="button" class="close" aria-label="Close" onClick="removeVapengruppe(this)"><span aria-hidden="true">&times;</span></button><br>';
+        '<button type="button" class="close" aria-label="Close" onClick="removeWeapongroup(this)"><span aria-hidden="true">&times;</span></button><br>';
 
-    if (antVapengrupper%2==0){
-        document.getElementById('vapengruppe1').appendChild(div)
+    if (numWeapongroup%2==0){
+        document.getElementById('weapongroup1').appendChild(div)
     }else{
-        document.getElementById('vapengruppe2').appendChild(div)
+        document.getElementById('weapongroup2').appendChild(div)
     }
 
 
-    antVapengrupper++;
+    numWeapongroup++;
 }
 
-function removeVapengruppe(div) {
-    document.getElementById('vapengruppe2').removeChild(div.parentNode);
-    document.getElementById('vapengruppe1').removeChild(div.parentNode);
+function removeweapongroup(div) {
+    document.getElementById('weapongroup2').removeChild(div.parentNode);
+    document.getElementById('weapongroup1').removeChild(div.parentNode);
 
-    antVapengrupper--;
+    numWeapongroup--;
 }
 
-var checkedVapen = "";
-function fillVapenBox(){
+var checkedWeapon = "";
+function fillWeaponBox(){
 
-    for (i = 0; i < document.getElementById('vapengr1_form').length; i++){
+    for (i = 0; i < document.getElementById('Weapongr1_form').length; i++){
 
-        if(document.getElementById('vapengr1_form')[i].checked){
-            checkedVapen = checkedVapen.concat(document.getElementById('vapengr1_form')[i].value + '\n');
+        if(document.getElementById('Weapongr1_form')[i].checked){
+            checkedWeapon = checkedWeapon.concat(document.getElementById('Weapongr1_form')[i].value + '\n');
 
         }
     }
 
-    document.getElementById("vapentxt").value = checkedVapen;
+    document.getElementById("weapontxt").value = checkedWeapon;
 }
 
 var j = 0;
-function nyKlasse(){
+function newClass(){
     if(j<1) {
         var div = document.createElement('div');
-        div.innerHTML = '<br><input type="text" id="nyKlasse">  ' +
-            '<input type="button" value="Legg til" onClick="addKlasse(this)"><br> ';
+        div.innerHTML = '<br><input type="text" id="newClass">  ' +
+            '<input type="button" value="Legg til" onClick="addClass(this)"><br> ';
 
-        document.getElementById('footerKlasse').appendChild(div)
+        document.getElementById('footerClass').appendChild(div)
         i++;
     }
 
 }
 
-var antKlasser = 0;
-function addKlasse(div){
-    var p = document.getElementById('nyKlasse').value;
+var numClass = 0;
+function addClass(div){
+    var p = document.getElementById('nyClass').value;
 
-    document.getElementById('footerKlasse').removeChild(div.parentNode);
+    document.getElementById('footerClass').removeChild(div.parentNode);
     i--;
 
     var div = document.createElement('div');
     div.innerHTML = '<input type="checkbox" id="'+p+'" value="'+p+'"> '+p+'' +
         '<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><br>';
 
-    if (antKlasser%2==0){
-        document.getElementById('klasse1').appendChild(div)
+    if (numClass%2==0){
+        document.getElementById('class1').appendChild(div)
     }else{
-        document.getElementById('klasse2').appendChild(div)
+        document.getElementById('class2').appendChild(div)
     }
 
 
-    antKlasser++;
+    numClass++;
 }
 
-var checkedKlasse = "";
-function fillKlasseBox(){
+var checkedClass = "";
+function fillClassBox(){
 
-    for (i = 0; i < document.getElementById('klasse1_form').length; i++){
+    for (i = 0; i < document.getElementById('class1_form').length; i++){
 
-        if(document.getElementById('klasse1_form')[i].checked){
-            checkedKlasse = checkedKlasse.concat(document.getElementById('klasse1_form')[i].value + '\n');
+        if(document.getElementById('class1_form')[i].checked){
+            checkedClass = checkedClass.concat(document.getElementById('class1_form')[i].value + '\n');
 
         }
     }
 
-    document.getElementById("klassetxt").value = checkedKlasse;
+    document.getElementById("classtxt").value = checkedClass;
 }

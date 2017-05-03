@@ -164,7 +164,7 @@ var appRouter = function(app) {
     //Saves a weapongroup works
     app.post("/weaponGroup", function (req, res) {
         var weaponGroup = new WeaponGroupModel({
-            name: req.body.names,
+            name: req.body.name,
             description: req.body.description
         });
         weaponGroup.save(function (error, result) {

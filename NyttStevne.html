@@ -51,73 +51,133 @@
             </div>
         </nav>
 
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-5">
 
 
-                <p>Stevnenummer: <br> <input type="text" id="stevneNummer" placeholder="00000000" name="stevnenummer" required></p>
+        <form class="form-horizontal" method="post" action="BrukerLagret.html">
+            <fieldset>
+                <!-- Registrer ny bruker -->
 
-                <p>Dato: <br> <input type="date" id="dato" name="date" required></p>
+                <!-- Competition number -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Stevnenummer</label>
+                    <div class="col-md-4">
+                        <input  id="competitionNumber" type="text" placeholder="00000000" class="form-control input-md" required>
+                    </div>
+                </div>
 
-                <p>Klubb: <br> <input type="text" placeholder="Åsane pk" name="klubb" required><br>
+                <!-- Date -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Dato</label>
+                    <div class="col-md-4">
+                        <input type="date" id="dato" id="date" class="form-control input-md" required>
+                    </div>
+                </div>
 
-                <p>Sted: <br> <input type="text" placeholder="Arnavegen Jonahålo Skytebane" name="sted" required><br>
+                <!-- Club -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Klubb</label>
+                    <div class="col-md-4">
+                        <input type="text" placeholder="Åsane pk" id="club" class="form-control input-md" required>
+                    </div>
+                </div>
 
-                <p>Stevnetype: <br> <input type="text" placeholder="KM" name="stevneType" required><br>
+                <!-- Place -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Sted</label>
+                    <div class="col-md-4">
+                        <input type="text" placeholder="Arnavegen Jonahålo Skytebane" id="place" class="form-control input-md" required>
+                    </div>
+                </div>
 
-                <p>Disiplin: <br> <input type="text" placeholder="Felt" name="disiplin" required><br>
+                <!-- Competition type-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Stevne type</label>
+                    <div class="col-md-4">
+                        <input type="text" placeholder="KM" id="competitionType" class="form-control input-md" required>
+                    </div>
+                </div>
 
-                <p>Program: <br> <input type="text" placeholder="" name="program" required><br><br>
+                <!-- Disiplin -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Disiplin</label>
+                    <div class="col-md-4">
+                        <input type="text" placeholder="Felt" id="discipline" class="form-control input-md" required>
+                    </div>
+                </div>
 
-                <button type="submit" id="addShooters" class="btn btn-primary" onclick="window.location.href='RegDeltagere.html'">Registrer Deltagere</button><br><br>
-                <button type="submit" id="regLag" class="btn btn-primary" onclick="window.location.href='RegLag.html'">Registrer Lag</button><br><br>
+                <!-- Program -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Program</label>
+                    <div class="col-md-4">
+                        <input type="text" placeholder="" id="program" class="form-control input-md" required>
+                    </div>
+                </div>
 
-                <button type="submit" id="save" name="button1id" class="btn btn-success" onclick="window.location.href='Stevner.html', lagreStevne()">Lagre</button>
-                <button type="reset" id="cancel" name="button2id" class="btn btn-danger">Avbryt</button>
+                <!-- Våpengruppe -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Våpengrupper</label>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpWeaponGroup">
+                            Velg våpengrupper
+                        </button>
+                        <br><br>
+                        <textarea rows="4" id="weapontxt" class="form-control input-md" readonly></textarea>
+                    </div>
+                </div>
+
+                <!-- Klasse -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Klasser</label>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpClass">
+                            Velg Klasser
+                        </button>
+                        <br><br>
+                        <textarea rows="4" id="classtxt" class="form-control input-md" readonly></textarea>
+                    </div>
+                </div>
+
+                <!-- Standplasser -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Standplasser</label>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpStandplass">
+                            Velg Standplasser
+                        </button>
 
 
+                    </div>
+                </div>
+
+                <!-- Legg til skyttere og velg lag -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Skyttere</label>
+                    <div class="col-md-4">
+                        <button type="submit" id="addShooters" class="btn btn-primary" onclick="window.location.href='RegDeltagere.html'">
+                            Registrer skyttere
+                        </button>
 
 
-            </div>
-            <div class="col-md-5">
+                    </div>
+                </div>
 
-                <p>Våpengruppe: <br></p>
-
-                <!-- Button trigger modal vå -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popUpVapengruppe">
-                    Velg våpengrupper
-                </button><br>
-                <textarea rows="4" cols="20" id="vapentxt" readonly></textarea>
-
-
-                <p><br>Klasse: <br></p>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popUpKlasse">
-                    Velg klasse
-                </button><br>
-
-                <textarea rows="4" cols="20" id="klassetxt" readonly></textarea>
-
-                <p>Antall standplasser<br></p>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popUpStandplass">
-                    Registrer standplasser
-                </button><br>
-
-            </div>
-
-            <div class="col-md-1"></div>
-
-
-        </div>
-
+            </fieldset>
+        </form>
     </div>
+
+    <!-- Knapper til fremtidig bruk
+
+        <button type="submit" id="addShooters" class="btn btn-primary" onclick="window.location.href='RegDeltagere.html'">Registrer Deltagere</button><br><br>
+        <button type="submit" id="regLag" class="btn btn-primary" onclick="window.location.href='RegLag.html'">Registrer Lag</button><br><br>
+
+        <button type="submit" id="save" name="button1id" class="btn btn-success" onclick="window.location.href='Stevner.html', lagreStevne()">Lagre</button>
+        <button type="reset" id="cancel" name="button2id" class="btn btn-danger">Avbryt</button>
+    --->
 
 </div>
 
-<!-- Modal våpengruppe -->
-<div class="modal fade" id="popUpVapengruppe"  role="dialog" >
+<!-- Modal weapongroup -->
+<div class="modal fade" id="popUpWeaponGroup"  role="dialog" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -129,9 +189,9 @@
 
             </div>
             <div class="modal-body">
-                <form id="vapengr1_form">
+                <form id="weapongr1_form">
                 <div class="col-md-6">
-                    <div id="vapengruppe1">
+                    <div id="weapongroup1">
 
                             <input type="checkbox" name="vehicle1" value="Bike"> I have a bike
                             <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
@@ -141,7 +201,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div id="vapengruppe2">
+                    <div id="weapongroup2">
 
                             <input type="checkbox" name="vehicle1" value="Kake"> I have a bike
                             <button type="button" class="close"  aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
@@ -154,17 +214,17 @@
                 <br><br><br><br>
             </div>
             <div class="modal-footer">
-                <div id="footerVapen">
-                <button type="button" class="btn btn-secondary" onClick="nyVapengruppe()">Legg til ny våpengruppe</button>
-                <button type="button" class="btn btn-primary" onClick="fillVapenBox()" data-dismiss="modal">Legg til våpengrupper</button>
+                <div id="footerWeapon   ">
+                <button type="button" class="btn btn-secondary" onClick="newWeapongroup()">Legg til ny våpengruppe</button>
+                <button type="button" class="btn btn-primary" onClick="fillWeaponBox()" data-dismiss="modal">Legg til våpengrupper</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Modal Klasse -->
-<div class="modal fade" id="popUpKlasse"  role="dialog" >
+<!-- Modal Class -->
+<div class="modal fade" id="popUpClass"  role="dialog" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -176,9 +236,9 @@
 
             </div>
             <div class="modal-body">
-                <form id="klasse1_form">
+                <form id="Class1_form">
                     <div class="col-md-6">
-                        <div id="klasse1">
+                        <div id="Class1">
 
                             <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
                             <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
@@ -186,7 +246,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="klasse2">
+                        <div id="Class2">
 
                             <input type="checkbox" name="vehicle1" value="Kake"> I have a bike<br>
                             <input type="checkbox" name="vehicle2" value="Pizza"> I have a car<br>
@@ -197,9 +257,9 @@
                 <br><br><br><br>
             </div>
             <div class="modal-footer">
-                <div id="footerKlasse">
-                <button type="button" class="btn btn-secondary" onClick="nyKlasse()">Legg til ny våpengruppe</button>
-                <button type="button" class="btn btn-primary" onClick="fillKlasseBox()" data-dismiss="modal">Legg til klasser</button>
+                <div id="footerClass">
+                <button type="button" class="btn btn-secondary" onClick="nyClass()">Legg til ny våpengruppe</button>
+                <button type="button" class="btn btn-primary" onClick="fillClassBox()" data-dismiss="modal">Legg til klasser</button>
                 </div>
             </div>
         </div>
