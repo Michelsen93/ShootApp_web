@@ -104,7 +104,7 @@ function testAddCompetitionToClub(){
 }
 
 
-testPostWeaponGroup();
+testGetByEmail();
 
 
 

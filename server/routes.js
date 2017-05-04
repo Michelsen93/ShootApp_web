@@ -27,8 +27,8 @@ var appRouter = function(app) {
 
 
     //Returns a person by email. works
-    app.get("/person/findByEmail/:email", function (req, res) {
-        PersonModel.find({mail: req.params.mail}, {load: ["comments"]},  function(error, person){
+    app.get("/person/findByEmail/:mail", function (req, res) {
+        PersonModel.find({mail: req.params.mail}, {load: ["scoreCards"]},  function(error, person){
             if(error){
                 return res.status(400).send(error);
             }
@@ -114,31 +114,7 @@ var appRouter = function(app) {
         });
     });
 
-    //Saves a reference object
-    //expects a person id in the json
-    app.post("/comment", function (req, res) {
-        var comment = new CommentModel({
-            message: req.body.message
-        });
-        comment.save(function(error, result){
-           if(error){
-               return res.status(400).send(error);
-           }
-           PersonModel.getById(req.body.id, function(error, person){
-               if(error){
-                   return res.status(400).send(error);
-               }
-               person.comments.push(comment);
-               person.save(function(error, result){
-                   if(error){
-                       return res.status(400).send(error);
-                   }
-                   res.send(person);
-               });
-           });
-        });
 
-    });
 
     //Saves competition without any references yet
     //References will be saved afterwards works
