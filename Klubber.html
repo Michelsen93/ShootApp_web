@@ -34,8 +34,8 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li> <a href="Stevner.html">Stevner</a> </li>
-                    <li class="active"> <a href="Utovere.html">Utøvere</a></li>
-                    <li> <a href="Klubber.html">Klubber</a></li>
+                    <li> <a href="Utovere.html">Utøvere</a></li>
+                    <li class="active"> <a href="Klubber.html">Klubber</a></li>
                     <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resultater<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="Live.html">Live</a></li>
@@ -53,18 +53,17 @@
         </div>
     </nav>
 
-<!-- Main content -->
-<legend>Utøvere</legend>
+    <!-- Main content -->
+    <legend>Klubber</legend>
     <div class="col-xs-2">
-    <h5> Søk Etter: </h5>
+        <h5> Søk Etter: </h5>
     </div>
     <br><br>
     <div class="col-xs-2">
 
         <select id="selected" class="form-control">
-            <option value="searchFirstName">Fornavn</option>
-            <option value="searchLastName">Etternavn</option>
-            <option value="searchShooterId">Skytternr.</option>
+            <option value="searchClubName">Klubbnavn</option>
+            <option value="searchMail">Email</option>
         </select>
     </div>
     <div class="col-xs-3">
@@ -83,33 +82,14 @@
             <table class="table table-hover text-center" id="myTableButtons">
                 <thead>
                 <tr>
-                    <th class="text-center">Fornavn</th>
-                    <th class="text-center">Etternavn</th>
-                    <th class="text-center">Skytternr.</th>
+                    <th class="text-center">Klubbnavn</th>
                     <th class="text-center">Email</th>
-                    <th class="text-center">Telefonnr.</th>
+                    <th class="text-center">Adresse</th>
+                    <th class="text-center">Kontaktperson</th>
+
                 </tr>
                 </thead>
-                <!--
-                <tbody>
-                <tr class="clickable-row" data-toggle="modal" data-id="1" data-target="#PopUpUtoverInfo">
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" onclick="window.location.href='NyBruker.html'">Rediger</button></td>
-                    <td><button type="button" class="close" data-toggle="modal" data-target="#popUpSletteBruker"><span aria-hidden="true">&times;</span></button></td>
-                </tr>
-                <tr class="clickable-row">
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                </tr>
-                <tr class="clickable-row">
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                </tr>
-                -->
+
                 </tbody>
             </table>
         </div>
@@ -117,7 +97,7 @@
 
     <!-- Ny utøver knapp-->
     <div>
-        <a href="NyBruker.html" class="btn btn-primary btn-block" role="button">Ny utøver </a>
+        <a href="NyKlubb.html" class="btn btn-primary btn-block" role="button">Ny klubb </a>
     </div>
 
 

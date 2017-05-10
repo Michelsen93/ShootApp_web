@@ -29,22 +29,32 @@ var antallStandplass = 0;
 function addStandplass() {
     antallStandplass++;
     var div = document.createElement('div');
-    div.innerHTML = '<br><b>Standplass '+antallStandplass+' </b><br> ' +
-        '<label class="col-md-2 control-label">Max treff:</label> '+
-        '<input  id="competitionNumber" type="number" placeholder="00" class="form-control input-md-4" required>'+
-        'Max treff: <input type="text"  class="form-control input-md" name="maxTreff_'+antallStandplass+'"><br>' +
-        'Antall figurer: <input type="text" name="antFig_'+antallStandplass+'"><br>'+
-        'Max innertreff: <input type="text"  name="maxinnertreff_'+antallStandplass+'"><br>'+
-        'Tid (sekunder): <input type="text"  name="tid_'+antallStandplass+'"><br>'+
-        '<input type="button" value="Fjern" onClick="removeStandplass(this)">';
+    div.innerHTML = '<form class="form-inline">' +
+        '<br><h4>Standplass '+antallStandplass+' </h4><br> ' +
+        '<label class="col-md-3 control-label">Max treff:</label> ' +
+        '<input  id="maxHits" type="number" placeholder="00" class="form-control input-md" required><br>'+
+
+        '<label class="col-md-3 control-label">Antall figurer:</label> ' +
+        '<input  id="numFig" type="number" placeholder="00" class="form-control input-md" required><br>'+
+
+        '<label class="col-md-3 control-label">Max innertreff:</label> ' +
+        '<input  id="maxInnerHits" type="number" placeholder="00" class="form-control input-md" required><br>'+
+
+        '<label class="col-md-3 control-label">Tid (sekunder):</label> ' +
+        '<input  id="time" type="number" placeholder="00" class="form-control input-md" required><br>'+
+
+        '<input type="button" value="Fjern" onclick="removeStandplass(this)">'+
+        '</form>';
 
     document.getElementById('standplass').appendChild(div);
 }
 /**
- * Removes a standplass to the competition
+ * Removes a standplass from the competition
  */
 function removeStandplass(div){
-    document.getElementById('standplass').removeChild(div.parentNode);
+
+    document.getElementById('standplass').removeChild(div.parentNode)
+
     antallStandplass--;
 }
 
@@ -55,7 +65,8 @@ var i = 0;
 function newWeapongroup(){
     if(i<1) {
         var div = document.createElement('div');
-        div.innerHTML = '<br><input type="text" id="newWeapongroup">  ' +
+        div.innerHTML = '<br>Navn: <input type="text" id="newWeapongroup" class="form-control input-md">  ' +
+            '<br> Beskrivelse <input type="text" id="newWeaponDescription" class="form-control input-md">'+
             '<input type="button" value="Legg til" onClick="addWeapongroup(this)"><br> ';
 
         document.getElementById('footerWeapon').appendChild(div);
@@ -73,7 +84,7 @@ function addWeapongroup(div){
 
     var div = document.createElement('div');
     div.innerHTML = '<input type="checkbox" id="'+p+'" value="'+p+'"> '+p+'' +
-        '<button type="button" class="close" aria-label="Close" onClick="removeWeapongroup(this)"><span aria-hidden="true">&times;</span></button><br>';
+        '<button type="button" class="close" aria-label="Close" onClick="removeWeapongroup(this)"><span aria-hidden="true">&times;</span></button><br><br>';
 
     if (numWeapongroup%2==0){
         document.getElementById('weapongroup1').appendChild(div)
@@ -85,20 +96,21 @@ function addWeapongroup(div){
     numWeapongroup++;
 }
 
-function removeweapongroup(div) {
-    document.getElementById('weapongroup2').removeChild(div.parentNode);
-    document.getElementById('weapongroup1').removeChild(div.parentNode);
+function removeWeapongroup(div) {
+        document.getElementById('weapongroup2').removeChild(div.parentNode);
+        document.getElementById('weapongroup1').removeChild(div.parentNode);
 
     numWeapongroup--;
 }
 
-var checkedWeapon = "";
+
 function fillWeaponBox(){
+    var checkedWeapon = "";
 
-    for (i = 0; i < document.getElementById('Weapongr1_form').length; i++){
+    for (l = 0; l < document.getElementById('weapongr1_form').length; l++){
 
-        if(document.getElementById('Weapongr1_form')[i].checked){
-            checkedWeapon = checkedWeapon.concat(document.getElementById('Weapongr1_form')[i].value + '\n');
+        if(document.getElementById('weapongr1_form')[l].checked){
+            checkedWeapon = checkedWeapon.concat(document.getElementById('weapongr1_form')[l].value + '\n');
 
         }
     }
@@ -114,21 +126,21 @@ function newClass(){
             '<input type="button" value="Legg til" onClick="addClass(this)"><br> ';
 
         document.getElementById('footerClass').appendChild(div)
-        i++;
+        j++;
     }
 
 }
 
 var numClass = 0;
 function addClass(div){
-    var p = document.getElementById('nyClass').value;
+    var p = document.getElementById('newClass').value;
 
     document.getElementById('footerClass').removeChild(div.parentNode);
-    i--;
+    j--;
 
     var div = document.createElement('div');
     div.innerHTML = '<input type="checkbox" id="'+p+'" value="'+p+'"> '+p+'' +
-        '<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><br>';
+        '<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><br><br>';
 
     if (numClass%2==0){
         document.getElementById('class1').appendChild(div)
@@ -140,12 +152,13 @@ function addClass(div){
     numClass++;
 }
 
-var checkedClass = "";
+
 function fillClassBox(){
+    var checkedClass = "";
 
-    for (i = 0; i < document.getElementById('class1_form').length; i++){
+    for (j = 0; j < document.getElementById('class1_form').length; j++){
 
-        if(document.getElementById('class1_form')[i].checked){
+        if(document.getElementById('class1_form')[j].checked){
             checkedClass = checkedClass.concat(document.getElementById('class1_form')[i].value + '\n');
 
         }

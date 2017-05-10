@@ -33,6 +33,7 @@
                     <ul class="nav navbar-nav">
                         <li> <a href="Stevner.html">Stevner</a> </li>
                         <li> <a href="Utovere.html">Utøvere</a></li>
+                        <li> <a href="Klubber.html">Klubber</a></li>
                         <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resultater<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="Live.html">Live</a></li>
@@ -94,9 +95,13 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Klubb</label>
                     <div class="col-md-4">
-                        <input id="klubb" name="klubb" type="text" placeholder="Åsane PK" class="form-control input-md" required>
+                        <input id="klubb" name="klubb" type="text" placeholder="Åsane PK" class="form-control input-md" required readonly> <br>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpClub">
+                            Velg Klubb
+                        </button>
                     </div>
                 </div>
+
                 <!-- Passord-->
                 <div class="form-group">
                     <label class="col-md-4 control-label">Passord</label>
@@ -117,19 +122,57 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="button1id"></label>
                     <div class="col-md-10 col-md-offset-5">
-                        <button type="submit" id="button1id" name="button1id" class="btn btn-success" onclick="saveBruker()">Lagre</button>
+                        <button type="submit" id="button1id" name="button1id" class="btn btn-success" onclick="saveBruker(), window.location.href='BrukerLagret.html'">Lagre</button>
                         <button type="reset" id="button2id" name="button2id" class="btn btn-danger">Avbryt</button>
-                        <button type="submit" id="test" name="test" class="btn btn-success" onclick="test('sondrefr@gmail.com')">Test</button>
+
                     </div>
                 </div>
             </fieldset>
         </div>
     </div>
 
+    <!-- Modal Club -->
+    <div class="modal fade" id="popUpClub"  role="dialog" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5>Velg Klasser som skal være med</h5>
+
+
+                </div>
+                <div class="modal-body">
+                    <form id="class1_form">
+                        <div class="col-md-6">
+                            <div id="class1">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="class2">
+
+                            </div>
+                        </div>
+                    </form>
+                    <br><br><br><br>
+                </div>
+                <div class="modal-footer">
+                    <div id="footerClass">
+                        <button type="button" class="btn btn-success" onClick="newClass()">Legg til klubb</button>
+                        <button type="button" class="btn btn-primary" onClick="fillClassBox()" data-dismiss="modal">Legg til klubb</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         <!-- Footer -->
         <div class="push"></div>
     <footer class="footer">
         <p class="text-muted">Bachelorprosjekt gruppe 4 ved HVL</p>
     </footer>
+
+
 </body>
 </html>

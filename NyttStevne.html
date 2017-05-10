@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <script src="ajax/Ajax.js" type="text/javascript"></script>
     <script type="text/javascript" src="NyttStevneJs.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <meta charset="UTF-8">
@@ -32,8 +33,9 @@
                 <!-- Menu Items -->
                 <div>
                     <ul class="nav navbar-nav">
-                        <li> <a href="Stevner.html">Stevner</a> </li>
+                        <li class="active"> <a href="Stevner.html">Stevner</a> </li>
                         <li> <a href="Utovere.html">Utøvere</a></li>
+                        <li> <a href="Klubber.html">Klubber</a></li>
                         <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resultater<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="Live.html">Live</a></li>
@@ -77,7 +79,10 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Klubb</label>
                     <div class="col-md-4">
-                        <input type="text" placeholder="Åsane pk" id="club" class="form-control input-md" required>
+                        <input type="text" placeholder="Åsane pk" id="club" class="form-control input-md" required readonly> <br>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpClub">
+                            Velg våpengrupper
+                        </button>
                     </div>
                 </div>
 
@@ -117,11 +122,12 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Våpengrupper</label>
                     <div class="col-md-4">
+                        <textarea rows="4" id="weapontxt" class="form-control input-md" readonly></textarea><br>
                         <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpWeaponGroup">
                             Velg våpengrupper
                         </button>
-                        <br><br>
-                        <textarea rows="4" id="weapontxt" class="form-control input-md" readonly></textarea>
+
+
                     </div>
                 </div>
 
@@ -129,11 +135,12 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Klasser</label>
                     <div class="col-md-4">
+                        <textarea rows="4" id="classtxt" class="form-control input-md" readonly></textarea><br>
                         <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpClass">
                             Velg Klasser
                         </button>
-                        <br><br>
-                        <textarea rows="4" id="classtxt" class="form-control input-md" readonly></textarea>
+
+
                     </div>
                 </div>
 
@@ -141,7 +148,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Standplasser</label>
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpStandplass">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popUpStandplass">
                             Velg Standplasser
                         </button>
 
@@ -161,6 +168,15 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <br><br>
+                    <div class="col-md-10 col-md-offset-5">
+                        <button type="submit" id="button1id" name="button1id" class="btn btn-success" onclick="window.location.href='Stevner.html', lagreStevne()">Lagre</button>
+                        <button type="reset" id="button2id" name="button2id" class="btn btn-danger">Avbryt</button>
+
+                    </div>
+                </div>
+
             </fieldset>
         </form>
     </div>
@@ -170,15 +186,14 @@
         <button type="submit" id="addShooters" class="btn btn-primary" onclick="window.location.href='RegDeltagere.html'">Registrer Deltagere</button><br><br>
         <button type="submit" id="regLag" class="btn btn-primary" onclick="window.location.href='RegLag.html'">Registrer Lag</button><br><br>
 
-        <button type="submit" id="save" name="button1id" class="btn btn-success" onclick="window.location.href='Stevner.html', lagreStevne()">Lagre</button>
-        <button type="reset" id="cancel" name="button2id" class="btn btn-danger">Avbryt</button>
+
     --->
 
 </div>
 
 <!-- Modal weapongroup -->
 <div class="modal fade" id="popUpWeaponGroup"  role="dialog" >
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -193,20 +208,10 @@
                 <div class="col-md-6">
                     <div id="weapongroup1">
 
-                            <input type="checkbox" name="vehicle1" value="Bike"> I have a bike
-                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
-                            <input type="checkbox" name="vehicle2" value="Car"> I have a car
-                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
-
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div id="weapongroup2">
-
-                            <input type="checkbox" name="vehicle1" value="Kake"> I have a bike
-                            <button type="button" class="close"  aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
-                            <input type="checkbox" name="vehicle2" value="Pizza"> I have a car
-                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
 
                     </div>
                 </div>
@@ -214,9 +219,45 @@
                 <br><br><br><br>
             </div>
             <div class="modal-footer">
-                <div id="footerWeapon   ">
-                <button type="button" class="btn btn-secondary" onClick="newWeapongroup()">Legg til ny våpengruppe</button>
-                <button type="button" class="btn btn-primary" onClick="fillWeaponBox()" data-dismiss="modal">Legg til våpengrupper</button>
+                <div id="footerWeapon">
+                <button type="button" class="btn btn-primary" onClick="newWeapongroup()">Legg til ny våpengruppe</button>
+                <button type="button" class="btn btn-success" onClick="fillWeaponBox()" data-dismiss="modal">Legg til våpengrupper</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal club -->
+<div class="modal fade" id="popUpClub"  role="dialog" >
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5>Velg klubb</h5>
+
+
+            </div>
+            <div class="modal-body">
+                <form id="club1_form">
+                    <div class="col-md-6">
+                        <div id="club1">
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="club2">
+
+                        </div>
+                    </div>
+                </form>
+                <br><br><br><br>
+            </div>
+            <div class="modal-footer">
+                <div id="footerClub">
+                    <button type="button" class="btn btn-success" onClick="fillClubBox()" data-dismiss="modal">Legg til våpengrupper</button>
                 </div>
             </div>
         </div>
@@ -236,20 +277,14 @@
 
             </div>
             <div class="modal-body">
-                <form id="Class1_form">
+                <form id="class1_form">
                     <div class="col-md-6">
-                        <div id="Class1">
-
-                            <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-                            <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
+                        <div id="class1">
 
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="Class2">
-
-                            <input type="checkbox" name="vehicle1" value="Kake"> I have a bike<br>
-                            <input type="checkbox" name="vehicle2" value="Pizza"> I have a car<br>
+                        <div id="class2">
 
                         </div>
                     </div>
@@ -258,7 +293,7 @@
             </div>
             <div class="modal-footer">
                 <div id="footerClass">
-                <button type="button" class="btn btn-secondary" onClick="nyClass()">Legg til ny våpengruppe</button>
+                <button type="button" class="btn btn-success" onClick="newClass()">Legg til ny våpengruppe</button>
                 <button type="button" class="btn btn-primary" onClick="fillClassBox()" data-dismiss="modal">Legg til klasser</button>
                 </div>
             </div>
@@ -268,7 +303,7 @@
 
 <!-- Modal standplass -->
 <div class="modal fade" id="popUpStandplass"  role="dialog" >
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -276,15 +311,19 @@
                 </button>
                 <h5>Velg Klasser som skal være med</h5>
 
-
             </div>
             <div class="modal-body">
-                <div id="standplass">
+                <form id="club_form">
+                    <div class="col-md">
+                        <div id="standplass">
 
-                </div>
+                        </div>
+                    </div>
+
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onClick="addStandplass()">Legg til standplass</button>
+                <button type="button" class="btn btn-success" onClick="addStandplass()">Legg til standplass</button>
                 <button type="button" class="btn btn-primary">Fulfør</button>
             </div>
         </div>

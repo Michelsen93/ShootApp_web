@@ -3,7 +3,7 @@
  */
 
 function saveBruker(){
-/*
+    /*
     var fnavn = document.getElementById("fnavn").value;
     var enavn = document.getElementById("enavn").value;
     var email = document.getElementById("email").value;
@@ -21,11 +21,15 @@ function saveBruker(){
 
     };
 
-    //var jsonBruker = JSON.stringify(bruker);
     postPerson(bruker);
     console.log(bruker);
 
+    var email = document.getElementById("email").value;
+    localStorage.setItem("email", email)
 }
+
+
+
 
 function test(mail){
 
