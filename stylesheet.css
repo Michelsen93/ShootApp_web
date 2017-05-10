@@ -78,3 +78,9 @@ html, body {
     overflow: scroll;
 
 }
+
+.modal-content{
+    padding:20px;
+    margin: 15%;
+    border: 1px
+}
