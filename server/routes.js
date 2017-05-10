@@ -40,7 +40,7 @@ var appRouter = function(app) {
      * Gets club by name in params
      */
     app.get("/club/findByName/:name", function (req, res) {
-        ClubModel.find({name: req.params.name},  function(error, person){
+        ClubModel.find({name: req.params.name},{load: ["contactPersons"]},  function(error, person){
             if(error){
                 return res.status(400).send(error);
             }
