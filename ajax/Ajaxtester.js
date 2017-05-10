@@ -8,7 +8,7 @@ function testsavePerson(){
     John.firstName = "John";
     John.lastName = "Doe";
     John.phone = "123";
-    John.email = "me@you.us";
+    John.mail = "me@you.us";
     John.shooterId = "xDragonSlayer69x";
 
 
@@ -103,8 +103,9 @@ function testAddCompetitionToClub(){
     addCompetitionToClub(saver);
 }
 
+testsavePerson()
 
-testGetByEmail();
+
 
 
 

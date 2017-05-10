@@ -26,6 +26,48 @@ function getPersonByMail(mail, callback) {
     xhttp.send();
 }
 
+
+/**
+ * gets club by name
+ * @param name string with complete name of club, OBS! case sensitive
+ * @param callback
+ */
+function getClubByName(name, callback) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", baseURL + "club/findByName/" + name, true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        }
+    };
+    xhttp.send();
+}
+
+
+/**
+ * gets all clubs
+ * @param callback
+ */
+function getClubs(callback) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", baseURL + "club", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        }
+    };
+    xhttp.send();
+}
+
+
 /**
  * Gets a person
  * @param callback function to handle the response the response is a json
