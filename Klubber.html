@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <script src="ajax/Ajax.js" type="text/javascript"></script>
-    <script type="text/javascript" src="Utover.js"></script>
+    <script type="text/javascript" src="Klubber.js"></script>
 
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <meta charset="UTF-8">
@@ -63,14 +63,14 @@
 
         <select id="selected" class="form-control">
             <option value="searchClubName">Klubbnavn</option>
-            <option value="searchMail">Email</option>
+            <option value="searcClubMail">Email</option>
         </select>
     </div>
     <div class="col-xs-3">
 
         <input type="text" id="searchText" class="form-control input-sm">
     </div>
-    <button onclick="searchPerson()" class="btn btn-primary">Søk</button>
+    <button onclick="searchClubs()" class="btn btn-primary">Søk</button>
     <button onclick="load()" class="btn btn-secondary">Tilbakestill</button>
 
     <br><br>
@@ -79,13 +79,12 @@
         <!-- Table -->
         <div class="scrollable table-responsive">
 
-            <table class="table table-hover text-center" id="myTableButtons">
+            <table class="table table-hover text-center" id="myTableClubs">
                 <thead>
                 <tr>
                     <th class="text-center">Klubbnavn</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">Adresse</th>
-                    <th class="text-center">Kontaktperson</th>
 
                 </tr>
                 </thead>
@@ -109,7 +108,7 @@
 </footer>
 
 <!-- Modal UtoverInfo -->
-<div class="modal" id="PopUpUtoverInfo">
+<div class="modal" id="PopUpClubInfo">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

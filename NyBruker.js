@@ -26,16 +26,14 @@ function saveBruker(){
 
     var email = document.getElementById("email").value;
     localStorage.setItem("email", email)
+
+    sleep(1000).then(() => {
+        window.location.href='BrukerLagret.html'
+    });
 }
 
 
-
-
-function test(mail){
-
-    getPersonByMail(mail, f);
+function sleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-function f(json){
-    console.log(json)
-}

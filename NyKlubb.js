@@ -15,14 +15,13 @@ var persons
 function callback(json) {
 
 
-    var jsPersonArray = JSON.parse(json);
-    var jsPerson = jsPersonArray;
+    var jsPersons = JSON.parse(json);
 
-    persons = jsPerson
+    persons = jsPersons
 
-    jsPerson.forEach(output);
+    jsPersons.forEach(output);
 
-
+    console.log(persons)
 }
 
 
@@ -85,6 +84,7 @@ function output(item, index){
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
 
 
 
@@ -92,36 +92,13 @@ function output(item, index){
     cell1.innerHTML = item.firstName;
     cell2.innerHTML = item.lastName;
     cell3.innerHTML = item.shooterId;
-    cell4.innerHTML = '<button  class="btn btn-primary">Legg til</button>';
-    /*cell4=document.createElement("BUTTON");
-    cell4.innerHTML ="t";*/
-    cell4.onclick = addContactPerson;
+    cell4.innerHTML = item.mail
+    cell5.innerHTML = '<button  class="btn btn-primary">Legg til</button>';
+    cell5.onclick = addContactPerson;
 
 
 
-    /*
-    var modal = document.getElementById("PopUpUtoverInfo");
-    row.onclick=function () {
-        modal.style.display = "block";
-        fillModal(item);
 
-
-    }
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }*/
 
 }
 
@@ -136,8 +113,95 @@ function addContactPerson(e){
     var parent = e.target.parentNode.parentNode;
     var children = parent.childNodes;
     var fname = children[0].innerHTML;
-    var lname = children[1].innerHTML
+    var lname = children[1].innerHTML;
+    var email = children[3].innerHTML;
     console.log(fname, lname)
-    console.log("hei")
-    document.getElementById("contactPerson").value = fname + " " + lname
+
+    var table = document.getElementById("tableContactPerson")
+    var row = table.insertRow(1);
+
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+
+    cell1.innerHTML = fname + " " +lname
+    cell2.innerHTML = email
+    cell3.innerHTML = '<button  class="btn btn-primary">Fjern</button>';
+    cell3.onclick = removeContactPerson
+
+
+}
+
+function removeContactPerson(e){
+    var parent = e.target.parentNode.parentNode
+    var table = document.getElementById("tableContactPerson")
+    parent.remove(table)
+    console.log(table.rows.length)
+
+}
+
+
+
+function saveClub() {
+    var club = {
+        mail: document.getElementById("email").value,
+        name: document.getElementById("name").value,
+        address: document.getElementById("address").value,
+
+    };
+    var table = document.getElementById("tableContactPerson");
+    //console.log(table.rows[1].cells[1].innerHTML)
+    postClub(club);
+    var name = document.getElementById("name").value;
+    localStorage.setItem("name", name);
+
+    console.log(table.rows.length);
+
+
+    sleep(1000);
+    if(table.rows.length > 1) {
+        saveContactPerson();
+    }
+
+
+
+
+}
+function saveContactPerson()
+    {
+          //console.log(i)
+        var table = document.getElementById("tableContactPerson");
+        //console.log(table.rows[i].cells[1].innerHTML)
+        //console.log(club.mail )
+        num = table.rows.length;
+
+        for (var i=1; i < num; i++) {
+            sleep(2000);
+            var contactPerson = {
+                mail: table.rows[i].cells[1].innerHTML,
+                name: document.getElementById("name").value, // document.getElementById("name").value,
+            }
+            
+            addContactPersonToClub(contactPerson);
+            console.log(i);
+            console.log(contactPerson);
+
+            
+
+
+        }
+
+           
+
+
+
+        //window.location.href='KlubbLagret.html'
+
+
+}
+
+function sleep (time) {
+    var now = new Date().getTime();
+    while (new Date().getTime() < now + time) { /* do nothing */
+    }
 }
