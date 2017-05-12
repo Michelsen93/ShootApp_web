@@ -214,13 +214,13 @@ var appRouter = function(app) {
      */
     app.post("/club/contactPerson", function (req, res) {
 
-        PersonModel.find({mail: req.body.mail},{}, function (error, person) {
+        PersonModel.find({mail: req.body.mail}, function (error, person) {
                 if (error) {
                     return res.status(400).send(error);
                 }
                 console.log(person);
 
-            ClubModel.find({name: req.body.name},{}, function(error, club){
+            ClubModel.find({name: req.body.name}, function(error, club){
                 console.log("'" + req.body.name + "'");
                     if (error) {
                         return res.status(400).send(error);

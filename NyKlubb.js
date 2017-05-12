@@ -195,7 +195,7 @@ function saveContactPerson()
 
 
 
-        //window.location.href='KlubbLagret.html'
+        window.location.href='KlubbLagret.html'
 
 
 }
