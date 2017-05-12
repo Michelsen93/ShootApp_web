@@ -76,8 +76,8 @@ function testAddClub(){
 }
 function testAddContactPerson(){
     var adder = new Object();
-    adder.mail = "123@gmail.com";
-    adder.name = "Åsane";
+    adder.mail = "peder@123.no";
+    adder.name = "aaa";
     addContactPersonToClub(adder);
 }
 
@@ -98,12 +98,12 @@ function testPostWeaponGroup(){
 
 function testAddCompetitionToClub(){
     var saver = new Object();
-    saver.name = "Fyllingen";
+    saver.name = "zzz";
     saver.competitionNumber = 1;
     addCompetitionToClub(saver);
 }
 
-testsavePerson()
+testAddContactPerson();
 
 
 

@@ -213,23 +213,35 @@ var appRouter = function(app) {
      * adds a contactperson expect clubname and person mail works
      */
     app.post("/club/contactPerson", function (req, res) {
-        ClubModel.find({name: req.body.name}, function(error, club){
-            if(error){
-                return res.status(400).send(error);
-            }
-            PersonModel.find({mail: req.body.mail}, function(error, person){
-                if(error){
+
+        PersonModel.find({mail: req.body.mail},{}, function (error, person) {
+                if (error) {
                     return res.status(400).send(error);
                 }
-                club[0].contactPersons.push(person[0]);
-                console.log(club[0]);
-                club[0].save(function (error, result) {
-                    if(error){
+                console.log(person);
+
+            ClubModel.find({name: req.body.name},{}, function(error, club){
+                console.log("'" + req.body.name + "'");
+                    if (error) {
                         return res.status(400).send(error);
                     }
-                    res.send(club[0]);
+                console.log(club);
+                if (club[0] != null) {
+
+                        club[0].contactPersons.push(person[0]);
+                        club[0].save(function (error, result) {
+                            if (error) {
+                                return res.status(400).send(error);
+                            }
+                            res.send(club[0]);
+                        });
+
+                    }
+                    else {
+                        res.status(500).send("error saving");
+                    }
                 });
-            });
+
         });
     });
 
@@ -242,6 +254,7 @@ var appRouter = function(app) {
             if(error){
                 return res.status(400).send(error);
             }
+            console.log(club);
             CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
                 if(error){
                     return res.status(400).send(error);
