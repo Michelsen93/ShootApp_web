@@ -129,7 +129,8 @@ var StandplassModel = ottoman.model("Standplass", {
     name: "string",
     number: "integer",
     maxHits: "integer",
-    numberOfFigures: "integer"
+    numberOfFigures: "integer",
+    description: "string"
 });
 
 //Structure for competition

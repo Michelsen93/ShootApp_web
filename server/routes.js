@@ -94,7 +94,7 @@ var appRouter = function(app) {
 
     //Gets weaponClass
     app.get("/weaponClass", function (req, res) {
-        WeaponGroupModel.find({}, function (error, weaponClass) {
+        WeapondClassModel.find({}, function (error, weaponClass) {
             if(error){
                 return res.status(400).send(error);
             }
@@ -128,7 +128,8 @@ var appRouter = function(app) {
             name: req.body.name,
             number: req.body.number,
             maxHits: req.body.maxHits,
-            numberOfFigures: req.body.numberOfFigures
+            numberOfFigures: req.body.numberOfFigures,
+            description: req.body.description
 
         });
         standplass.save(function (error, result) {
