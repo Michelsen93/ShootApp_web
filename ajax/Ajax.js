@@ -174,8 +174,7 @@ function getCompetitionByCompetitionNumber(competitionNumber, callback){
  */
 function getWeaponGroups(callback){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", baseURL + "weaponGroup", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.open("GET", baseURL + "weaponGroup", true);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //Got response
@@ -194,8 +193,7 @@ function getWeaponGroups(callback){
  */
 function getWeaponClasses(callback) {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", baseURL + "weaponClass", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.open("GET", baseURL + "weaponClass", true);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //Got response
