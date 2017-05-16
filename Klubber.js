@@ -61,10 +61,13 @@ function findClubs(item, index) {
         }
     } else if (type == "searchClubMail") {
         if (inputText == item.mail) {
-            table[num] = item.mail;
+            table[num] = item;
+            console.log(item.mail)
             num++
         }
     }
+
+
         table.forEach(output)
 }
 

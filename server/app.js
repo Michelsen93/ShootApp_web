@@ -12,7 +12,7 @@ app.use(cors());
 //TODO - Set whitelist for cors when app is to be launched
 
 
-var cluster = new couchbase.Cluster("158.37.227.185:8091");
+var cluster = new couchbase.Cluster("10.111.10.28/:8091");
 
 var bucket = cluster.openBucket("example");
 module.exports.bucket = bucket;

@@ -96,7 +96,7 @@
                     <label class="col-md-4 control-label">Klubb</label>
                     <div class="col-md-4">
                         <input id="klubb" name="klubb" type="text" placeholder="Åsane PK" class="form-control input-md" required readonly> <br>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpClub">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpClub" onclick="load()">
                             Velg Klubb
                         </button>
                     </div>
@@ -133,29 +133,29 @@
 
     <!-- Modal Club -->
     <div class="modal fade" id="popUpClub"  role="dialog" >
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h5>Velg Klasser som skal være med</h5>
+                    <h5>Velg klubb arrangør</h5>
 
 
                 </div>
                 <div class="modal-body">
-                    <form id="class1_form">
-                        <div class="col-md-6">
-                            <div id="class1">
+                    <div class="club">
+                        <table class="table table-hover text-center" id="myTableClubs">
+                            <thead>
+                            <tr>
+                                <th class="text-center">Klubbnavn</th>
+                                <th class="text-center">Mail</th>
+                                <th class="text-center">Adresse</th>
 
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div id="class2">
-
-                            </div>
-                        </div>
-                    </form>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
                     <br><br><br><br>
                 </div>
                 <div class="modal-footer">
@@ -167,6 +167,7 @@
             </div>
         </div>
     </div>
+
         <!-- Footer -->
         <div class="push"></div>
     <footer class="footer">
