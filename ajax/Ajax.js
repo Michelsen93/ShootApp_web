@@ -3,7 +3,7 @@
  */
 
 
-var baseURL = "http://158.37.225.10:3000/";
+var baseURL = "http://158.37.227.101:3000/";
 
 
 
@@ -185,7 +185,7 @@ function getWeaponGroups(callback){
 
         };
     };
-    xhttp.send(JSON.stringify(json));
+    xhttp.send();
 }
 
 /**
@@ -205,7 +205,7 @@ function getWeaponClasses(callback) {
 
         };
     };
-    xhttp.send(JSON.stringify(json));
+    xhttp.send();
 }
 
 

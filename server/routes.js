@@ -144,6 +144,7 @@ var appRouter = function(app) {
     //Saves competition without any references yet
     //References will be saved afterwards works
     app.post("/competition", function (req, res) {
+        console.log(req.body.club);
         var competition = new CompetitionModel({
             competitionType: req.body.competitionType,
             program: req.body.program,
