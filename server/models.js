@@ -157,9 +157,7 @@ var CompetitionModel = ottoman.model("Competition", {
         }
     ],
     competitionNumber: "integer",
-    club:{
-        ref: "Club"
-    },
+    club: "string",
     competitors:[
         {
             ref: "Person"

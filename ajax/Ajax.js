@@ -3,7 +3,7 @@
  */
 
 
-var baseURL = "http://10.111.10.28/.131:3000/";
+var baseURL = "http://158.37.227.101:3000/";
 
 
 
@@ -174,8 +174,7 @@ function getCompetitionByCompetitionNumber(competitionNumber, callback){
  */
 function getWeaponGroups(callback){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", baseURL + "weaponGroup", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.open("GET", baseURL + "weaponGroup", true);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //Got response
@@ -185,7 +184,7 @@ function getWeaponGroups(callback){
 
         };
     };
-    xhttp.send(JSON.stringify(json));
+    xhttp.send();
 }
 
 /**
@@ -194,8 +193,7 @@ function getWeaponGroups(callback){
  */
 function getWeaponClasses(callback) {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", baseURL + "weaponClass", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.open("GET", baseURL + "weaponClass", true);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //Got response
@@ -205,7 +203,7 @@ function getWeaponClasses(callback) {
 
         };
     };
-    xhttp.send(JSON.stringify(json));
+    xhttp.send();
 }
 
 

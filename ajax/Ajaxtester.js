@@ -42,7 +42,7 @@ function testPostStandplass(){
 function testPostCompetition() {
     var competition = new Object();
     competition.date = new Date();
-    competition.competitionNumber = 1;
+    competition.competitionNumber = 123;
     competition.competitionType = "standard";
     competition.program = "vanlig program";
     competition.discipline = "hard";
@@ -103,7 +103,7 @@ function testAddCompetitionToClub(){
     addCompetitionToClub(saver);
 }
 
-testAddContactPerson();
+testPostCompetition()
 
 
 

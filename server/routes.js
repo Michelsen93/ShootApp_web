@@ -144,14 +144,15 @@ var appRouter = function(app) {
     //Saves competition without any references yet
     //References will be saved afterwards works
     app.post("/competition", function (req, res) {
+        console.log(req.body.club);
         var competition = new CompetitionModel({
             competitionType: req.body.competitionType,
             program: req.body.program,
             location: req.body.location,
             discipline: req.body.discipline,
-            active: req.body.active,
             competitionNumber: req.body.competitionNumber,
-            date: req.body.date
+            date: req.body.date,
+            club: req.body.club
         });
         competition.save(function (error, result) {
             if(error){
@@ -332,18 +333,15 @@ var appRouter = function(app) {
 
 
     /**
-     * Saves a club to a competition. requires clubName and competitionNumber
+     * Saves a club to a competition. requires name of club and competitionNumber
      */
     app.post("/competition/club", function (req, res) {
-        ClubModel.find({name: req.body.name}, function(error, club){
-            if(error){
-                return res.status(400).send(error);
-            }
+
             CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
                 if(error){
                     return res.status(400).send(error);
                 }
-                competition[0].club = club[0];
+                competition[0].club = req.body.name;
                 competition[0].save(function(error, result){
                     if(error){
                         return res.status(400).send(error);
@@ -352,7 +350,7 @@ var appRouter = function(app) {
                 });
             });
         });
-    });
+
 
     /**
      * Saves a competitor to a competition. requires mail and competitionNumber
