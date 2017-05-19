@@ -64,7 +64,7 @@ var appRouter = function(app) {
     //Gets all competitions. works
     app.get("/competition", function (req, res){
         //Should maybe load stuff
-        CompetitionModel.find({}, function(error, competitions){
+        CompetitionModel.find({},{load: ["competitors"]}, function(error, competitions){
             if(error){
                 return res.status(400).send(error);
             }
@@ -171,6 +171,24 @@ var appRouter = function(app) {
             description: req.body.description
         });
         weaponGroup.save(function (error, result) {
+            if(error){
+                return res.status(400).send(error);
+            }
+            return result;
+        });
+    });
+
+
+
+    app.post("/scoreCard", function (req, res) {
+        var scoreCard = new ScoreCardModel({
+            competitionNumber: req.body.competitionNumber,
+            competitor: []
+        });
+        PersonModel.find({name: req.body.mail}, function(error, person){
+            scoreCard.competitor.push(person[0])
+        });
+        scoreCard.save(function (error, result) {
             if(error){
                 return res.status(400).send(error);
             }

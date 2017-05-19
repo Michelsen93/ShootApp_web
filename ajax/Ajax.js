@@ -202,6 +202,16 @@ function postPerson(json){
 
 }
 
+/**
+ *
+ * @param json, must contain competitionNumber, mail of person
+ */
+function postScorecard(json){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "scoreCard", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(json));
+}
 
 /**
  * Saves a standplass

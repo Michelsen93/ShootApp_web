@@ -32,7 +32,7 @@ var ScorecardModel = ottoman.model("Scorecard", {
         type: "Date",
         default: function(){return new Date();}
     },
-
+    competitionNumber: "string",
     weaponClass: { ref: "WeaponClass"},
     shootingGroup: { ref: "WeaponGroup"},
     results: [
@@ -158,7 +158,7 @@ var CompetitionModel = ottoman.model("Competition", {
             ref: "WeaponClass"
         }
     ],
-    competitionNumber: "integer",
+    competitionNumber: "string",
     club: "string",
     competitors:[
         {
