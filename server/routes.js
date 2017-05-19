@@ -284,23 +284,35 @@ var appRouter = function(app) {
             teamNumber: req.body.teamNumber,
             competitionNumber: req.body.competitionNumber,
             startTime: req.body.startTime,
-            competitors: req.body.competitors
+            competitors: []
         });
+        var competitors = req.body.competitors;
+        for(var personmail in competitors){
+            PersonModel.find({mail: personmail}, function(error, person){
+                team.competitors.push(person[0]);
+            })
+        }
         team.save(function(error, result){
             if(error){
                 return res.status(400).send(error);
             }
-            CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
-                if(error){
+            CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition) {
+                if (error) {
                     return res.status(400).send(error);
                 }
-                competition[0].teams.push(team);
-                competition[0].save(function(error, result){
-                    if(error){
+                if (competition[0] != null) {
+
+                    competition[0].teams.push(team);
+                    competition[0].save(function (error, result) {
+                        if (error) {
                         return res.status(400).send(error);
                     }
                     res.send(competition[0]);
-                });
+                    });
+                }
+                else{
+                    res.status(500).send("error saving");
+                }
             });
         });
 
@@ -319,7 +331,8 @@ var appRouter = function(app) {
                     if(error){
                         return res.status(400).send(error);
                     }
-
+                    console.log(competition)
+                    if(competition[0] != null){
                     competition[0].standplasses.push(standplass[0]);
                     competition[0].save(function(error, result){
                         if(error){
@@ -327,6 +340,10 @@ var appRouter = function(app) {
                         }
                     res.send(competition[0]);
                 });
+                }
+                else{
+                        res.status(500).send("error saving");
+                    }
             });
         });
 

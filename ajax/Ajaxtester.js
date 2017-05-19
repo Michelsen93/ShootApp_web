@@ -5,11 +5,11 @@
 function testsavePerson(){
     var John = new Object();
 
-    John.firstName = "John";
-    John.lastName = "Doe";
-    John.phone = "123";
-    John.mail = "me@you.us";
-    John.shooterId = "xDragonSlayer69x";
+    John.firstName = "Ash";
+    John.lastName = "Ketshum";
+    John.phone = "545454";
+    John.mail = "garrysux@pikapika.gym";
+    John.shooterId = "the very best";
 
 
     //postPerson(John, function(){
@@ -29,14 +29,12 @@ function testGetByEmail(){
 
 function testPostStandplass(){
     var standplass = new Object();
-    standplass.name = "test";
-    standplass.number = 1;
+    standplass.name = "test3";
+    standplass.number = 3;
     standplass.maxHits = 4;
     standplass.numberOfFigures = 3;
 
-    postStandplass(standplass, function () {
-        console.log(standplass);
-    });
+    postStandplass(standplass);
 }
 
 function testPostCompetition() {
@@ -46,6 +44,7 @@ function testPostCompetition() {
     competition.competitionType = "standard";
     competition.program = "vanlig program";
     competition.discipline = "hard";
+    competition.club="Åsane"
     competition.active = true;
     postCompetition(competition, function () {
         console.log(competition);
@@ -56,8 +55,8 @@ function testPostCompetition() {
 
 function testAddStandplass() {
     var ids = new Object();
-    ids.number = 1;
-    ids.competitionNumber = 1;
+    ids.number = 3;
+    ids.competitionNumber = 123;
     console.log(ids);
     addStandplass(ids, function(){
         console.log(ids);
@@ -76,8 +75,8 @@ function testAddClub(){
 }
 function testAddContactPerson(){
     var adder = new Object();
-    adder.mail = "peder@123.no";
-    adder.name = "aaa";
+    adder.mail = "me@you.us";
+    adder.name = "Åsane";
     addContactPersonToClub(adder);
 }
 
@@ -99,11 +98,13 @@ function testPostWeaponGroup(){
 function testAddCompetitionToClub(){
     var saver = new Object();
     saver.name = "zzz";
-    saver.competitionNumber = 1;
+    saver.competitionNumber = 123;
     addCompetitionToClub(saver);
 }
 
-testPostCompetition()
+
+testAddStandplass()
+
 
 
 

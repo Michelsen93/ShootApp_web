@@ -32,6 +32,7 @@ var ScorecardModel = ottoman.model("Scorecard", {
         type: "Date",
         default: function(){return new Date();}
     },
+
     weaponClass: { ref: "WeaponClass"},
     shootingGroup: { ref: "WeaponGroup"},
     results: [

@@ -3,7 +3,7 @@
  */
 
 
-var baseURL = "http://158.37.227.101:3000/";
+var baseURL = "http://158.37.230.160:3000/";
 
 
 
@@ -292,7 +292,7 @@ function addStandplass(json) {
             //Got response
             //Run callback
             console.log(xhttp.responseText);
-            callback(xhttp.responseText);
+
 
         };
     };
@@ -340,8 +340,7 @@ function addClub(json){
 
 /**
  * adds a new team to competition
- * json must contain a complete team json, teamNumber, startTime, competitors
- * competitionNumber
+ * json must contain  competitors[mail1, mail2...], teamNumber, startTime, competitionNumber
  * @param json
  */
 function addTeam(json){
