@@ -88,6 +88,7 @@ function getPersons(callback) {
 }
 
 
+
 /**
  * gets a person by mail
  * @param mail of person
