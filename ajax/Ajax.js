@@ -87,26 +87,6 @@ function getPersons(callback) {
     xhttp.send();
 }
 
-/**
- * Gets all competitions
- * TODO handle exceptions
- * @param callback function to handle the response json
- */
-function getCompetitions(callback){
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", baseURL + "competition", true);
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            //Got response
-            //Run callback
-            console.log(xhttp.responseText);
-            callback(xhttp.responseText);
-
-        }
-    };
-    xhttp.send();
-}
-
 
 /**
  * gets a person by mail
