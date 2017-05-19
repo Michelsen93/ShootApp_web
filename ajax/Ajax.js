@@ -26,6 +26,24 @@ function getPersonByMail(mail, callback) {
     xhttp.send();
 }
 
+/**
+ * gets all scorecards
+ * @param callback
+ */
+function getScorecards(callback){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", baseURL + "scoreCard", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        }
+    };
+    xhttp.send();
+}
 
 /**
  * gets club by name

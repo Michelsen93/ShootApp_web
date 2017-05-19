@@ -1,11 +1,11 @@
 var PersonModel = require("./models").PersonModel;
-var CommentModel = require("./models").ScorecardModel;
 var CompetitionModel = require("./models").CompetitionModel;
 var StandplassModel = require("./models").StandplassModel;
 var WeapondClassModel = require("./models").WeaponClassModel;
 var ClubModel = require("./models").ClubModel;
 var TeamModel = require("./models").TeamModel;
 var WeaponGroupModel = require("./models").WeaponGroupModel;
+var ScoreCardModel = require("./models").ScorecardModel;
 
 
 var appRouter = function(app) {
@@ -17,6 +17,15 @@ var appRouter = function(app) {
     //Returns all people, works
     app.get("/person", function (req, res) {
         PersonModel.find({}, function(error, people){
+            if(error){
+                return res.status(400).send(error);
+            }
+            res.send(people);
+        });
+    });
+
+    app.get("/scoreCard", function (req, res) {
+        ScoreCardModel.find({},{load: ["competitor"]} ,function(error, people){
             if(error){
                 return res.status(400).send(error);
             }
