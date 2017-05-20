@@ -1,11 +1,11 @@
 var PersonModel = require("./models").PersonModel;
-var CommentModel = require("./models").ScorecardModel;
 var CompetitionModel = require("./models").CompetitionModel;
 var StandplassModel = require("./models").StandplassModel;
 var WeapondClassModel = require("./models").WeaponClassModel;
 var ClubModel = require("./models").ClubModel;
 var TeamModel = require("./models").TeamModel;
 var WeaponGroupModel = require("./models").WeaponGroupModel;
+var ScoreCardModel = require("./models").ScorecardModel;
 
 
 var appRouter = function(app) {
@@ -17,6 +17,15 @@ var appRouter = function(app) {
     //Returns all people, works
     app.get("/person", function (req, res) {
         PersonModel.find({}, function(error, people){
+            if(error){
+                return res.status(400).send(error);
+            }
+            res.send(people);
+        });
+    });
+
+    app.get("/scoreCard", function (req, res) {
+        ScoreCardModel.find({},{load: ["competitor"]} ,function(error, people){
             if(error){
                 return res.status(400).send(error);
             }
@@ -64,7 +73,7 @@ var appRouter = function(app) {
     //Gets all competitions. works
     app.get("/competition", function (req, res){
         //Should maybe load stuff
-        CompetitionModel.find({}, function(error, competitions){
+        CompetitionModel.find({},{load: ["competitors"]}, function(error, competitions){
             if(error){
                 return res.status(400).send(error);
             }
@@ -74,7 +83,8 @@ var appRouter = function(app) {
 
     //Gets competition by competitionNumber, works
     app.get("/competition/findByCompetitionNumber/:competitionNumber", function (req, res) {
-        CompetitionModel.find({email: req.params.competitionNumber}, function(error, competition){
+        CompetitionModel.find({competitionNumber: req.params.competitionNumber}, function(error, competition){
+            console.log(competition);
             if(error){
                 return res.status(400).send(error);
             }
@@ -94,7 +104,7 @@ var appRouter = function(app) {
 
     //Gets weaponClass
     app.get("/weaponClass", function (req, res) {
-        WeaponGroupModel.find({}, function (error, weaponClass) {
+        WeapondClassModel.find({}, function (error, weaponClass) {
             if(error){
                 return res.status(400).send(error);
             }
@@ -128,7 +138,8 @@ var appRouter = function(app) {
             name: req.body.name,
             number: req.body.number,
             maxHits: req.body.maxHits,
-            numberOfFigures: req.body.numberOfFigures
+            numberOfFigures: req.body.numberOfFigures,
+            description: req.body.description
 
         });
         standplass.save(function (error, result) {
@@ -170,6 +181,24 @@ var appRouter = function(app) {
             description: req.body.description
         });
         weaponGroup.save(function (error, result) {
+            if(error){
+                return res.status(400).send(error);
+            }
+            return result;
+        });
+    });
+
+
+
+    app.post("/scoreCard", function (req, res) {
+        var scoreCard = new ScoreCardModel({
+            competitionNumber: req.body.competitionNumber,
+            competitor: []
+        });
+        PersonModel.find({name: req.body.mail}, function(error, person){
+            scoreCard.competitor.push(person[0])
+        });
+        scoreCard.save(function (error, result) {
             if(error){
                 return res.status(400).send(error);
             }
@@ -283,23 +312,35 @@ var appRouter = function(app) {
             teamNumber: req.body.teamNumber,
             competitionNumber: req.body.competitionNumber,
             startTime: req.body.startTime,
-            competitors: req.body.competitors
+            competitors: []
         });
+        var competitors = req.body.competitors;
+        for(var personmail in competitors){
+            PersonModel.find({mail: personmail}, function(error, person){
+                team.competitors.push(person[0]);
+            })
+        }
         team.save(function(error, result){
             if(error){
                 return res.status(400).send(error);
             }
-            CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
-                if(error){
+            CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition) {
+                if (error) {
                     return res.status(400).send(error);
                 }
-                competition[0].teams.push(team);
-                competition[0].save(function(error, result){
-                    if(error){
+                if (competition[0] != null) {
+
+                    competition[0].teams.push(team);
+                    competition[0].save(function (error, result) {
+                        if (error) {
                         return res.status(400).send(error);
                     }
                     res.send(competition[0]);
-                });
+                    });
+                }
+                else{
+                    res.status(500).send("error saving");
+                }
             });
         });
 
@@ -318,7 +359,8 @@ var appRouter = function(app) {
                     if(error){
                         return res.status(400).send(error);
                     }
-
+                    console.log(competition)
+                    if(competition[0] != null){
                     competition[0].standplasses.push(standplass[0]);
                     competition[0].save(function(error, result){
                         if(error){
@@ -326,6 +368,10 @@ var appRouter = function(app) {
                         }
                     res.send(competition[0]);
                 });
+                }
+                else{
+                        res.status(500).send("error saving");
+                    }
             });
         });
 

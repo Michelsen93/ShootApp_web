@@ -3,7 +3,7 @@
  */
 
 
-var baseURL = "http://158.37.227.101:3000/";
+var baseURL = "http://158.37.227.218:3000/";
 
 
 
@@ -26,6 +26,24 @@ function getPersonByMail(mail, callback) {
     xhttp.send();
 }
 
+/**
+ * gets all scorecards
+ * @param callback
+ */
+function getScorecards(callback){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", baseURL + "scoreCard", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        }
+    };
+    xhttp.send();
+}
 
 /**
  * gets club by name
@@ -87,25 +105,6 @@ function getPersons(callback) {
     xhttp.send();
 }
 
-/**
- * Gets all competitions
- * TODO handle exceptions
- * @param callback function to handle the response json
- */
-function getCompetitions(callback){
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", baseURL + "competition", true);
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            //Got response
-            //Run callback
-            console.log(xhttp.responseText);
-            callback(xhttp.responseText);
-
-        }
-    };
-    xhttp.send();
-}
 
 
 /**
@@ -153,7 +152,7 @@ function getCompetitions(callback){
  */
 function getCompetitionByCompetitionNumber(competitionNumber, callback){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", baseURL + "competition/" + competitionNumber, true);
+    xhttp.open("GET", baseURL + "competition/findByCompetitionNumber/" + competitionNumber, true);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //Got response
@@ -221,6 +220,16 @@ function postPerson(json){
 
 }
 
+/**
+ *
+ * @param json, must contain competitionNumber, mail of person
+ */
+function postScorecard(json){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "scoreCard", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(json));
+}
 
 /**
  * Saves a standplass
@@ -292,7 +301,7 @@ function addStandplass(json) {
             //Got response
             //Run callback
             console.log(xhttp.responseText);
-            callback(xhttp.responseText);
+
 
         };
     };
@@ -340,8 +349,7 @@ function addClub(json){
 
 /**
  * adds a new team to competition
- * json must contain a complete team json, teamNumber, startTime, competitors
- * competitionNumber
+ * json must contain  competitors[mail1, mail2...], teamNumber, startTime, competitionNumber
  * @param json
  */
 function addTeam(json){

@@ -32,6 +32,7 @@ var ScorecardModel = ottoman.model("Scorecard", {
         type: "Date",
         default: function(){return new Date();}
     },
+    competitionNumber: "string",
     weaponClass: { ref: "WeaponClass"},
     shootingGroup: { ref: "WeaponGroup"},
     results: [
@@ -88,9 +89,7 @@ var TeamModel = ottoman.model("Team", {
     },
     teamNumber: "string",
     competitionNumber: "string",
-    startTime: {
-        type: "Date"
-    },
+    startTime: "string",
     competitors:[
         {
         ref: "Person"
@@ -129,7 +128,8 @@ var StandplassModel = ottoman.model("Standplass", {
     name: "string",
     number: "integer",
     maxHits: "integer",
-    numberOfFigures: "integer"
+    numberOfFigures: "integer",
+    description: "string"
 });
 
 //Structure for competition
@@ -156,7 +156,7 @@ var CompetitionModel = ottoman.model("Competition", {
             ref: "WeaponClass"
         }
     ],
-    competitionNumber: "integer",
+    competitionNumber: "string",
     club: "string",
     competitors:[
         {
