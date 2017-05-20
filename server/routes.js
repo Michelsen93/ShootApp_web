@@ -248,14 +248,14 @@ var appRouter = function(app) {
                 if (error) {
                     return res.status(400).send(error);
                 }
-                console.log(person);
+
 
             ClubModel.find({name: req.body.name}, function(error, club){
-                console.log("'" + req.body.name + "'");
+
                     if (error) {
                         return res.status(400).send(error);
                     }
-                console.log(club);
+
                 if (club[0] != null) {
 
                         club[0].contactPersons.push(person[0]);
@@ -308,7 +308,6 @@ var appRouter = function(app) {
             if(error){
                 return res.status(400).send(error);
             }
-            console.log(team)
             var competitors = req.body.competitors;
             for(var i in competitors){
                 PersonModel.find({mail: competitors[i]}, function(error, person){
@@ -385,7 +384,7 @@ var appRouter = function(app) {
                     if(error){
                         return res.status(400).send(error);
                     }
-                    console.log(competition)
+
                     if(competition[0] != null){
                     competition[0].standplasses.push(standplass[0]);
                     competition[0].save(function(error, result){
