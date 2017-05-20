@@ -83,12 +83,12 @@ var appRouter = function(app) {
 
     //Gets competition by competitionNumber, works
     app.get("/competition/findByCompetitionNumber/:competitionNumber", function (req, res) {
-        CompetitionModel.find({competitionNumber: req.params.competitionNumber}, function(error, competition){
-            console.log(competition);
+        CompetitionModel.find({competitionNumber: req.params.competitionNumber},{load: ["competitors"]}, function(error, competition){
+
             if(error){
                 return res.status(400).send(error);
             }
-            res.send(competition);
+            res.send(competition[0]);
         });
     });
 
@@ -303,6 +303,34 @@ var appRouter = function(app) {
 
 
 
+    app.post("/team/competitors", function (req, res) {
+        TeamModel.find({teamNumber: req.body.teamNumber}, function(error, team){
+            if(error){
+                return res.status(400).send(error);
+            }
+            console.log(team)
+            var competitors = req.body.competitors;
+            for(var i in competitors){
+                PersonModel.find({mail: competitors[i]}, function(error, person){
+                    if (error) {
+                        return res.status(400).send(error);
+                    }
+                    team[0].competitors.push(person[0]);
+                    team[0].save(function(error, result){
+                        if (error) {
+                            return res.status(400).send(error);
+                        }
+
+                    });
+                });
+            }
+            res.send(team)
+        })
+    });
+
+
+
+
 
     //Update competition:
 
@@ -314,12 +342,9 @@ var appRouter = function(app) {
             startTime: req.body.startTime,
             competitors: []
         });
-        var competitors = req.body.competitors;
-        for(var personmail in competitors){
-            PersonModel.find({mail: personmail}, function(error, person){
-                team.competitors.push(person[0]);
-            })
-        }
+
+
+
         team.save(function(error, result){
             if(error){
                 return res.status(400).send(error);
@@ -335,7 +360,7 @@ var appRouter = function(app) {
                         if (error) {
                         return res.status(400).send(error);
                     }
-                    res.send(competition[0]);
+
                     });
                 }
                 else{
@@ -343,6 +368,7 @@ var appRouter = function(app) {
                 }
             });
         });
+
 
     });
 

@@ -349,12 +349,22 @@ function addClub(json){
 
 /**
  * adds a new team to competition
- * json must contain  competitors[mail1, mail2...], teamNumber, startTime, competitionNumber
+ * json must contain   teamNumber, startTime, competitionNumber
  * @param json
  */
 function addTeam(json){
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", baseURL + "competition/team", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(json));
+}
+/**
+ *
+ * @param json, competitors[mail1, mail2...], teamNumber
+ */
+function addMembersToTeam(json) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "team/competitors", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(json));
 }

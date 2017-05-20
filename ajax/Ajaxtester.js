@@ -102,8 +102,28 @@ function testAddCompetitionToClub(){
     addCompetitionToClub(saver);
 }
 
+function testAddTeam() {
+    var team = {
+        competitors: ["me@you.us", "garrysux@pikapika.gym"],
+        competitionNumber: "123",
+        startTime: "10:00",
+        teamNumber: "33323"
+    };
+    console.log(team)
+    addTeam(team);
 
-testAddStandplass()
+}
+
+function testAddMemberToTeam() {
+    var team = {
+        competitors: ["me@you.us", "garrysux@pikapika.gym"],
+        competitionNumber: "123",
+        teamNumber: "33323"
+    };
+    addMembersToTeam(team);
+}
+
+testAddMemberToTeam();
 
 
 
