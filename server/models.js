@@ -89,9 +89,7 @@ var TeamModel = ottoman.model("Team", {
     },
     teamNumber: "string",
     competitionNumber: "string",
-    startTime: {
-        type: "Date"
-    },
+    startTime: "string",
     competitors:[
         {
         ref: "Person"

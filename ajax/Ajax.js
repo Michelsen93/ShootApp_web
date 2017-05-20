@@ -3,7 +3,7 @@
  */
 
 
-var baseURL = "http://158.37.230.160:3000/";
+var baseURL = "http://158.37.227.218:3000/";
 
 
 
@@ -152,7 +152,7 @@ function getCompetitions(callback){
  */
 function getCompetitionByCompetitionNumber(competitionNumber, callback){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", baseURL + "competition/" + competitionNumber, true);
+    xhttp.open("GET", baseURL + "competition/findByCompetitionNumber/" + competitionNumber, true);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //Got response

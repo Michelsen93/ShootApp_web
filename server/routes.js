@@ -83,7 +83,8 @@ var appRouter = function(app) {
 
     //Gets competition by competitionNumber, works
     app.get("/competition/findByCompetitionNumber/:competitionNumber", function (req, res) {
-        CompetitionModel.find({email: req.params.competitionNumber}, function(error, competition){
+        CompetitionModel.find({competitionNumber: req.params.competitionNumber}, function(error, competition){
+            console.log(competition);
             if(error){
                 return res.status(400).send(error);
             }
