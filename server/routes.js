@@ -72,10 +72,13 @@ var appRouter = function(app) {
 
 
     app.get("scorecard/getByCompetitionNumber/:competitionNumber", function(req, res){
-       ScoreCardModel.find({competitionNumber: req.params.competitionNumber}, {load: ["*"]}, function (error, scorecards){
+        console.log("sindre var her");
+       ScoreCardModel.find({competitionNumber: req.params.competitionNumber}, function (error, scorecards){
            if(error){
+               console.log("feil")
                return res.status(400).send(error);
            }
+           console.log(scorecards)
            res.send(scorecards);
        });
        });
