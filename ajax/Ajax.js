@@ -3,7 +3,7 @@
  */
 
 
-var baseURL = "http://158.37.227.218:3000/";
+var baseURL = "http://158.37.225.110:3000/";
 
 
 
@@ -165,6 +165,26 @@ function getCompetitionByCompetitionNumber(competitionNumber, callback){
     xhttp.send();
 }
 
+/**
+ * gets competition by the (string) competitionNumber in param,
+ * @param competitionNumber
+ * @param callback, handle the response
+ */
+function getScorecardsByCompetitionNumber(competitionNumber, callback){
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", baseURL + "scorecard/getByCompetitionNumber/" + competitionNumber, true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        }
+    };
+    xhttp.send();
+}
 
 
 /**
@@ -349,12 +369,22 @@ function addClub(json){
 
 /**
  * adds a new team to competition
- * json must contain  competitors[mail1, mail2...], teamNumber, startTime, competitionNumber
+ * json must contain   teamNumber, startTime, competitionNumber
  * @param json
  */
 function addTeam(json){
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", baseURL + "competition/team", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(json));
+}
+/**
+ *
+ * @param json, competitors[mail1, mail2...], teamNumber
+ */
+function addMembersToTeam(json) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "team/competitors", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(json));
 }
@@ -416,6 +446,8 @@ function addWeaponGroup(json){
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(json));
 }
+
+
 
 
 
