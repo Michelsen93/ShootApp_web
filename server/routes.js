@@ -70,10 +70,21 @@ var appRouter = function(app) {
         });
     });
 
+
+    app.get("scorecard/getByCompetitionNumber/:competitionNumber", function(req, res){
+       ScoreCardModel.find({competitionNumber: req.params.competitionNumber}, {load: ["*"]}, function (error, scorecards){
+           if(error){
+               return res.status(400).send(error);
+           }
+           res.send(scorecards);
+       });
+       });
+
+
     //Gets all competitions. works
     app.get("/competition", function (req, res){
         //Should maybe load stuff
-        CompetitionModel.find({},{load: ["competitors"]}, function(error, competitions){
+        CompetitionModel.find({},{load: ["competitors", "scorecards"]}, function(error, competitions){
             if(error){
                 return res.status(400).send(error);
             }
@@ -163,7 +174,8 @@ var appRouter = function(app) {
             discipline: req.body.discipline,
             competitionNumber: req.body.competitionNumber,
             date: req.body.date,
-            club: req.body.club
+            club: req.body.club,
+            scorecards: []
         });
         competition.save(function (error, result) {
             if(error){
@@ -173,6 +185,8 @@ var appRouter = function(app) {
         });
 
     });
+
+
 
     //Saves a weapongroup works
     app.post("/weaponGroup", function (req, res) {

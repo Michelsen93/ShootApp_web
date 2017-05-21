@@ -165,6 +165,25 @@ function getCompetitionByCompetitionNumber(competitionNumber, callback){
     xhttp.send();
 }
 
+/**
+ * gets competition by the (string) competitionNumber in param,
+ * @param competitionNumber
+ * @param callback, handle the response
+ */
+function getScorecardsByCompetitionNumber(competitionNumber, callback){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", baseURL + "competition/getByCompetitionNumber/" + competitionNumber, true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //Got response
+            //Run callback
+            console.log(xhttp.responseText);
+            callback(xhttp.responseText);
+
+        }
+    };
+    xhttp.send();
+}
 
 
 /**
@@ -426,6 +445,8 @@ function addWeaponGroup(json){
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(json));
 }
+
+
 
 
 

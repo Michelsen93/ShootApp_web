@@ -185,7 +185,12 @@ var CompetitionModel = ottoman.model("Competition", {
     active:{
         type: "boolean",
         default: true
-    }
+    },
+    scorecards: [
+        {
+            ref:"Scorecard"
+        }
+    ]
 });
 
 
