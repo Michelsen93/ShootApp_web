@@ -320,7 +320,7 @@ var appRouter = function(app) {
 
 
     app.post("/team/competitors", function (req, res) {
-        TeamModel.find({teamNumber: req.body.teamNumber}, function(error, team){
+        TeamModel.find({teamNumber: req.body.teamNumber, competitionNumber: req.body.competitionNumber}, function(error, team){
             if(error){
                 return res.status(400).send(error);
             }

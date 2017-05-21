@@ -380,7 +380,7 @@ function addTeam(json){
 }
 /**
  *
- * @param json, competitors[mail1, mail2...], teamNumber
+ * @param json, competitors[mail1, mail2...], teamNumber, competionNumber
  */
 function addMembersToTeam(json) {
     var xhttp = new XMLHttpRequest();
