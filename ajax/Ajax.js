@@ -171,7 +171,7 @@ function getCompetitionByCompetitionNumber(competitionNumber, callback){
  * @param callback, handle the response
  */
 function getScorecardsByCompetitionNumber(competitionNumber, callback){
-    console.log(competitionNumber);
+
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", baseURL + "scorecard/getByCompetitionNumber/" + competitionNumber, true);
     xhttp.onreadystatechange = function() {
@@ -181,7 +181,7 @@ function getScorecardsByCompetitionNumber(competitionNumber, callback){
             console.log(xhttp.responseText);
             callback(xhttp.responseText);
 
-        };
+        }
     };
     xhttp.send();
 }
