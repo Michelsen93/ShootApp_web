@@ -172,7 +172,7 @@ function getCompetitionByCompetitionNumber(competitionNumber, callback){
  */
 function getScorecardsByCompetitionNumber(competitionNumber, callback){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", baseURL + "competition/getByCompetitionNumber/" + competitionNumber, true);
+    xhttp.open("GET", baseURL + "scorecard/getByCompetitionNumber/" + competitionNumber, true);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //Got response
