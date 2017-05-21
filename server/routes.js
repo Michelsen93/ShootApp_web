@@ -535,7 +535,7 @@ var appRouter = function(app) {
      * Adds a weaponGroup to competition. need weaponName and competitionnumber in body
      */
     app.post("/competition/weaponGroup", function (req, res) {
-        WeaponGroupModel.find({weaponName: req.body.weaponName}, function(error, weaponGroup){
+        WeaponGroupModel.find({name: req.body.name}, function(error, weaponGroup){
             if(error){
                 return res.status(400).send(error);
             }
