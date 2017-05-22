@@ -309,7 +309,7 @@ function postWeaponGroup(json){
 
 /**
  * Adds a standplass to competition
- * json must contain competitionNumber, and number of standplass
+ * json must contain competitionNumber, and name of standplass
  * @param json
  */
 function addStandplass(json) {
