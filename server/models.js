@@ -37,7 +37,10 @@ var ScorecardModel = ottoman.model("Scorecard", {
     shootingGroup: { ref: "WeaponGroup"},
     results: [
         {
-            ref: "StandplassResult"
+            standplass: "string",
+            hits: "integer",
+            figures: "integer",
+            bullseyes: "integer"
         }
     ],
     competitor: {ref: "Person"}
@@ -132,7 +135,7 @@ var StandplassModel = ottoman.model("Standplass", {
     description: "string"
 });
 
-//Structure for competition
+//Structure for
 var CompetitionModel = ottoman.model("Competition", {
     timestamp:{
         type: "Date",

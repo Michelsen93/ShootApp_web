@@ -320,7 +320,7 @@ var appRouter = function(app) {
 
 
     app.post("/team/competitors", function (req, res) {
-        TeamModel.find({teamNumber: req.body.teamNumber}, function(error, team){
+        TeamModel.find({teamNumber: req.body.teamNumber, competitionNumber: req.body.competitionNumber}, function(error, team){
             if(error){
                 return res.status(400).send(error);
             }
@@ -396,7 +396,7 @@ var appRouter = function(app) {
                 if(error){
                     return res.status(400).send(error);
                 }
-                StandplassModel.find({number: req.body.number},  function(error, standplass){
+                StandplassModel.find({name: req.body.name},  function(error, standplass){
                     if(error){
                         return res.status(400).send(error);
                     }
@@ -512,7 +512,7 @@ var appRouter = function(app) {
      * Adds a weaponclass to a competition. need name of weaponclass and competitionNumber in body
      */
     app.post("/competition/weaponClass", function (req, res) {
-        WeapondClassModel.find({name: req.body.name}, function(error, weaponClass){
+        WeapondClassModel.find({weaponName: req.body.weaponName}, function(error, weaponClass){
             if(error){
                 return res.status(400).send(error);
             }
@@ -535,7 +535,7 @@ var appRouter = function(app) {
      * Adds a weaponGroup to competition. need weaponName and competitionnumber in body
      */
     app.post("/competition/weaponGroup", function (req, res) {
-        WeaponGroupModel.find({weaponName: req.body.weaponName}, function(error, weaponGroup){
+        WeaponGroupModel.find({name: req.body.name}, function(error, weaponGroup){
             if(error){
                 return res.status(400).send(error);
             }
