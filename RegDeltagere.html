@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <script src="ajax/Ajax.js" type="text/javascript"></script>
     <script type="text/javascript "src="RegDeltager.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <meta charset="UTF-8">
@@ -53,55 +54,60 @@
 
     <!-- Main content -->
     <legend>Brukere</legend>
+    <div class="col-xs-2">
+        <h5> Søk Etter: </h5>
+    </div>
+    <br><br>
+    <div class="col-xs-2">
+
+        <select id="selected" class="form-control">
+            <option value="searchFirstName">Fornavn</option>
+            <option value="searchLastName">Etternavn</option>
+            <option value="searchShooterId">Skytternr.</option>
+        </select>
+    </div>
+    <div class="col-xs-3">
+
+        <input type="text" id="searchText" class="form-control input-sm">
+    </div>
+    <button onclick="searchPerson()" class="btn btn-primary">Søk</button>
+    <button onclick="load()" class="btn btn-secondary">Tilbakestill</button>
+
+    <br><br>
     <div class="panel panel-default">
         <!-- Table -->
         <div class="scrollable">
-            <table class="table table-hover text-center" id="myTable">
+            <table class="table table-hover text-center" id="tableUsers">
                 <thead>
                 <tr>
                     <th class="text-center">Fornavn</th>
                     <th class="text-center">Etternavn</th>
                     <th class="text-center">Skytternummer</th>
                     <th class="text-center">Epost</th>
+                    <th class="text-center">Telefon</th>
+                    <th class="text-center">Legg til</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr id="1" class="clickable-row" onclick="moveRow(1)">
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>000000</td>
-                    <td>john@example.com</td>
-                </tr>
 
-                <tr id="2" class="clickable-row" onclick="moveRow(2)">
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>111111</td>
-                    <td>mary@example.com</td>
-                </tr>
-                <tr id="3" class="clickable-row" onclick="moveRow(3)">
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>222222</td>
-                    <td>july@example.com</td>
-                </tr>
-                </tbody>
             </table>
         </div>
 
 
     </div>
     <legend>Registrerte deltakere</legend>
+
+
     <div class="panel panel-default">
 
         <div class="scrollable">
-            <table class="table table-hover text-center" id="RegTable">
+            <table class="table table-hover text-center" id="tableRegUsers">
                 <thead>
                 <tr>
                     <th class="text-center">Fornavn</th>
                     <th class="text-center">Etternavn</th>
                     <th class="text-center">Skytternummer</th>
                     <th class="text-center">Epost</th>
+                    <th class="text-center">Telefon</th>
                     <th class="text-center">Fjern</th>
 
                 </tr>
@@ -111,7 +117,7 @@
         </div>
     </div>
 
-    <button type="submit" id="save" name="button1id" class="btn btn-success" onclick="window.location.href='NyttStevne.html'">Lagre</button>
+    <button type="submit" id="save" name="button1id" class="btn btn-success" onclick="/*window.location.href='NyttStevne2.html'*/ saveCompetitors()">Lagre</button>
 
 
 </div>

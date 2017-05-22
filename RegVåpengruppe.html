@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <script src="ajax/Ajax.js" type="text/javascript"></script>
+    <script type="text/javascript" src="RegVåpengruppe.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <title>Utøvere</title>
+</head>
+<body>
+
+<div class="container wrapper">
+    <div class="headlineAlt">
+        <br>
+        <h1>Overskrift</h1>
+        <br>
+        <br>
+    </div>
+    <!-- Top menu bar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+
+            <!-- Logo -->
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">Styrk H. Finne</a>
+            </div>
+
+            <!-- Menu Items -->
+            <div>
+                <ul class="nav navbar-nav">
+                    <li> <a href="Stevner.html">Stevner</a> </li>
+                    <li> <a href="Utovere.html">Utøvere</a></li>
+                    <li class="active"> <a href="Klubber.html">Klubber</a></li>
+                    <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resultater<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="Live.html">Live</a></li>
+                            <li><a href="Tidligere.html">Tidligere</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!--right align -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Logg ut</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="club">
+        <button type="button" class="btn btn-success" onClick="saveWeaponToStevne()/*, window.location.href='NyttStevne2'*/">Lagre til stevne</button>
+        <h5>Valgte våpengrupper</h5>
+        <table class="table table-hover text-center" id="myTableWeapon2">
+            <thead>
+            <tr>
+                <th class="text-center">Våpengruppe</th>
+                <th class="text-center">Bekrivelse</th>
+                <th class="text-center">Fjern</th>
+
+            </tr>
+            </thead>
+        </table>
+        <br>
+        <h5>Alle våpengrupper</h5>
+        <table class="table table-hover text-center" id="myTableWeapon">
+            <thead>
+            <tr>
+                <th class="text-center">Våpengruppe</th>
+                <th class="text-center">Bekrivelse</th>
+                <th class="text-center">Legg til</th>
+
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+    <button type="button" class="btn btn-primary" onClick="newWeapongroup()">Legg til ny våpengruppe</button>
+    <button type="button" class="btn btn-secondary" onClick="loadWeapon()">Oppdater liste</button>
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+<footer class="footer">
+    <p class="text-muted">Bachelorprosjekt gruppe 4 ved HVL</p>
+</footer>

@@ -2,28 +2,30 @@
  * Created by sondrefr on 22.03.2017.
  */
 
-function stevne (stevneNummer, dato){
-    this.stevneNummer = stevneNummer;
-    this.dato = dato;
-}
+
 
 function lagreStevne(){
-    n = document.getElementById("stevneNummer").value;
-    o = document.getElementById("dato").value;
+    var competition = {
+        date: document.getElementById("date").value,
+        competitionNumber: document.getElementById("competitionNumber").value,
+        club: document.getElementById("club").value,
+        competitionType: document.getElementById("competitionType").value,
+        program: document.getElementById("program").value,
+        location: document.getElementById("location").value,
+        discipline: document.getElementById("discipline").value,
+    };
+    console.log(competition)
+    postCompetition(competition)
+    var competitionNumber = document.getElementById("competitionNumber").value;
+    localStorage.setItem("competitionNumber", competitionNumber)
+    window.location.href='NyttStevne2.html';
 
 
-    k = JSON.parse(stevne1)
-    alert(stevne1)
 }
 /**
  * Adds a new standplass to the competition
  *
- * <div class="form-group">
- <label class="col-md-4 control-label">Stevnenummer</label>
- <div class="col-md-4">
- <input  id="competitionNumber" type="text" placeholder="00000000" class="form-control input-md" required>
- </div>
- </div>
+ *
  */
 var antallStandplass = 0;
 function addStandplass() {
@@ -58,111 +60,122 @@ function removeStandplass(div){
     antallStandplass--;
 }
 
-/**
- * Creates a new weapongroup
- */
-var i = 0;
-function newWeapongroup(){
-    if(i<1) {
-        var div = document.createElement('div');
-        div.innerHTML = '<br>Navn: <input type="text" id="newWeapongroup" class="form-control input-md">  ' +
-            '<br> Beskrivelse <input type="text" id="newWeaponDescription" class="form-control input-md">'+
-            '<input type="button" value="Legg til" onClick="addWeapongroup(this)"><br> ';
 
-        document.getElementById('footerWeapon').appendChild(div);
-        i++;
+
+
+
+
+
+
+
+
+
+
+
+
+function loadClubs(){
+
+    deleteTableClubs();
+    var club = getClubs(callbackClubs);
+
+}
+
+var clubs
+
+function callbackClubs(json) {
+
+
+    var jsClub = JSON.parse(json);
+
+
+    clubs = jsClub
+
+    jsClub.forEach(outputClubs);
+
+
+}
+
+function outputClubs(item, index) {
+    // Find a <table> element with id="myTable":
+    var table = document.getElementById("myTableClubs");
+
+
+    // Create an empty <tr> element and add it to the 1st position of the table:
+    var row = table.insertRow(index + 1);
+
+
+    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+
+
+    // Add some text to the new cells:
+    cell1.innerHTML = item.name;
+    cell2.innerHTML = item.mail;
+    cell3.innerHTML = item.address;
+
+
+
+    row.onclick = function () {
+        document.getElementById("clubNameInput").value = item.name
     }
 
-}
 
-var numWeapongroup = 0;
-function addWeapongroup(div){
-    var p = document.getElementById('newWeapongroup').value;
-
-    document.getElementById('footerWeapon').removeChild(div.parentNode);
-    i--;
-
-    var div = document.createElement('div');
-    div.innerHTML = '<input type="checkbox" id="'+p+'" value="'+p+'"> '+p+'' +
-        '<button type="button" class="close" aria-label="Close" onClick="removeWeapongroup(this)"><span aria-hidden="true">&times;</span></button><br><br>';
-
-    if (numWeapongroup%2==0){
-        document.getElementById('weapongroup1').appendChild(div)
-    }else{
-        document.getElementById('weapongroup2').appendChild(div)
-    }
-
-
-    numWeapongroup++;
-}
-
-function removeWeapongroup(div) {
-        document.getElementById('weapongroup2').removeChild(div.parentNode);
-        document.getElementById('weapongroup1').removeChild(div.parentNode);
-
-    numWeapongroup--;
 }
 
 
-function fillWeaponBox(){
-    var checkedWeapon = "";
 
-    for (l = 0; l < document.getElementById('weapongr1_form').length; l++){
+var num
+function searchClubs() {
 
-        if(document.getElementById('weapongr1_form')[l].checked){
-            checkedWeapon = checkedWeapon.concat(document.getElementById('weapongr1_form')[l].value + '\n');
+    deleteTableClubs()
 
+    num = 0
+    clubs.forEach(findClubs)
+
+
+}
+
+
+function findClubs(item, index) {
+    var inputText = document.getElementById("searchText").value;
+    var type = document.getElementById("selected").value
+    var table = []
+
+
+    if (type == "searchClubName") {
+        if (inputText == item.name) {
+            table[num] = item;
+            num++
+            console.log(item.name)
+        }
+    } else if (type == "searchClubMail") {
+        if (inputText == item.mail) {
+            table[num] = item;
+            console.log(item.mail)
+            num++
         }
     }
 
-    document.getElementById("weapontxt").value = checkedWeapon;
+
+    table.forEach(output)
 }
 
-var j = 0;
-function newClass(){
-    if(j<1) {
-        var div = document.createElement('div');
-        div.innerHTML = '<br><input type="text" id="newClass">  ' +
-            '<input type="button" value="Legg til" onClick="addClass(this)"><br> ';
-
-        document.getElementById('footerClass').appendChild(div)
-        j++;
-    }
+function addClub() {
+    document.getElementById("club").value = document.getElementById("clubNameInput").value
 
 }
 
-var numClass = 0;
-function addClass(div){
-    var p = document.getElementById('newClass').value;
-
-    document.getElementById('footerClass').removeChild(div.parentNode);
-    j--;
-
-    var div = document.createElement('div');
-    div.innerHTML = '<input type="checkbox" id="'+p+'" value="'+p+'"> '+p+'' +
-        '<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button><br><br>';
-
-    if (numClass%2==0){
-        document.getElementById('class1').appendChild(div)
-    }else{
-        document.getElementById('class2').appendChild(div)
+function deleteTableClubs() {
+    var table1 = document.getElementById("myTableClubs");
+    while (1 < table1.rows.length) {
+        table1.deleteRow(1)
     }
-
-
-    numClass++;
 }
 
-
-function fillClassBox(){
-    var checkedClass = "";
-
-    for (j = 0; j < document.getElementById('class1_form').length; j++){
-
-        if(document.getElementById('class1_form')[j].checked){
-            checkedClass = checkedClass.concat(document.getElementById('class1_form')[i].value + '\n');
-
-        }
+function sleep (time) {
+    var now = new Date().getTime();
+    while (new Date().getTime() < now + time) { /* do nothing */
     }
-
-    document.getElementById("classtxt").value = checkedClass;
 }

@@ -144,6 +144,33 @@
 
                 </div>
                 <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Valgt klubb</label>
+                        <div class="col-md-4">
+                            <input id="clubNameInput" name="club" type="text" class="form-control input-md" required readonly>
+                        </div>
+
+
+                    </div>
+                    <br>
+                    <div class="col-xs-3">
+                        <h5> Søk Etter: </h5>
+                    </div>
+                    <br><br><br>
+                    <div class="col-xs-2">
+
+                        <select id="selected" class="form-control">
+                            <option value="searchClubName">Klubbnavn</option>
+                            <option value="searchClubMail">Email</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-3">
+
+                        <input type="text" id="searchText" class="form-control input-sm">
+                    </div>
+                    <button onclick="searchClubs()" class="btn btn-primary">Søk</button>
+                    <button onclick="load()" class="btn btn-secondary">Tilbakestill</button>
+
                     <div class="club">
                         <table class="table table-hover text-center" id="myTableClubs">
                             <thead>
@@ -160,8 +187,8 @@
                 </div>
                 <div class="modal-footer">
                     <div id="footerClass">
-                        <button type="button" class="btn btn-success" onClick="newClass()">Legg til klubb</button>
-                        <button type="button" class="btn btn-primary" onClick="fillClassBox()" data-dismiss="modal">Legg til klubb</button>
+                        <button type="button" class="btn btn-success btn" data-dismiss="modal" onclick="addClub()" >Legg til klubb</button>
+                    </div>
                     </div>
                 </div>
             </div>

@@ -55,7 +55,7 @@
 
 
 
-        <form class="form-horizontal" method="post" action="BrukerLagret.html">
+        <div class="form-horizontal">
             <fieldset>
                 <!-- Registrer ny bruker -->
 
@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Stevnenummer</label>
                     <div class="col-md-4">
-                        <input  id="competitionNumber" type="text" placeholder="00000000" class="form-control input-md" required>
+                        <input  id="competitionNumber" type="number" placeholder="00000000" class="form-control input-md" required>
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Dato</label>
                     <div class="col-md-4">
-                        <input type="date" id="dato" id="date" class="form-control input-md" required>
+                        <input type="date" id="date" class="form-control input-md" required>
                     </div>
                 </div>
 
@@ -80,17 +80,17 @@
                     <label class="col-md-4 control-label">Klubb</label>
                     <div class="col-md-4">
                         <input type="text" placeholder="Åsane pk" id="club" class="form-control input-md" required readonly> <br>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpClub">
-                            Velg våpengrupper
+                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpClub" onclick="loadClubs()">
+                            Velg klubb
                         </button>
                     </div>
                 </div>
 
-                <!-- Place -->
+                <!-- Location -->
                 <div class="form-group">
                     <label class="col-md-4 control-label">Sted</label>
                     <div class="col-md-4">
-                        <input type="text" placeholder="Arnavegen Jonahålo Skytebane" id="place" class="form-control input-md" required>
+                        <input type="text" placeholder="Arnavegen Jonahålo Skytebane" id="location" class="form-control input-md" required>
                     </div>
                 </div>
 
@@ -118,67 +118,19 @@
                     </div>
                 </div>
 
-                <!-- Våpengruppe -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Våpengrupper</label>
-                    <div class="col-md-4">
-                        <textarea rows="4" id="weapontxt" class="form-control input-md" readonly></textarea><br>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpWeaponGroup">
-                            Velg våpengrupper
-                        </button>
 
-
-                    </div>
-                </div>
-
-                <!-- Klasse -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Klasser</label>
-                    <div class="col-md-4">
-                        <textarea rows="4" id="classtxt" class="form-control input-md" readonly></textarea><br>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpClass">
-                            Velg Klasser
-                        </button>
-
-
-                    </div>
-                </div>
-
-                <!-- Standplasser -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Standplasser</label>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popUpStandplass">
-                            Velg Standplasser
-                        </button>
-
-
-                    </div>
-                </div>
-
-                <!-- Legg til skyttere og velg lag -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Skyttere</label>
-                    <div class="col-md-4">
-                        <button type="submit" id="addShooters" class="btn btn-primary" onclick="window.location.href='RegDeltagere.html'">
-                            Registrer skyttere
-                        </button>
-
-
-                    </div>
-                </div>
 
                 <div class="form-group">
                     <br><br>
                     <div class="col-md-10 col-md-offset-5">
-                        <button type="submit" id="button1id" name="button1id" class="btn btn-success" onclick="window.location.href='Stevner.html', lagreStevne()">Lagre</button>
+                        <button type="submit" id="button1id" name="button1id" class="btn btn-success" onclick="lagreStevne()">Videre</button>
                         <button type="reset" id="button2id" name="button2id" class="btn btn-danger">Avbryt</button>
 
                     </div>
                 </div>
 
             </fieldset>
-        </form>
+        </div>
     </div>
 
     <!-- Knapper til fremtidig bruk
@@ -191,42 +143,7 @@
 
 </div>
 
-<!-- Modal weapongroup -->
-<div class="modal fade" id="popUpWeaponGroup"  role="dialog" >
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h5>Velg våpengrupper som skal være med</h5>
 
-
-            </div>
-            <div class="modal-body">
-                <form id="weapongr1_form">
-                <div class="col-md-6">
-                    <div id="weapongroup1">
-
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div id="weapongroup2">
-
-                    </div>
-                </div>
-                </form>
-                <br><br><br><br>
-            </div>
-            <div class="modal-footer">
-                <div id="footerWeapon">
-                <button type="button" class="btn btn-primary" onClick="newWeapongroup()">Legg til ny våpengruppe</button>
-                <button type="button" class="btn btn-success" onClick="fillWeaponBox()" data-dismiss="modal">Legg til våpengrupper</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Modal club -->
 <div class="modal fade" id="popUpClub"  role="dialog" >
@@ -241,94 +158,59 @@
 
             </div>
             <div class="modal-body">
-                <form id="club1_form">
-                    <div class="col-md-6">
-                        <div id="club1">
-
-                        </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Valgt klubb</label>
+                    <div class="col-md-4">
+                        <input id="clubNameInput" name="club" type="text" class="form-control input-md" required readonly>
                     </div>
-                    <div class="col-md-6">
-                        <div id="club2">
 
-                        </div>
-                    </div>
-                </form>
+
+                </div>
+                <br>
+                <div class="col-xs-3">
+                    <h5> Søk Etter: </h5>
+                </div>
+                <br><br><br>
+                <div class="col-xs-2">
+
+                    <select id="selected" class="form-control">
+                        <option value="searchClubName">Klubbnavn</option>
+                        <option value="searchClubMail">Email</option>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+
+                    <input type="text" id="searchText" class="form-control input-sm">
+                </div>
+                <button onclick="searchClubs()" class="btn btn-primary">Søk</button>
+                <button onclick="loadClubs()" class="btn btn-secondary">Tilbakestill</button>
+
+                <div class="club">
+                    <table class="table table-hover text-center" id="myTableClubs">
+                        <thead>
+                        <tr>
+                            <th class="text-center">Klubbnavn</th>
+                            <th class="text-center">Mail</th>
+                            <th class="text-center">Adresse</th>
+
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
                 <br><br><br><br>
             </div>
             <div class="modal-footer">
                 <div id="footerClub">
-                    <button type="button" class="btn btn-success" onClick="fillClubBox()" data-dismiss="modal">Legg til våpengrupper</button>
+                    <button type="button" class="btn btn-success" onClick="addClub()" data-dismiss="modal">Legg til klubb</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Modal Class -->
-<div class="modal fade" id="popUpClass"  role="dialog" >
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h5>Velg Klasser som skal være med</h5>
 
 
-            </div>
-            <div class="modal-body">
-                <form id="class1_form">
-                    <div class="col-md-6">
-                        <div id="class1">
 
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="class2">
-
-                        </div>
-                    </div>
-                </form>
-                <br><br><br><br>
-            </div>
-            <div class="modal-footer">
-                <div id="footerClass">
-                <button type="button" class="btn btn-success" onClick="newClass()">Legg til ny våpengruppe</button>
-                <button type="button" class="btn btn-primary" onClick="fillClassBox()" data-dismiss="modal">Legg til klasser</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal standplass -->
-<div class="modal fade" id="popUpStandplass"  role="dialog" >
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h5>Velg Klasser som skal være med</h5>
-
-            </div>
-            <div class="modal-body">
-                <form id="club_form">
-                    <div class="col-md">
-                        <div id="standplass">
-
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" onClick="addStandplass()">Legg til standplass</button>
-                <button type="button" class="btn btn-primary">Fulfør</button>
-            </div>
-        </div>
-    </div>
-</div>
     <!-- Footer -->
     <div class="push"></div>
 <footer class="footer">

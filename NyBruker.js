@@ -15,19 +15,19 @@ function saveBruker(){
 
     postPerson(bruker);
     console.log(bruker);
-
     var email = document.getElementById("email").value;
     localStorage.setItem("email", email)
+    sleep(500)
 
-    sleep(1000).then(() => {
-        window.location.href='BrukerLagret.html'
-    });
+
+
+    sleep(1000)
 }
 
 
 
 function load(){
-
+    deleteTable();
     var club = getClubs(callback);
 
 }
@@ -68,47 +68,66 @@ function output(item, index) {
     cell3.innerHTML = item.address;
 
 
-    var modal = document.getElementById("PopUpClubInfo");
+
     row.onclick = function () {
-        modal.style.display = "block";
-        fillModal(item);
+        document.getElementById("clubNameInput").value = item.name
 
     }
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
+}
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+
+
+var num
+function searchClubs() {
+
+    deleteTable()
+
+    num = 0
+    clubs.forEach(findClubs)
+
+
+}
+
+
+function findClubs(item, index) {
+    var inputText = document.getElementById("searchText").value;
+    var type = document.getElementById("selected").value
+    var table = []
+
+
+    if (type == "searchClubName") {
+        if (inputText == item.name) {
+            table[num] = item;
+            num++
+            console.log(item.name)
+        }
+    } else if (type == "searchClubMail") {
+        if (inputText == item.mail) {
+            table[num] = item;
+            console.log(item.mail)
+            num++
         }
     }
+
+
+    table.forEach(output)
 }
 
-
-
-function makeRadioButton(name, value, text) {
-
-    var label = document.createElement("label");
-    var radio = document.createElement("input");
-    radio.type = "radio";
-    radio.name = name;
-    radio.value = value;
-
-    label.appendChild(radio);
-
-    label.appendChild(document.createTextNode(text));
-    return label;
+function addClub() {
+    document.getElementById("klubb").value = document.getElementById("clubNameInput").value
 }
 
-
+function deleteTable() {
+    var table1 = document.getElementById("myTableClubs");
+    while (1 < table1.rows.length) {
+        table1.deleteRow(1)
+    }
+}
 
 function sleep (time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
+    var now = new Date().getTime();
+    while (new Date().getTime() < now + time) { /* do nothing */
+    }
 }
