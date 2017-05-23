@@ -309,22 +309,13 @@ function postWeaponGroup(json){
 
 /**
  * Adds a standplass to competition
- * json must contain competitionNumber, and name of standplass
+ * json must contain competitionNumber, and number of standplass
  * @param json
  */
 function addStandplass(json) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", baseURL + "competition/standplass", true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            //Got response
-            //Run callback
-            console.log(xhttp.responseText);
-
-
-        };
-    };
     xhttp.send(JSON.stringify(json));
 }
 

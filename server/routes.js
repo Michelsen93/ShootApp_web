@@ -392,17 +392,21 @@ var appRouter = function(app) {
      * standplass identified by number in body, competition identified by competitionNumber
      */
     app.post("/competition/standplass", function (req, res) {
+
             CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
                 if(error){
                     return res.status(400).send(error);
                 }
-                StandplassModel.find({name: req.body.name},  function(error, standplass){
+
+                StandplassModel.find({number: req.body.number},  function(error, standplass){
                     if(error){
                         return res.status(400).send(error);
                     }
 
+
                     if(competition[0] != null){
                     competition[0].standplasses.push(standplass[0]);
+                    console.log(competition[0]);
                     competition[0].save(function(error, result){
                         if(error){
                         return res.status(400).send(error);
