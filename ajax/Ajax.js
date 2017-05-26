@@ -3,7 +3,7 @@
  */
 
 
-var baseURL = "http://158.37.224.91:3000/";
+var baseURL = "http://158.37.224.77:3000/";
 
 
 
@@ -309,7 +309,7 @@ function postWeaponGroup(json){
 
 /**
  * Adds a standplass to competition
- * json must contain competitionNumber, and number of standplass
+ * json must contain competitionNumber, and numbers[number] of standplass
  * @param json
  */
 function addStandplass(json) {

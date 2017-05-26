@@ -30,7 +30,7 @@ function testGetByEmail(){
 function testPostStandplass(){
     var standplass = new Object();
     standplass.name = "test3";
-    standplass.number = 3;
+    standplass.number = "kaka";
     standplass.maxHits = 4;
     standplass.numberOfFigures = 3;
 
@@ -55,8 +55,8 @@ function testPostCompetition() {
 
 function testAddStandplass() {
     var ids = new Object();
-    ids.number = 3;
-    ids.competitionNumber = 123;
+    ids.number = "kaka";
+    ids.competitionNumber = "123";
     console.log(ids);
     addStandplass(ids, function(){
         console.log(ids);
@@ -123,7 +123,6 @@ function testAddMemberToTeam() {
     addMembersToTeam(team);
 }
 
-testAddMemberToTeam();
 
 
 

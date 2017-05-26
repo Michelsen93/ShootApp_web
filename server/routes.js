@@ -168,7 +168,7 @@ var appRouter = function(app) {
     //Saves competition without any references yet
     //References will be saved afterwards works
     app.post("/competition", function (req, res) {
-        console.log(req.body.club);
+
         var competition = new CompetitionModel({
             competitionType: req.body.competitionType,
             program: req.body.program,
@@ -320,27 +320,32 @@ var appRouter = function(app) {
 
 
     app.post("/team/competitors", function (req, res) {
-        TeamModel.find({teamNumber: req.body.teamNumber, competitionNumber: req.body.competitionNumber}, function(error, team){
-            if(error){
+        TeamModel.find({
+            teamNumber: req.body.teamNumber,
+            competitionNumber: req.body.competitionNumber
+        }, function (error, team) {
+            if (error) {
                 return res.status(400).send(error);
             }
             var competitors = req.body.competitors;
-            for(var i in competitors){
-                PersonModel.find({mail: competitors[i]}, function(error, person){
+            for (var i in competitors) {
+                PersonModel.find({mail: competitors[i]}, function (error, person) {
                     if (error) {
                         return res.status(400).send(error);
                     }
                     team[0].competitors.push(person[0]);
-                    team[0].save(function(error, result){
-                        if (error) {
-                            return res.status(400).send(error);
-                        }
 
-                    });
+
                 });
+
             }
-            res.send(team)
-        })
+            team[0].save(function (error, result) {
+                if (error) {
+                    return res.status(400).send(error);
+                }
+                res.send(team)
+            })
+        });
     });
 
 
@@ -357,7 +362,7 @@ var appRouter = function(app) {
             startTime: req.body.startTime,
             competitors: []
         });
-
+    });
 
 
         team.save(function(error, result){
@@ -385,7 +390,7 @@ var appRouter = function(app) {
         });
 
 
-    });
+
 
     /**
      * adds a standplass to a competition
@@ -393,31 +398,27 @@ var appRouter = function(app) {
      */
     app.post("/competition/standplass", function (req, res) {
 
+            console.log(req.body.competitionNumber, req.body.number);
             CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
                 if(error){
                     return res.status(400).send(error);
                 }
-
-                StandplassModel.find({number: req.body.number},  function(error, standplass){
-                    if(error){
-                        return res.status(400).send(error);
-                    }
-
-
-                    if(competition[0] != null){
-                    competition[0].standplasses.push(standplass[0]);
-                    console.log(competition[0]);
-                    competition[0].save(function(error, result){
+                var numbers = req.body.numbers;
+                for(var i in numbers){
+                    StandplassModel.find({number: req.body.number}, function(error, standplass){
                         if(error){
-                        return res.status(400).send(error);
+                            return res.status(400).send(error);
                         }
-                    res.send(competition[0]);
-                });
+                        competition[0].standplasses.push(standplass[0]);
+                    })
                 }
-                else{
-                        res.status(500).send("error saving");
-                    }
-            });
+            competition[0].save(function(error, result){
+
+                if(error){
+                    return res.status(400).send(error);
+                }
+                res.send(competition[0]);
+            })
         });
 
     });
@@ -559,17 +560,7 @@ var appRouter = function(app) {
     });
 
 
-
-
-
-
-
-
-
-
-
-};
-
+}
 
 
 module.exports = appRouter;
