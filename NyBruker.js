@@ -2,6 +2,10 @@
  * Created by sondrefr on 17.04.2017.
  */
 
+
+/**
+ * saves the person to the server, and send you to next page
+ */
 function saveBruker(){
 
     var bruker = {
@@ -17,15 +21,13 @@ function saveBruker(){
     console.log(bruker);
     var email = document.getElementById("email").value;
     localStorage.setItem("email", email)
-    sleep(500)
 
-
-
-    sleep(1000)
 }
 
 
-
+/**
+ * gets all the clubs from the server
+ */
 function load(){
     deleteTable();
     var club = getClubs(callback);
@@ -33,7 +35,6 @@ function load(){
 }
 
 var clubs
-
 function callback(json) {
 
 
@@ -47,6 +48,11 @@ function callback(json) {
 
 }
 
+/**
+ * puts all the clubs into the webpage
+ * @param item, each club object
+ * @param index, index of the club object
+ */
 function output(item, index) {
     // Find a <table> element with id="myTable":
     var table = document.getElementById("myTableClubs");
@@ -78,7 +84,9 @@ function output(item, index) {
 }
 
 
-
+/**
+ * search through all the clubs to find matches
+ */
 var num
 function searchClubs() {
 
@@ -119,6 +127,9 @@ function addClub() {
     document.getElementById("klubb").value = document.getElementById("clubNameInput").value
 }
 
+/**
+ * removes all the clubs from the webpage
+ */
 function deleteTable() {
     var table1 = document.getElementById("myTableClubs");
     while (1 < table1.rows.length) {
@@ -126,6 +137,10 @@ function deleteTable() {
     }
 }
 
+/**
+ * stops the program for a period
+ * @param time, the time you want the program to sleep (milliseconds)
+ */
 function sleep (time) {
     var now = new Date().getTime();
     while (new Date().getTime() < now + time) { /* do nothing */

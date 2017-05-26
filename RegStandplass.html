@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <script src="ajax/Ajax.js" type="text/javascript"></script>
-    <script type="text/javascript" src="RegVåpengruppe.js"></script>
+    <script type="text/javascript" src="RegStandplass.js"></script>
 
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <meta charset="UTF-8">
@@ -54,40 +54,38 @@
     </nav>
 
     <!-- Main content -->
-    <div class="club">
-        <button type="button" class="btn btn-success" onClick="saveWeaponToStevne(), window.location.href='NyttStevne2.html'">Lagre til stevne</button>
-        <h5>Valgte våpengrupper</h5>
-        <table class="table table-hover text-center" id="myTableWeapon2">
+    <div id="regStandplass" >
+        <button type="button" class="btn btn-success"  onclick="addStandplasserToStevne(), window.location.href='NyttStevne2.html'">Legg standplasser til stevnet</button><br><br>
+        <h5>Velg Klasser som skal være med</h5>
+
+
+
+        <table class="table table-hover text-center" id="tableStandplass">
             <thead>
             <tr>
-                <th class="text-center">Våpengruppe</th>
-                <th class="text-center">Bekrivelse</th>
+                <th class="text-center">Standplass ID</th>
+                <th class="text-center">Navn</th>
+                <th class="text-center">Antall skudd</th>
+                <th class="text-center">Antall figurer</th>
+                <th class="text-center">Beskrivelse</th>
                 <th class="text-center">Fjern</th>
 
             </tr>
             </thead>
         </table>
-        <br>
-        <h5>Alle våpengrupper</h5>
-        <table class="table table-hover text-center" id="myTableWeapon">
-            <thead>
-            <tr>
-                <th class="text-center">Våpengruppe</th>
-                <th class="text-center">Bekrivelse</th>
-                <th class="text-center">Legg til</th>
+        <button type="button" class="btn btn-primary" onClick="addStandplasser()">Lag ny standplass</button>
 
-            </tr>
-            </thead>
-        </table>
-    </div>
 
-    <button type="button" class="btn btn-primary" onClick="newWeapongroup()">Legg til ny våpengruppe</button>
-    <button type="button" class="btn btn-secondary" onClick="loadWeapon()">Oppdater liste</button>
-    <div id="newWeapon">
 
     </div>
+
+        <div id="newStandplass">
+
+        </div>
+
+
+
 </div>
-
 <!-- Footer -->
 <div class="push"></div>
 <footer class="footer">

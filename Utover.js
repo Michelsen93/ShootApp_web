@@ -2,6 +2,9 @@
  * Created by sondrefr on 04.05.2017.
  */
 
+/**
+ * gets all the persons from the server
+ */
 window.onload = load;
 function load(){
 
@@ -37,6 +40,9 @@ function fillModal(item) {
     document.getElementById("tablePhone").value = item.phone
 }
 
+/**
+ * search through all the persons to find matches
+ */
 var num
 function searchPerson() {
 
@@ -80,6 +86,11 @@ function findPerson(item, index) {
     table.forEach(output)
 }
 
+/**
+ * puts all the persons into the webpage
+ * @param item, each club object
+ * @param index, index of the club object
+ */
 function output(item, index){
 
     // Find a <table> element with id="myTable":
@@ -130,6 +141,9 @@ function output(item, index){
 
 }
 
+/**
+ * removes all the clubs from the webpage
+ */
 function deleteTable(){
     var table1 = document.getElementById("myTableButtons");
     while(1 < table1.rows.length){

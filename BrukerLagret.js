@@ -2,16 +2,19 @@
  * Created by sondrefr on 04.05.2017.
  */
 
+/**
+ * gets all the clubs from the server
+ */
 window.onload = load;
 function load(){
     var mail = localStorage.getItem("email");
     //var div = document.createElement('div');
-
-    var person = getPersonByMail(mail, f);
+    console.log(mail)
+    var person = getPersonByMail(mail, callback());
 
 }
 
-function f(json){
+function callback(json){
     console.log(json);
     var jsPersonArray = JSON.parse(json);
     var jsPerson = jsPersonArray[0];

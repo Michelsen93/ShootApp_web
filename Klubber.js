@@ -2,6 +2,9 @@
 * Created by sondrefr on 11.05.2017.
 */
 
+/**
+ * gets all the clubs from the server
+ */
 window.onload = load;
 function load(){
 
@@ -25,6 +28,7 @@ function callback(json) {
 
 }
 
+
 function fillModal(item) {
     document.getElementById("tableFirstName").value = item.name
 
@@ -35,6 +39,9 @@ function fillModal(item) {
 
 }
 
+/**
+ * search through all the clubs to find matches
+ */
 var num
 function searchClubs() {
 
@@ -71,7 +78,11 @@ function findClubs(item, index) {
         table.forEach(output)
 }
 
-
+/**
+ * puts all the clubs into the webpage
+ * @param item, each club object
+ * @param index, index of the club object
+ */
 function output(item, index) {
 
     // Find a <table> element with id="myTable":
@@ -118,6 +129,9 @@ function output(item, index) {
 
 }
 
+/**
+ * removes all the clubs from the webpage
+ */
 function deleteTable() {
     var table1 = document.getElementById("myTableClubs");
     while (1 < table1.rows.length) {

@@ -1,8 +1,8 @@
 /**
  * Created by sondrefr on 16.05.2017.
  */
-window.onload = load1
-function load1(){
+window.onload = load
+function load(){
     console.log(localStorage.getItem("competitionNumber"))
     var save = document.getElementById("saveStevne")
     save.onclick = saveStevne
@@ -10,157 +10,11 @@ function load1(){
 }
 
 
-function loadClass(){
-    console.log("hei");
-
-    deleteTableClass();
-
-    var weaponClass = getWeaponClasses(callbackClass);
-
-
-
-}
-
-var classes
-function callbackClass(json) {
-
-    console.log("jojo")
-    var jsClasses = JSON.parse(json);
-    console.log(jsClasses)
-
-    classes = jsClasses
-
-    jsClasses.forEach(outputClass);
-
-}
-
-function outputClass(item, index) {
-    // Find a <table> element with id="myTable":
-    var table = document.getElementById("myTableClass");
-
-
-    // Create an empty <tr> element and add it to the 1st position of the table:
-    var row = table.insertRow(index + 1);
-
-
-    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-
-
-
-    // Add some text to the new cells:
-    cell1.innerHTML = item.weaponName;
-    cell2.innerHTML = item.description;
-    cell3.innerHTML = '<button  class="btn btn-primary" >Legg til</button>';
-    cell3.onclick = addClass
-
-
-/*
-     row.onclick = function () {
-         addWeapon()
-
-     }
-*/
-
-}
-
-function deleteTableClass() {
-    var table1 = document.getElementById("myTableClass");
-    while (1 < table1.rows.length) {
-        table1.deleteRow(1)
-    }
-}
 /**
- * Creates a new class
+ * Gives input when creating a new standplass
  */
-var iClass = 0;
-function newClass(){
-    console.log("h")
-    if(iClass<1) {
-        var div = document.createElement('div');
-        div.innerHTML = '<br>Navn: <input type="text" id="newClass" class="form-control input-md">  ' +
-            '<br> Beskrivelse <input type="text" id="newClassDescription" class="form-control input-md">'+
-            '<input type="button" class="btn btn-primary" value="Legg til" onClick="addNewClass(this)"><br> ';
-
-        document.getElementById('footerClass').appendChild(div);
-        iClass++;
-    }
-
-}
-
-var numClass = 0;
-function addNewClass(div){
-    var newClass = {
-        weaponName: document.getElementById("newClass").value,
-        description: document.getElementById("newClassDescription").value,
-    }
-
-    postWeaponClass(newClass)
-
-    document.getElementById('footerClass').removeChild(div.parentNode)
-    iClass--
-    sleep(500)
-
-    //loadClass()
-}
-
-function addClass(e){
-    var parent = e.target.parentNode.parentNode;
-    var children = parent.childNodes;
-    var className = children[0].innerHTML;
-    var classDescription = children[1].innerHTML;
-
-    console.log(className, classDescription)
-
-    var table = document.getElementById("myTableClass2")
-    var row = table.insertRow(1);
-
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-
-    cell1.innerHTML = className
-    cell2.innerHTML = classDescription
-    cell3.innerHTML = '<button  class="btn btn-primary">Fjern</button>';
-    cell3.onclick = removeClass
-
-
-}
-
-function removeClass(e){
-    var parent = e.target.parentNode.parentNode
-    var table = document.getElementById("tableContactPerson")
-    parent.remove(table)
-    console.log(table.rows.length)
-
-}
-
-classesTable = []
-function fillClassBox(){
-    var table = document.getElementById("myTableClass2")
-    var table2 = document.getElementById("tableClasses")
-    while(table2.rows.length>0){
-        table2.deleteRow(0)
-    }
-    var row
-    var cell
-    console.log(table.rows.length)
-
-    for(i = 1; i < table.rows.length; i++){
-        row = table2.insertRow(i-1);
-        cell = row.insertCell()
-        cell.innerHTML = table.rows[i].cells[0].innerHTML
-        classesTable[i-1] = table.rows[i].cells[0].innerHTML
-
-
-
-    }
-
-}
 var iStandplass = 0
-function addStandplass(){
+function addStandplasser(){
     if(iStandplass<1) {
         var div = document.createElement('div');
         div.innerHTML = '<form class="form-inline">' +
@@ -188,6 +42,10 @@ function addStandplass(){
     }
 }
 
+/**
+ * Adds the stanplass to the registered standplassr table
+ * @param div, the div with the input
+ */
 function addStandplassToTable(div){
     var table = document.getElementById("tableStandplass")
     var row = table.insertRow(table.rows.length)
@@ -214,6 +72,9 @@ function addStandplassToTable(div){
     iStandplass--
 }
 
+/**
+ * Removes the standplass from the registerd table
+ */
 function removeStandplass(e){
     var parent = e.target.parentNode.parentNode
     var table = document.getElementById("tableStandplass")
@@ -222,6 +83,10 @@ function removeStandplass(e){
 
 }
 
+/**
+ * Creats an array of all the standplasser
+ * @type {Array}, array of standplasser
+ */
 var standplassTable = []
 function addStandplasserToStevne() {
     table1 = document.getElementById("tableStandplass")
@@ -264,156 +129,9 @@ function addStandplasserToStevne() {
 
 }
 
-function loadPersons(){
-
-    var table2 = document.getElementById("myTableLeader2")
-    while(table2.rows.length>1){
-        table2.deleteRow(1)
-    }
-
-    var persons = getPersons(callbackPerson);
-
-
-
-}
-
-var persons
-function callbackPerson(json) {
-
-    console.log("jojo")
-    var jsPersons = JSON.parse(json);
-
-
-    persons = jsPersons
-
-    jsPersons.forEach(outputPerson);
-
-}
-
-function outputPerson(item, index) {
-    // Find a <table> element with id="myTable":
-    var table = document.getElementById("myTableLeader2");
-
-
-    // Create an empty <tr> element and add it to the 1st position of the table:
-    var row = table.insertRow(index + 1);
-
-
-    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-
-
-    // Add some text to the new cells:
-    cell1.innerHTML = item.firstName + " " + item.lastName
-    cell2.innerHTML = item.mail
-    cell3.innerHTML = item.shooterId
-    cell4.innerHTML = '<button  class="btn btn-primary">Legg til</button>';
-    cell4.onclick = addLeader
-
-}
-
-function addLeader(e){
-    var parent = e.target.parentNode.parentNode;
-    console.log(parent)
-    var children = parent.childNodes;
-    var name = children[0].innerHTML;
-    var email = children[1].innerHTML;
-    var shooterId = children[2].innerHTML;
-
-
-    var table = document.getElementById("myTableLeader1")
-    var row = table.insertRow(1);
-
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-
-    cell1.innerHTML = name
-    cell2.innerHTML = email
-    cell3.innerHTML = shooterId
-    cell4.innerHTML = '<button  class="btn btn-primary">Fjern</button>';
-    cell4.onclick = removePerson
-}
-
-function removePerson(e){
-    var parent = e.target.parentNode.parentNode
-    var table = document.getElementById("myTableLeader1")
-    parent.remove(table)
-    console.log(table.rows.length)
-
-}
-
-var competitionLeaderTable = []
-function fillLeaderBox(){
-    var table = document.getElementById("myTableLeader1")
-    var table2 = document.getElementById("tableLeader")
-    while(table2.rows.length>1){
-        table2.deleteRow(1)
-    }
-    var row
-    var cell1
-    var cell2
-    var cell3
-    console.log(table.rows.length)
-
-    for(i = 1; i < table.rows.length; i++){
-        row = table2.insertRow(i);
-        cell1 = row.insertCell(0)
-        cell2 = row.insertCell(1)
-        cell3 = row.insertCell(2)
-        cell1.innerHTML = table.rows[i].cells[0].innerHTML
-        cell2.innerHTML = table.rows[i].cells[1].innerHTML
-        cell3.innerHTML = table.rows[i].cells[2].innerHTML
-
-        competitionLeaderTable[i-1] = table.rows[i].cells[1].innerHTML
-    }
-
-}
-function searchPerson() {
-
-    var table2 = document.getElementById("myTableLeader2")
-    while(table2.rows.length>1){
-        table2.deleteRow(1)
-    }
-
-    num = 0
-    persons.forEach(findPerson)
-
-
-}
-
-
-function findPerson(item, index) {
-    var inputText = document.getElementById("searchText").value;
-    var type = document.getElementById("selected").value
-    var table = []
-
-
-
-    if (type == "searchFirstName"){
-        if (inputText == item.firstName){
-            table[num] = item;
-            num++
-            console.log(item.firstName)
-        }
-    }else if(type == "searchLastName"){
-        if (inputText == item.lastName){
-            table[num] = item;
-            num++
-        }
-    }else if(type == "searchShooterId"){
-        if (inputText == item.shooterId){
-            table[num] = item;
-            num++
-        }
-    }
-    table.forEach(outputPerson)
-}
-
+/**
+ * gets all the persons from the server
+ */
 function loadPersons2(){
 
     var table2 = document.getElementById("myTableReferee2")
@@ -440,6 +158,11 @@ function callbackPerson2(json) {
 
 }
 
+/**
+ * puts all the persons into the webpage
+ * @param item, each club object
+ * @param index, index of the club object
+ */
 function outputPerson2(item, index) {
     // Find a <table> element with id="myTable":
     var table = document.getElementById("myTableReferee2");
@@ -465,6 +188,7 @@ function outputPerson2(item, index) {
 
 }
 
+/*
 function addReferee(e){
     var parent = e.target.parentNode.parentNode;
     var children = parent.childNodes;
@@ -487,6 +211,7 @@ function addReferee(e){
     cell4.innerHTML = '<button  class="btn btn-primary">Fjern</button>';
     cell4.onclick = removePerson2
 }
+*/
 
 function removePerson2(e){
     var parent = e.target.parentNode.parentNode
@@ -841,7 +566,7 @@ function findPerson3(item, index) {
 }
 
 function saveStevne() {
-
+/*
     if(weaponGroupsTable.length > 0) {
         for (i = 0; i < weaponGroupsTable.length; i++) {
             weaponGroupObject = {
@@ -860,7 +585,7 @@ function saveStevne() {
     if(classesTable.length > 0) {
         for (i = 0; i < classesTable.length; i++) {
             classObject = {
-                weaponName: classesTable[i],
+                weaponName: table.rows[i].cells[0].innerHTML,
                 competitionNumber: localStorage.getItem("competitionNumber")
             }
             addWeaponClass(classObject)
@@ -936,7 +661,21 @@ function saveStevne() {
         }
     }
 
+*/
 
+console.log(localStorage.getItem("standplassObjects"))
+    var table = localStorage.getItem("standplassString").split(" ")
+    console.log(table)
+    for (i = 0; i < table.length; i++){
+        standplassObject3 = {
+            number: table[i],
+            competitionNumber: localStorage.getItem("competitionNumber")
+        };
+        sleep(3000);
+        console.log(standplassObject3);
+        addStandplass(standplassObject3);
+
+    }
 }
 
 function sleep(time) {

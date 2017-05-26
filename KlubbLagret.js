@@ -2,16 +2,19 @@
  * Created by sondrefr on 10.05.2017.
  */
 
+/**
+ * gets all the clubs from the server
+ */
 window.onload = loadClub;
 function loadClub(){
     var name = localStorage.getItem("name");
     //var div = document.createElement('div');
     console.log(name)
-    var club = getClubByName(name, f);
+    var club = getClubByName(name, callback());
 
 }
 
-function f(json){
+function callback(json){
     console.log(json);
     var jsClubArray = JSON.parse(json);
     var jsClub = jsClubArray[0];
@@ -36,25 +39,17 @@ function f(json){
         ls.innerHTML = jsClub.contactPersons[i].firstName
         var div = document.getElementById("contactPersons")
         div.appendChild(ls)
-    /*var n = jsClub.contactPersons[1].firstName
 
-        var div = document.createElement('div');
-        div.innerHTML = '<ls class="list-group-item list-group-item-success">'n'</ls>' ;
-     */
 
     }
 
-    
-
-    /*
-     //Club
-     var club  = document.getElementById("club");
-     club.innerHTML = jsPerson.club;
-     */
 
     loadPersons()
 }
 
+/**
+ * gets all the persons from the server
+ */
 function loadPersons(){
 
     deleteTable()
@@ -76,9 +71,10 @@ function callback(json) {
     console.log(persons)
 }
 
-
+/**
+ * search through all the clubs tou fin matches
+ */
 var num
-
 function searchPerson() {
 
     deleteTable()
@@ -121,6 +117,11 @@ function findPerson(item, index) {
     table.forEach(output)
 }
 
+/**
+ * puts all the clubs into the webpage
+ * @param item, each club object
+ * @param index, index of the club object
+ */
 function output(item, index){
 
     // Find a <table> element with id="myTable":
@@ -153,7 +154,9 @@ function output(item, index){
 
 
 }
-
+/**
+ * removes all the persons from the webpage
+ */
 function deleteTable(){
     var table1 = document.getElementById("myTableButtons");
     while(1 < table1.rows.length){
@@ -161,6 +164,10 @@ function deleteTable(){
     }
 }
 
+/**
+ * Adds the registered person to a contactperson table in the webpage
+ * @param e
+ */
 function addContactPerson(e){
     var parent = e.target.parentNode.parentNode;
     var children = parent.childNodes;
@@ -184,6 +191,10 @@ function addContactPerson(e){
 
 }
 
+/**
+ * Removes the registered person from the contactperson table in the webpage
+ * @param e
+ */
 function removeContactPerson(e){
     var parent = e.target.parentNode.parentNode
     var table = document.getElementById("tableContactPerson")
@@ -192,6 +203,9 @@ function removeContactPerson(e){
 
 }
 
+/**
+ * saves the contact person to the club
+ */
 function saveContactPerson()
 {
     //console.log(i)
@@ -225,8 +239,12 @@ function saveContactPerson()
 
 }
 
+/**
+ * stops the program for a period
+ * @param time, the time you want the program to sleep (milliseconds)
+ */
 function sleep (time) {
     var now = new Date().getTime();
-    while (new Date().getTime() < now + time) { /* do nothing */
+    while (new Date().getTime() < now + time) {
     }
 }

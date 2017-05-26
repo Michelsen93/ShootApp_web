@@ -3,7 +3,9 @@
  */
 
 
-
+/**
+ * Saves a new stevne to the server
+ */
 function lagreStevne(){
     var competition = {
         date: document.getElementById("date").value,
@@ -24,8 +26,6 @@ function lagreStevne(){
 }
 /**
  * Adds a new standplass to the competition
- *
- *
  */
 var antallStandplass = 0;
 function addStandplass() {
@@ -50,6 +50,7 @@ function addStandplass() {
 
     document.getElementById('standplass').appendChild(div);
 }
+
 /**
  * Removes a standplass from the competition
  */
@@ -60,19 +61,9 @@ function removeStandplass(div){
     antallStandplass--;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * gets all the clubs from the server
+ */
 function loadClubs(){
 
     deleteTableClubs();
@@ -81,7 +72,6 @@ function loadClubs(){
 }
 
 var clubs
-
 function callbackClubs(json) {
 
 
@@ -95,6 +85,11 @@ function callbackClubs(json) {
 
 }
 
+/**
+ * puts all the clubs into the webpage
+ * @param item, each club object
+ * @param index, index of the club object
+ */
 function outputClubs(item, index) {
     // Find a <table> element with id="myTable":
     var table = document.getElementById("myTableClubs");
@@ -125,7 +120,9 @@ function outputClubs(item, index) {
 }
 
 
-
+/**
+ * search through all the clubs to find matches
+ */
 var num
 function searchClubs() {
 
@@ -162,11 +159,17 @@ function findClubs(item, index) {
     table.forEach(output)
 }
 
+/**
+ * Shows the club in the webpage
+ */
 function addClub() {
     document.getElementById("club").value = document.getElementById("clubNameInput").value
 
 }
 
+/**
+ * removes all the clubs from the webpage
+ */
 function deleteTableClubs() {
     var table1 = document.getElementById("myTableClubs");
     while (1 < table1.rows.length) {
@@ -174,8 +177,3 @@ function deleteTableClubs() {
     }
 }
 
-function sleep (time) {
-    var now = new Date().getTime();
-    while (new Date().getTime() < now + time) { /* do nothing */
-    }
-}

@@ -2,6 +2,9 @@
  * Created by sondrefr on 17.04.2017.
  */
 
+/**
+ * gets all the persons from the server
+ */
 window.onload = load;
 function load(){
 
@@ -25,6 +28,11 @@ function callback(json) {
 
 }
 
+/**
+* puts all the persons into the webpage
+* @param item, each person object
+* @param index, index of the person object
+*/
 function output(item, index){
 
     // Find a <table> element with id="myTable":
@@ -57,6 +65,9 @@ function output(item, index){
 
 }
 
+/**
+ * adds the person to the registerd person table
+ */
 function addParticipant(e) {
 
     var tableRegUser = document.getElementById("tableRegUsers");
@@ -83,6 +94,9 @@ function addParticipant(e) {
     cell6.onclick = removeParticipant
 }
 
+/**
+ * Remove class from registerd person table
+ */
 function removeParticipant(e){
     var parent = e.target.parentNode.parentNode
     var table = document.getElementById("tableRegUsers")
@@ -91,6 +105,9 @@ function removeParticipant(e){
 
 }
 
+/**
+ * search through all the persons to find matches
+ */
 function searchPerson() {
 
     deleteTable()
@@ -129,6 +146,9 @@ function findPerson(item, index) {
     table.forEach(output)
 }
 
+/**
+ * makes the person table empty
+ */
 function deleteTable(){
     var table1 = document.getElementById("tableUsers");
     while(1 < table1.rows.length){
@@ -136,6 +156,9 @@ function deleteTable(){
     }
 }
 
+/**
+ * saves the class to the server
+ */
 function saveCompetitors() {
     var competitionNumber = localStorage.getItem("competitionNumber");
 

@@ -81,7 +81,7 @@
                         <table class="table table-hover" id="tableClasses">
 
                         </table>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpClass" onclick="loadClass()">
+                        <button type="button" class="btn btn-primary"  class="form-control input-md"  onclick="window.location.href='RegClass.html'">
                             Velg Klasser
                         </button>
 
@@ -104,7 +104,7 @@
                             </tr>
                             </thead>
                         </table>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popUpStandplass">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" onclick="window.location.href='RegStandplass.html'">
                             Velg Standplasser
                         </button>
 
@@ -135,7 +135,7 @@
                             </tr>
                             </thead>
                         </table>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpLeader" onclick="loadPersons()">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpLeader" onclick="window.location.href='RegLeader.html'">
                             Velg stevneleder
                         </button>
 
@@ -155,7 +155,7 @@
                             </tr>
                             </thead>
                         </table>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpReferee" onclick="loadPersons2()">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" data-target="#popUpReferee" onclick="window.location.href='RegClass.html'">
                             Velg dommer
                         </button>
 
@@ -201,75 +201,13 @@
 
 </div>
 
-<!-- Modal weapongroup -->
-<div class="modal fade" id="popUpWeaponGroup"  role="dialog" >
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h5>Velg våpengrupper som skal være med</h5>
-                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="fillWeaponBox()">Legg våpengrupper til stevnet</button>
-
-            </div>
-            <div class="modal-body">
-
-
-            </div>
-        </div>
-    </div>
-</div>
-
 
 
 <!-- Modal Class -->
 <div class="modal fade" id="popUpClass"  role="dialog" >
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h5>Velg Klasser som skal være med</h5>
-                <button type="button" class="btn btn-success" onClick="fillClassBox()" data-dismiss="modal">Legg til klasser i stevnet</button>
 
-
-            </div>
-            <div class="modal-body">
-
-                <div class="club">
-                    <h5>Valgte våpengrupper</h5>
-                    <table class="table table-hover text-center" id="myTableClass2">
-                        <thead>
-                        <tr>
-                            <th class="text-center">Våpengruppe</th>
-                            <th class="text-center">Bekrivelse</th>
-                            <th class="text-center">Fjern</th>
-
-                        </tr>
-                        </thead>
-                    </table>
-                    <br>
-                    <table class="table table-hover text-center" id="myTableClass">
-                        <thead>
-                        <tr>
-                            <th class="text-center">Klasse</th>
-                            <th class="text-center">Bekrivelse</th>
-                            <th class="text-center">Legg til</th>
-
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-                <br><br><br><br>
-            </div>
-            <div class="modal-footer">
-                <div id="footerClass">
-                    <button type="button" class="btn btn-primary" onClick="newClass()">Legg til ny klasse</button>
-                    <button type="button" class="btn btn-secondary" onClick="loadClass()">Oppdater liste</button>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -278,35 +216,7 @@
 <div class="modal fade" id="popUpStandplass"  role="dialog" >
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h5>Velg Klasser som skal være med</h5>
 
-            </div>
-            <div class="modal-body">
-                <table class="table table-hover text-center" id="tableStandplass">
-                    <thead>
-                    <tr>
-                        <th class="text-center">Standplass ID</th>
-                        <th class="text-center">Navn</th>
-                        <th class="text-center">Antall skudd</th>
-                        <th class="text-center">Antall figurer</th>
-                        <th class="text-center">Beskrivelse</th>
-                        <th class="text-center">Fjern</th>
-
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-            <div class="modal-footer">
-
-                <div id="footerStandplass">
-                    <button type="button" class="btn btn-primary" onClick="addStandplass()">Lag ny standplass</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="addStandplasserToStevne()">Legg standplasser til stevnet</button><br><br>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -315,68 +225,7 @@
 <div class="modal fade" id="popUpLeader"  role="dialog" >
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h5>Velg personer som ledere</h5>
 
-
-            </div>
-            <div class="modal-body">
-
-                <div class="club">
-                    <h4>Valgte stevneledere</h4>
-                    <table class="table table-hover text-center" id="myTableLeader1">
-                        <thead>
-                        <tr>
-                            <th class="text-center">Navn</th>
-                            <th class="text-center">Mail</th>
-                            <th class="text-center">Skytternr.</th>
-                            <th class="text-center">Fjern</th>
-                        </tr>
-                        </thead>
-                    </table>
-                    <br>
-                    <h4>Alle personer</h4>
-                    <div class="col-xs-3">
-                        <h5> Søk Etter: </h5>
-                    </div>
-                    <br><br>
-                    <div class="col-xs-3">
-
-                        <select id="selected" class="form-control">
-                            <option value="searchFirstName">Fornavn</option>
-                            <option value="searchLastName">Etternavn</option>
-                            <option value="searchShooterId">Skytternr.</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-3">
-
-                        <input type="text" id="searchText" class="form-control input-sm">
-                    </div>
-                    <button onclick="searchPerson()" class="btn btn-primary">Søk</button>
-                    <button onclick="loadPersons()" class="btn btn-secondary">Tilbakestill</button>
-                    <table class="table table-hover text-center" id="myTableLeader2">
-                        <thead>
-                        <tr>
-                            <th class="text-center">Navn</th>
-                            <th class="text-center">Mail</th>
-                            <th class="text-center">Skytternr.</th>
-                            <th class="text-center">Legg til</th>
-
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div id="footerLeader">
-
-                    <button type="button" class="btn btn-success" data-dismiss="modal" onClick="fillLeaderBox()">Legg til stevneleder</button>
-
-                </div>
-            </div>
         </div>
     </div>
 </div>
