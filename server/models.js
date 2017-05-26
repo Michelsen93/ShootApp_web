@@ -43,7 +43,11 @@ var ScorecardModel = ottoman.model("Scorecard", {
             bullseyes: "integer"
         }
     ],
-    competitor: {ref: "Person"}
+    competitor: {ref: "Person"},
+    completed: {
+        type: "boolean",
+        default: false
+    }
 
 });
 
