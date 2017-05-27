@@ -72,7 +72,7 @@ function addReferee(e){
     var email = children[1].innerHTML;
     var shooterId = children[2].innerHTML;
 
-
+    console.log(parent)
     var table = document.getElementById("myTableReferee1")
     var row = table.insertRow(1);
 

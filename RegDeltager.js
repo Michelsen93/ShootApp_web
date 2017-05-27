@@ -172,6 +172,7 @@ function saveCompetitors() {
             mail: table.rows[i].cells[3].innerHTML
         }
         addCompetitor(competitor)
+        console.log(competitor)
     }
-    window.location.href = "NyttStevne2.html";
+    //window.location.href = "NyttStevne2.html";
 }

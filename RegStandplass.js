@@ -107,7 +107,7 @@ function addStandplasserToStevne() {
 
     if(standplassTable.length > 0){
         for(i = 0; i < standplassTable.length; i++){
-            //console.log(standplassTable[i])
+            console.log(standplassTable[i])
             postStandplass(standplassTable[i])
         }
     }

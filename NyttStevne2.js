@@ -665,7 +665,9 @@ function saveStevne() {
 
 console.log(localStorage.getItem("standplassObjects"))
     var table = localStorage.getItem("standplassString").split(" ")
+    table = table.splice(0, table.length-1)
     console.log(table)
+    /*
     for (i = 0; i < table.length; i++){
         standplassObject3 = {
             number: table[i],
@@ -676,6 +678,12 @@ console.log(localStorage.getItem("standplassObjects"))
         addStandplass(standplassObject3);
 
     }
+    */
+    standplassObject3 = {
+        number: table,
+        competitionNumber: localStorage.getItem("competitionNumber")
+    };
+    addStandplass(standplassObject3)
 }
 
 function sleep(time) {
