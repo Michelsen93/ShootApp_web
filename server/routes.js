@@ -80,7 +80,7 @@ var appRouter = function(app) {
            }
            res.send(scorecards);
        });
-       });
+    });
 
 
     //Gets all competitions. works
@@ -295,7 +295,7 @@ var appRouter = function(app) {
      * Adds a competition to the club, expects competitionnumber and club name in body
      * not working
      */
-    app.post("club/competition", function (req, res) {
+    app.post("/club/competition", function (req, res) {
         ClubModel.find({name: req.body.name}, function(error, club){
             if(error){
                 return res.status(400).send(error);
@@ -320,31 +320,29 @@ var appRouter = function(app) {
 
 
     app.post("/team/competitors", function (req, res) {
-        TeamModel.find({
-            teamNumber: req.body.teamNumber,
-            competitionNumber: req.body.competitionNumber
-        }, function (error, team) {
+        TeamModel.find({teamNumber: req.body.teamNumber, competitionNumber: req.body.competitionNumber}, function (error, team) {
             if (error) {
-                return res.status(400).send(error);
+                return res.status(400);
             }
+
             var competitors = req.body.competitors;
             for (var i in competitors) {
                 PersonModel.find({mail: competitors[i]}, function (error, person) {
                     if (error) {
-                        return res.status(400).send(error);
+                        return res.status(400);
                     }
                     team[0].competitors.push(person[0]);
+                    team[0].save(function (error, result) {
+                        if (error) {
+                            return res.status(400);
+                        }
+                        console.log("competitor added to team: " +  req.body.teamNumber);
 
-
+                    })
                 });
-
             }
-            team[0].save(function (error, result) {
-                if (error) {
-                    return res.status(400).send(error);
-                }
-                res.send(team)
-            })
+            res.send(team)
+
         });
     });
 
@@ -362,13 +360,12 @@ var appRouter = function(app) {
             startTime: req.body.startTime,
             competitors: []
         });
-    });
-
 
         team.save(function(error, result){
             if(error){
                 return res.status(400).send(error);
             }
+        });
             CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition) {
                 if (error) {
                     return res.status(400).send(error);
@@ -380,14 +377,15 @@ var appRouter = function(app) {
                         if (error) {
                         return res.status(400).send(error);
                     }
-
+                        res.send(competition[0]);
                     });
                 }
                 else{
                     res.status(500).send("error saving");
                 }
             });
-        });
+
+    });
 
 
 
@@ -398,27 +396,28 @@ var appRouter = function(app) {
      */
     app.post("/competition/standplass", function (req, res) {
 
-            console.log(req.body.competitionNumber, req.body.number);
+
             CompetitionModel.find({competitionNumber: req.body.competitionNumber}, function(error, competition){
                 if(error){
-                    return res.status(400).send(error);
+                    return res.status(400);
                 }
+
                 var numbers = req.body.numbers;
                 for(var i in numbers){
-                    StandplassModel.find({number: req.body.number}, function(error, standplass){
+                    StandplassModel.find({number: numbers[i]}, function(error, standplass){
                         if(error){
-                            return res.status(400).send(error);
+                            return res.status(400);
                         }
                         competition[0].standplasses.push(standplass[0]);
+                        competition[0].save(function(error, result){
+
+                            if(error){
+                                return res.status(400);
+                            }
+                        })
                     })
                 }
-            competition[0].save(function(error, result){
-
-                if(error){
-                    return res.status(400).send(error);
-                }
                 res.send(competition[0]);
-            })
         });
 
     });

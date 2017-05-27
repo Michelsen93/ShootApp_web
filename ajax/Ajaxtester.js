@@ -5,11 +5,11 @@
 function testsavePerson(){
     var John = new Object();
 
-    John.firstName = "Ash";
-    John.lastName = "Ketshum";
-    John.phone = "545454";
-    John.mail = "garrysux@pikapika.gym";
-    John.shooterId = "the very best";
+    John.firstName = "Ole";
+    John.lastName = "Michelsen";
+    John.phone = "69696969";
+    John.mail = "123";
+    John.shooterId = "Me";
 
 
     //postPerson(John, function(){
@@ -29,8 +29,8 @@ function testGetByEmail(){
 
 function testPostStandplass(){
     var standplass = new Object();
-    standplass.name = "test3";
-    standplass.number = "kaka";
+    standplass.name = "1";
+    standplass.number = "2020";
     standplass.maxHits = 4;
     standplass.numberOfFigures = 3;
 
@@ -55,9 +55,9 @@ function testPostCompetition() {
 
 function testAddStandplass() {
     var ids = new Object();
-    ids.number = "kaka";
+    ids.numbers = ["2020", "NM1701", "NM1702"];
     ids.competitionNumber = "123";
-    console.log(ids);
+
     addStandplass(ids, function(){
         console.log(ids);
     })
@@ -75,36 +75,35 @@ function testAddClub(){
 }
 function testAddContactPerson(){
     var adder = new Object();
-    adder.mail = "me@you.us";
+    adder.mail = "pokemaster@won.league";
     adder.name = "Åsane";
     addContactPersonToClub(adder);
 }
 
 function testPostWeaponClass(){
     var weaponClass = new Object();
-    weaponClass.description = "Sier pang";
-    weaponClass.weaponName = "Bazooka";
+    weaponClass.description = "For gode";
+    weaponClass.weaponName = "A";
     postWeaponClass(weaponClass);
 }
 
 function testPostWeaponGroup(){
     var weaponGroup = new Object();
-    weaponGroup.name = "Liten";
-    weaponGroup.description = "for rike";
+    weaponGroup.name = "Kniv";
+    weaponGroup.description = "Skarp";
     postWeaponGroup(weaponGroup);
 
 }
 
 function testAddCompetitionToClub(){
     var saver = new Object();
-    saver.name = "zzz";
-    saver.competitionNumber = 123;
+    saver.name = "Åsane";
+    saver.competitionNumber = "123";
     addCompetitionToClub(saver);
 }
 
 function testAddTeam() {
     var team = {
-        competitors: ["me@you.us", "garrysux@pikapika.gym"],
         competitionNumber: "123",
         startTime: "10:00",
         teamNumber: "33323"
@@ -116,12 +115,14 @@ function testAddTeam() {
 
 function testAddMemberToTeam() {
     var team = {
-        competitors: ["me@you.us", "garrysux@pikapika.gym"],
+        competitors: ["123", "pokemaster@won.league"],
         competitionNumber: "123",
         teamNumber: "33323"
     };
     addMembersToTeam(team);
 }
+
+testAddStandplass()
 
 
 
