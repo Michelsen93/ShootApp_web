@@ -58,21 +58,22 @@ function outputPerson2(item, index) {
     cell2.innerHTML = item.mail
     cell3.innerHTML = item.shooterId
     cell4.innerHTML = '<button  class="btn btn-primary">Legg til</button>';
-    cell4.onclick = addReferee
+    cell4.onclick = addRefereeToTable
 
 }
 
 /**
  * adds the person to the registerd person table
  */
-function addReferee(e){
+function addRefereeToTable(e){
+    // console.log(e.target)
     var parent = e.target.parentNode.parentNode;
     var children = parent.childNodes;
     var name = children[0].innerHTML;
     var email = children[1].innerHTML;
     var shooterId = children[2].innerHTML;
 
-    console.log(parent)
+    //console.log(parent)
     var table = document.getElementById("myTableReferee1")
     var row = table.insertRow(1);
 
@@ -105,13 +106,11 @@ function removePerson2(e){
 function fillRefereeBox(){
     var table = document.getElementById("myTableReferee1")
 
-
-
     for(i = 1; i < table.rows.length; i++){
 
         var referee = {
             mail: table.rows[i].cells[1].innerHTML,
-            competitionNumber: "998877"/*localStorage.getItem("competitionNumber")*/
+            competitionNumber: "565656"/*localStorage.getItem("competitionNumber")*/
         }
         addReferee(referee)
     }

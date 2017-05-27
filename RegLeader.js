@@ -107,8 +107,6 @@ var competitionLeaderTable = []
 function fillLeaderBox(){
     var table = document.getElementById("myTableLeader1")
 
-
-
     console.log(table.rows.length)
 
     for(i = 1; i < table.rows.length; i++){
