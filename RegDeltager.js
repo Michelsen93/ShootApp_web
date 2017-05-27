@@ -164,15 +164,19 @@ function saveCompetitors() {
 
     var table = document.getElementById("tableRegUsers")
     var row
-    var competitor
+    var competitors = []
+
     for(i = 1; i < table.rows.length; i++){
         row = table.rows[i]
-        competitor ={
-            competitionNumber: competitionNumber,
-            mail: table.rows[i].cells[3].innerHTML
-        }
-        addCompetitor(competitor)
-        console.log(competitor)
+        competitors[i-1] =  table.rows[i].cells[3].innerHTML
+        console.log(competitors[i-1])
     }
+
+    competitor = {
+        competitionNumber: competitionNumber,
+        competitors: competitors
+    }
+
+    addCompetitor(competitor)
     //window.location.href = "NyttStevne2.html";
 }
