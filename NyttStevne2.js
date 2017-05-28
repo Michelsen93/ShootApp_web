@@ -663,7 +663,7 @@ function saveStevne() {
 
 */
 
-console.log(localStorage.getItem("standplassObjects"))
+    console.log(localStorage.getItem("standplassObjects"))
     var table = localStorage.getItem("standplassString").split(" ")
     table = table.splice(0, table.length-1)
     console.log(table)
@@ -683,7 +683,8 @@ console.log(localStorage.getItem("standplassObjects"))
         number: table,
         competitionNumber: localStorage.getItem("competitionNumber")
     };
-    addStandplass(standplassObject3)
+    console.log(standplassObject3)
+    addStandplass(standplassObject3 )
 }
 
 function sleep(time) {
