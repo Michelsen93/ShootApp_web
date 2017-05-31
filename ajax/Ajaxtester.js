@@ -8,7 +8,7 @@ function testsavePerson(){
     John.firstName = "Ole";
     John.lastName = "Michelsen";
     John.phone = "69696969";
-    John.mail = "123";
+    John.mail = "95";
     John.shooterId = "Me";
 
 
@@ -122,7 +122,10 @@ function testAddMemberToTeam() {
     addMembersToTeam(team);
 }
 
-testAddStandplass()
+function testDeletePerson(){
+    var _id = "89a81f47-edd0-4249-9aca-3c859a466e92";
+    deletePerson(_id)
+}
 
 
 

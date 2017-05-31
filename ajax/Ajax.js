@@ -3,7 +3,7 @@
  */
 
 
-var baseURL = "http://158.37.225.246:3000/";
+var baseURL = "http://localhost:3000/";
 
 
 
@@ -439,7 +439,59 @@ function addWeaponGroup(json){
 }
 
 
+//All functions below takes the attribute _id from the object
+//The object with matching _id will be deleted from the database
+//no object required, only the _id passed ass string
+function deletePerson(_id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "person/delete/" + _id, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
+function deleteStandplass(_id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "standplass/delete/" + _id, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
+function deleteCompetition(_id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "competition/delete/" + _id, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
 
+function deleteWeaponClass(_id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "weaponClass/delete/" + _id, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
+
+function deleteClub(_id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "club/delete/" + _id, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
+function deleteTeam(_id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "team/delete/" + _id, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
+function deleteWeaponGroup(_id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "weaponGroup/delete/" + _id, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
+function deleteScorecard(_id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", baseURL + "scorecard/delete/" + _id, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
 
 
 
