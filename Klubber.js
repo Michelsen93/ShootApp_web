@@ -14,7 +14,6 @@ function load(){
 }
 
 var clubs
-
 function callback(json) {
 
 
@@ -28,15 +27,27 @@ function callback(json) {
 
 }
 
-
+var club
 function fillModal(item) {
-    document.getElementById("tableFirstName").value = item.name
+    document.getElementById("myModalLabel").innerHTML = item.name
 
-    document.getElementById("tableLastName").value = item.mail
+    document.getElementById("clubName").innerHTML = item.name
 
-    document.getElementById("tableShooterId").value = item.address
+    document.getElementById("email").innerHTML = item.mail
 
+    document.getElementById("address").innerHTML = item.address
 
+    var name = ""
+    var email = ""
+    for(i = 0; i < item.contactPersons.length; i++){
+        console.log(item)
+        name = name + " " + item.contactPersons[i].firstName + " " + item.contactPersons[i].lastName + '<br>'
+        email = email + " " + item.contactPersons[i].mail + '<br>'
+    }
+    console.log(name)
+    document.getElementById("contactName").innerHTML = name
+    document.getElementById("contactEmail").innerHTML = email
+    club = item
 }
 
 /**
@@ -120,6 +131,12 @@ function output(item, index) {
         modal.style.display = "none";
     }
 
+    var deleteButton = document.getElementById("delete")
+    deleteButton.onclick = function(){
+        modal.style.display = "none"
+        deleteClubFromServer()
+    }
+
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
@@ -137,4 +154,19 @@ function deleteTable() {
     while (1 < table1.rows.length) {
         table1.deleteRow(1)
     }
+}
+
+function doChanges() {
+    localStorage.setItem("clubName", club.name)
+    window.location.href = 'NyKlubb.html'
+}
+
+function deleteClubFromServer(){
+    deleteClub(club._id)
+    load()
+}
+
+function newClub(){
+    localStorage.clear()
+    window.location.href = 'NyKlubb.html'
 }

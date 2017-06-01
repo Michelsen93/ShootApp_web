@@ -2,6 +2,14 @@
  * Created by sondrefr on 17.04.2017.
  */
 
+window.onload = loadWindow()
+function loadWindow() {
+    console.log(localStorage.getItem("email"))
+
+    if(localStorage.getItem("email") !== null) {
+        getPersonByMail(localStorage.getItem("email"), callbackPerson)
+    }
+}
 
 /**
  * saves the person to the server, and send you to next page
@@ -14,9 +22,14 @@ function saveBruker(){
         mail: document.getElementById("email").value,
         shooterId: document.getElementById("skytterNr").value,
         phone: document.getElementById("tlfnr").value,
+        club: document.getElementById("klubb").value,
 
     };
 
+    if(localStorage.getItem("email") !== null) {
+        deletePerson(jsPerson._id)
+        localStorage.clear()
+    }
     postPerson(bruker);
     console.log(bruker);
     var email = document.getElementById("email").value;
@@ -24,6 +37,36 @@ function saveBruker(){
 
 }
 
+var jsPerson
+function callbackPerson(json) {
+    jsPerson = JSON.parse(json)
+
+    console.log(jsPerson)
+    //firstname
+    var fname  = document.getElementById("fnavn");
+    fname.value = jsPerson.firstName;
+
+    //Lastname
+    var lname  = document.getElementById("enavn");
+    lname.value = jsPerson.lastName;
+
+    //Email
+    var mail  = document.getElementById("email");
+    mail.value = jsPerson.mail;
+
+    //ShooterId
+    var shooterId  = document.getElementById("skytterNr");
+    shooterId.value = jsPerson.shooterId;
+
+    var phone  = document.getElementById("tlfnr");
+    phone.value = jsPerson.phone;
+
+    //Club
+    var club  = document.getElementById("klubb");
+    club.value = jsPerson.club;
+
+    //passord
+}
 
 /**
  * gets all the clubs from the server
@@ -146,3 +189,4 @@ function sleep (time) {
     while (new Date().getTime() < now + time) { /* do nothing */
     }
 }
+

@@ -10,19 +10,18 @@ function load(){
     var mail = localStorage.getItem("email");
     //var div = document.createElement('div');
     console.log(mail)
-    var person = getPersonByMail(mail, callback());
+    getPersonByMail(mail, callback);
 
 }
-
+var jsPerson
 function callback(json){
-    console.log(json);
-    var jsPersonArray = JSON.parse(json);
-    var jsPerson = jsPersonArray[0];
-    //console.log(jsPerson.firstName);
+
+    jsPerson = JSON.parse(json);
 
     //Firstname
-    var fname  = document.getElementById("fname");
+    var fname = document.getElementById("fname")
     fname.innerHTML = jsPerson.firstName;
+
 
     //Lastname
     var lname  = document.getElementById("lname");
@@ -36,12 +35,11 @@ function callback(json){
     var shooterId  = document.getElementById("shooterId");
     shooterId.innerHTML = jsPerson.shooterId;
 
-
-    /*
     //Club
     var club  = document.getElementById("club");
     club.innerHTML = jsPerson.club;
-    */
+}
 
-
+function clearStorage() {
+    localStorage.clear()
 }

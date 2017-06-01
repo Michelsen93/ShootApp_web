@@ -11,10 +11,11 @@ function load(){
     deleteTable()
     var person = getPersons(callback);
 
+
+
 }
 
 var persons
-
 function callback(json) {
 
 
@@ -28,16 +29,22 @@ function callback(json) {
 
 }
 
+var person
 function fillModal(item) {
-    document.getElementById("tableFirstName").value = item.firstName
+    document.getElementById("tableName").innerHTML = item.firstName + " " + item.lastName
 
-    document.getElementById("tableLastName").value = item.lastName
+    document.getElementById("tableShooterId").innerHTML = item.shooterId
 
-    document.getElementById("tableShooterId").value = item.shooterId
+    document.getElementById("tableMail").innerHTML = item.shooterId
 
-    document.getElementById("tableMail").value = item.shooterId
+    document.getElementById("tablePhone").innerHTML = item.phone
 
-    document.getElementById("tablePhone").value = item.phone
+    document.getElementById("tableClub").innerHTML = item.club
+
+    person = item
+
+
+
 }
 
 /**
@@ -132,6 +139,12 @@ function output(item, index){
         modal.style.display = "none";
     }
 
+    var deleteButton = document.getElementById("delete")
+    deleteButton.onclick = function(){
+        modal.style.display = "none"
+        deletePersonFromServer()
+    }
+
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
@@ -149,4 +162,19 @@ function deleteTable(){
     while(1 < table1.rows.length){
         table1.deleteRow(1)
     }
+}
+
+function doChanges() {
+    localStorage.setItem("email", person.mail)
+    window.location.href = 'Nybruker.html'
+}
+
+function deletePersonFromServer(){
+    deletePerson(person._id)
+    load()
+}
+
+function newUser() {
+    localStorage.clear()
+    window.location.href = "NyBruker.html"
 }

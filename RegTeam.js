@@ -206,6 +206,7 @@ function addTeamToTable() {
         competitionNumber: localStorage.getItem("competitionNumber")
     }
     addTeam(teamObject)
+    console.log(teamObject)
 }
 
 function removeTeam(e){
@@ -233,7 +234,7 @@ function fillTeamBox() {
         }
         teamTable[i-1] = team
     }
-
+/*
     if(teamTable.length > 0){
         for(i = 0; i < teamTable.length; i++){
             teamObject = {
@@ -241,10 +242,10 @@ function fillTeamBox() {
                 startTime: teamTable[i].startTime,
                 competitionNumber: localStorage.getItem("competitionNumber")
             }
-            addTeam(teamObject)
+            //addTeam(teamObject)
         }
     }
-
+*/
     sleep(500)
 
     if(teamTable.length > 0){
@@ -266,6 +267,7 @@ function fillTeamBox() {
         }
     }
 
+    window.location.href='NyttStevne2.html'
 
 }
 

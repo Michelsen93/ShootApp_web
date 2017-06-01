@@ -5,7 +5,7 @@
     <script type="text/javascript" src="NyttStevne2.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <meta charset="UTF-8">
-    <title>Nytt stevne</title>
+    <title>Stevner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -62,10 +62,10 @@
                 <!-- Våpengruppe -->
                 <div class="form-group">
                     <label class="col-md-4 control-label">Våpengrupper</label>
-                    <div class="col-md-4">
-                        <table class="table table-hover" id="tableWeaponGroups">
+                    <div class="col-md-5">
+                        <div id="weaponGroups">
 
-                        </table>
+                        </div>
                         <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" onclick="window.location.href='RegVåpengruppe.html'">
                             Velg våpengrupper
                         </button>
@@ -77,10 +77,10 @@
                 <!-- Klasse -->
                 <div class="form-group">
                     <label class="col-md-4 control-label">Klasser</label>
-                    <div class="col-md-4">
-                        <table class="table table-hover" id="tableClasses">
+                    <div class="col-md-5">
+                        <div id="classes">
 
-                        </table>
+                        </div>
                         <button type="button" class="btn btn-primary"  class="form-control input-md"  onclick="window.location.href='RegClass.html'">
                             Velg Klasser
                         </button>
@@ -92,18 +92,10 @@
                 <!-- Standplasser -->
                 <div class="form-group">
                     <label class="col-md-4 control-label">Standplasser</label>
-                    <div class="col-md-4">
-                        <table class="table table-hover text-center" id="tableStandplass2">
-                            <thead>
-                            <tr>
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Navn</th>
-                                <th class="text-center">Antall skudd</th>
-                                <th class="text-center">Antall figurer</th>
+                    <div class="col-md-5">
+                        <div id="standplasser">
 
-                            </tr>
-                            </thead>
-                        </table>
+                        </div>
                         <button type="button" class="btn btn-primary" data-toggle="modal" onclick="window.location.href='RegStandplass.html'">
                             Velg Standplasser
                         </button>
@@ -115,7 +107,10 @@
                 <!-- Legg til skyttere -->
                 <div class="form-group">
                     <label class="col-md-4 control-label">Skyttere</label>
-                    <div class="col-md-4">
+                    <div class="col-md-5">
+                        <div id="competitors">
+
+                        </div>
                         <button type="submit" id="addShooters" class="btn btn-primary" onclick="window.location.href='RegDeltagere.html'">
                             Registrer skyttere
                         </button>
@@ -125,16 +120,10 @@
                 <!-- Legg til stevneleder -->
                 <div class="form-group">
                     <label class="col-md-4 control-label">Stevneleder</label>
-                    <div class="col-md-4">
-                        <table class="table table-hover" id="tableLeader">
-                            <thead>
-                            <tr>
-                                <th class="text-center">Navn</th>
-                                <th class="text-center">Email</th>
-                                <th class="text-center">Skytternummer</th>
-                            </tr>
-                            </thead>
-                        </table>
+                    <div class="col-md-5">
+                        <div id="leaders">
+
+                        </div>
                         <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md"  onclick="window.location.href='RegLeader.html'">
                             Velg stevneleder
                         </button>
@@ -145,16 +134,8 @@
 
                 <div class="form-group">
                     <label class="col-md-4 control-label">Dommer</label>
-                    <div class="col-md-4">
-                        <table class="table table-hover" id="tableReferee">
-                            <thead>
-                            <tr>
-                                <th class="text-center">Navn</th>
-                                <th class="text-center">Email</th>
-                                <th class="text-center">Skytternummer</th>
-                            </tr>
-                            </thead>
-                        </table>
+                    <div class="col-md-5 ">
+
                         <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" onclick="window.location.href='RegReferee.html'">
                             Velg dommer
                         </button>
@@ -166,16 +147,10 @@
                 <!-- Opprett Lag -->
                 <div class="form-group">
                     <label class="col-md-4 control-label">Lag</label>
-                    <div class="col-md-4">
-                        <table class="table table-hover" id="tableTeam">
-                            <thead>
-                            <tr>
-                                <th class="text-center">Lag nr.</th>
-                                <th class="text-center">Medlemmer</th>
-                                <th class="text-center">Starttid</th>
-                            </tr>
-                            </thead>
-                        </table>
+                    <div class="col-md-5">
+                        <div id="teams">
+
+                        </div>
                         <button type="button" class="btn btn-primary" data-toggle="modal" class="form-control input-md" onclick="window.location.href='RegTeam.html'">
                             Registrer Lag
                         </button>

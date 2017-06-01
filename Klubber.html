@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <title>Utøvere</title>
+    <title>Klubber</title>
 </head>
 <body>
 
@@ -96,7 +96,7 @@
 
     <!-- Ny utøver knapp-->
     <div>
-        <a href="NyKlubb.html" class="btn btn-primary btn-block" role="button">Ny klubb </a>
+        <a class="btn btn-primary btn-block" role="button" onclick="newClub()">Ny klubb </a>
     </div>
 
 
@@ -109,68 +109,55 @@
 
 <!-- Modal UtoverInfo -->
 <div class="modal" id="PopUpClubInfo">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Utøver navn</h4>
+                <h4 class="modal-title" id="myModalLabel"></h4>
             </div>
             <div class="modal-body" id="modalBody">
 
                 <table class="table">
                     <tbody>
                     <tr>
-                        <th>Fornavn</th>
-                        <td > <input type="text" class="form-control input-sm" id="tableFirstName"></td>
+                        <th>Klubbnavn:</th>
+                        <td id="clubName"></td>
                     </tr>
                     <tr>
-                        <th>Etternavn</th>
-                        <td><input type="text" class="form-control input-sm" id="tableLastName"></td>
+                        <th>Email:</th>
+                        <td id="email"></td>
                     </tr>
                     <tr>
-                        <th>Email</th>
-                        <td><input type="text" class="form-control input-sm" id="tableMail"></td>
+                        <th>Adresse:</th>
+                        <td id="address"></td>
                     </tr>
                     <tr>
-                        <th>Skytternr</th>
-                        <td><input type="text" class="form-control input-sm" id="tableShooterId"></td>
+                        <th>Kontaktperson:</th>
+                        <td>
+                            <table class="table">
+                                <tr>
+                                    <td id="contactName">
+                                    <td id="contactEmail"></td>
+                                </tr>
+                            </table>
+                        </td>
+
                     </tr>
-                    <tr>
-                        <th>Telefonnr</th>
-                        <td><input type="text" class="form-control input-sm" id="tablePhone"></td>
-                    </tr>
+
                     </tbody>
                 </table>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="doChanges()">Gjør endringer</button>
+                <button type="button" id="delete" class="btn btn-danger" class="close" data-dismiss="modal">Slett</button>
             </div>
         </div>
     </div>
 </div>
 
 
-<!-- Modal SlettUtøver -->
-<div class="modal fade" id="popUpSletteBruker"  role="dialog" >
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h5>Er du sikker på at du vil slette denne brukeren?</h5>
 
-
-            </div>
-            <div class="modal-body">
-                <button type="button" class="btn btn-danger">Ja</button>
-                <button type="button" class="btn btn-primary">Nei</button>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 </body>
 </html>

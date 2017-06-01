@@ -105,15 +105,18 @@ function removePerson2(e){
  */
 function fillRefereeBox(){
     var table = document.getElementById("myTableReferee1")
-
+    var mailArray = []
     for(i = 1; i < table.rows.length; i++){
+        mailArray[i-1] = table.rows[i].cells[1].innerHTML
 
-        var referee = {
-            mail: table.rows[i].cells[1].innerHTML,
-            competitionNumber: "565656"/*localStorage.getItem("competitionNumber")*/
-        }
-        addReferee(referee)
     }
+
+    var referee = {
+        mail: mailArray,
+        competitionNumber: localStorage.getItem("competitionNumber"),
+    }
+    console.log(referee)
+    addReferee(referee)
 
 }
 

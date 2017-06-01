@@ -108,19 +108,17 @@ function fillLeaderBox(){
     var table = document.getElementById("myTableLeader1")
 
     console.log(table.rows.length)
-
+    var mailArray = []
     for(i = 1; i < table.rows.length; i++){
+        mailArray[i-1] = table.rows[i].cells[1].innerHTML
 
-        var leader = {
-            mail: table.rows[i].cells[1].innerHTML,
-            competitionNumber: localStorage.getItem("competitionNumber")
-        }
-        addCompetitionLeader(leader)
-        console.log(leader)
-
-        //competitionLeaderTable[i-1] = table.rows[i].cells[1].innerHTML
     }
 
+    var leader = {
+        mail: mailArray,
+        competitionNumber: localStorage.getItem("competitionNumber")
+    }
+    addCompetitionLeader(leader)
 }
 
 /**
