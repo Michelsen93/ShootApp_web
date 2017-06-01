@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
     <title>Live</title>
 </head>
 <body>
@@ -49,7 +50,58 @@
 
         </div>
     </nav>
+
+    <!-- Main content -->
+    <legend>Liveresultater</legend>
+
+    <!--  Search -->
+    <div class="col-xs-2">
+
+        <select id="selected" class="form-control" type="text">
+            <option value="" disabled selected>Velg et stevne</option>
+        </select>
+    </div>
+    <button onclick="findSelectedCompetition()" class="btn btn-primary">Velg</button>
+
+    <br><br>
+
+    <div class="panel panel-default">
+        <!-- Table -->
+        <div class="scrollable">
+            <table class="table table-hover text-center" id="myTable">
+                <thead>
+
+                <tr>
+                    <th class="text-center">Navn</th>
+                    <th class="text-center">Klubb</th>
+                    <th class="text-center">Treff</th>
+                    <th class="text-center">Innertreff</th>
+                    <th class="text-center">Antall figurer</th>
+                    <th class="text-center">Sum</th>
+                </tr>
+                </thead>
+                <!--
+                <tbody>
+                <tr class="clickable-row">
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" onclick="window.location.href='NyttStevne.html'">Rediger</button></td>
+                    <td><button type="button" class="close" data-toggle="modal" data-target="#popUpSlettStevne"><span aria-hidden="true">&times;</span></button></td>
+                </tr>
+                <tr class="clickable-row">
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                </tr>
+                -->
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
+
 
 
 
@@ -58,6 +110,7 @@
 <footer class="footer">
     <p class="text-muted">Bachelorprosjekt gruppe 4 ved HVL</p>
 </footer>
-
+<script type="text/javascript" src="ajax/Ajax.js"></script>
+<script type="text/javascript" src="Live.js"></script>
 </body>
 </html>
