@@ -58,7 +58,7 @@ function addStandplassToTable(div){
     cell5.innerHTML = document.getElementById("description").value
     cell6.innerHTML = '<button  class="btn btn-primary">Fjern</button>';
     cell6.onclick = removeStandplass
-/*
+
     var standplassObject = {
         name: cell2.innerHTML,
         number: cell1.innerHTML,
@@ -67,7 +67,7 @@ function addStandplassToTable(div){
         description: cell5.innerHTML,
     }
     postStandplass(standplassObject)
-    */
+
     document.getElementById('newStandplass').removeChild(div.parentNode.parentNode);
     iStandplass--
 }
@@ -92,47 +92,20 @@ function addStandplasserToStevne() {
 
     for (i=1; i<table1.rows.length; i++) {
 
-
-        var standplassObject = {
-            name: table1.rows[i].cells[1].innerHTML,
-            number: table1.rows[i].cells[0].innerHTML,
-            maxHits: table1.rows[i].cells[2].innerHTML,
-            numberOfFigures: table1.rows[i].cells[3].innerHTML,
-            description: table1.rows[i].cells[4].innerHTML,
-        }
-        standplassTable[i-1] = standplassObject
-
+        standplassTable[i-1] = table1.rows[i].cells[0].innerHTML
     }
 
+    standplassObject = {
+        numbers: standplassTable,
+        competitionNumber: localStorage.getItem("competitionNumber")
+    };
+    console.log(standplassObject)
+    addStandplass(standplassObject)
 
-    if(standplassTable.length > 0){
-        for(i = 0; i < standplassTable.length; i++){
-            console.log(standplassTable[i])
-            postStandplass(standplassTable[i])
-        }
-    }
 
-    /*
-    if(standplassTable.length > 0){
-        for(i = 0; i < standplassTable.length; i++){
-            var standplassObject2 = {
-                number: standplassTable[i].number,
-                competitionNumber: localStorage.getItem("competitionNumber")
 
-            }
-            console.log(standplassObject2)
-            addStandplass(standplassObject2)
-        }
+    window.location.href='NyttStevne2.html'
 
-    }
-    */
-    console.log(standplassTable[0].number)
-    var standplassString = ""
-    for (i = 0; i < standplassTable.length; i++){
-        standplassString = standplassString + standplassTable[i].number + " "
-    }
-    console.log(standplassString)
-    localStorage.setItem("standplassString", standplassString)
 }
 
 /**

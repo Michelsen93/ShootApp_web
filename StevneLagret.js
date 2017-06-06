@@ -129,7 +129,7 @@ function outputCompetitors(item, index) {
         var cell3 = row.insertCell(2)
         var cell4 = row.insertCell(3)
 
-
+        console.log(item)
         cell1.innerHTML = item.firstName + " " + item.lastName
         cell2.innerHTML = item.shooterId
         cell3.innerHTML = item.mail

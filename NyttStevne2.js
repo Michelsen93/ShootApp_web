@@ -13,18 +13,6 @@ function load(){
 
 function saveStevne() {
 
-    console.log(localStorage.getItem("standplassObjects"))
-    var table = localStorage.getItem("standplassString").split(" ")
-    table = table.splice(0, table.length-1)
-    console.log(table)
-
-    standplassObject3 = {
-        numbers: table,
-        competitionNumber: localStorage.getItem("competitionNumber")
-    };
-    console.log(standplassObject3)
-    addStandplass(standplassObject3 )
-
     window.location.href = "StevneLagret.html"
 }
 
@@ -113,33 +101,36 @@ function fillInfo(){
         }
     }
     //Competitors
-    divCompetitors = document.createElement('div');
-    divCompetitors.innerHTML =
-        '<div class="scrollable table-responsive">'+
-        '<table class="table table-hover text-center" id="tableCompetitors">'+
-        '<thead>'+
-            '<tr>'+
-                '<th class="text-center">Navn</th>'+
-                '<th class="text-center">Skytternr.</th>'+
-                '<th class="text-center">Email</th>'+
-        '</thead>'+
-        '</tbody>'+
-        '</table>'+
-        '</div>';
+    if (competition.competitors.length > 0) {
+        divCompetitors = document.createElement('div');
+        divCompetitors.innerHTML =
+            '<div class="scrollable table-responsive">' +
+            '<table class="table table-hover text-center" id="tableCompetitors">' +
+            '<thead>' +
+            '<tr>' +
+            '<th class="text-center">Navn</th>' +
+            '<th class="text-center">Skytternr.</th>' +
+            '<th class="text-center">Email</th>' +
+            '</thead>' +
+            '</tbody>' +
+            '</table>' +
+            '</div>';
 
-    document.getElementById("competitors").appendChild(divCompetitors);
-
+        document.getElementById("competitors").appendChild(divCompetitors);
+    }
     var competitorsTable = document.getElementById("tableCompetitors")
     for (i = 0; i < competition.competitors.length; i++){
-        var competitorsRow = competitorsTable.insertRow(i+1)
+        if (competition.competitors[i] !== null) {
+            var competitorsRow = competitorsTable.insertRow(competitorsTable.length)
 
-        var competitorsCell1 = competitorsRow.insertCell(0)
-        var competitorsCell2 = competitorsRow.insertCell(1)
-        var competitorsCell3 = competitorsRow.insertCell(2)
+            var competitorsCell1 = competitorsRow.insertCell(0)
+            var competitorsCell2 = competitorsRow.insertCell(1)
+            var competitorsCell3 = competitorsRow.insertCell(2)
 
-        competitorsCell1.innerHTML = competition.competitors[i].firstName + " " + competition.competitors[i].lastName
-        competitorsCell2.innerHTML = competition.competitors[i].shooterId
-        competitorsCell3.innerHTML = competition.competitors[i].mail
+            competitorsCell1.innerHTML = competition.competitors[i].firstName + " " + competition.competitors[i].lastName
+            competitorsCell2.innerHTML = competition.competitors[i].shooterId
+            competitorsCell3.innerHTML = competition.competitors[i].mail
+        }
     }
 
     //CompetitionLeader
@@ -204,24 +195,24 @@ function fillInfo(){
     }
 
     //Teams
-    if (competition.teams.length > 0)
-    divTeam = document.createElement('div');
-    divTeam.innerHTML =
-        '<div class="scrollable table-responsive">'+
-        '<table class="table table-hover text-center" id="tableTeam">'+
-        '<thead>'+
-        '<tr>'+
-            '<th class="text-center">Lag nr</th>'+
-            '<th class="text-center">Medlemmer</th>'+
-            '<th class="text-center">Starttid</th>'+
+    if (competition.teams.length > 0) {
+        divTeam = document.createElement('div');
+        divTeam.innerHTML =
+            '<div class="scrollable table-responsive">' +
+            '<table class="table table-hover text-center" id="tableTeam">' +
+            '<thead>' +
+            '<tr>' +
+            '<th class="text-center">Lag nr</th>' +
+            '<th class="text-center">Medlemmer</th>' +
+            '<th class="text-center">Starttid</th>' +
 
-        '</tr>'+
-        '</thead>'+
-        '</table>'+
-        '</div>';
+            '</tr>' +
+            '</thead>' +
+            '</table>' +
+            '</div>';
 
-    document.getElementById("teams").appendChild(divTeam);
-
+        document.getElementById("teams").appendChild(divTeam);
+    }
     var teamTable = document.getElementById("tableTeam")
     for (i = 0; i < competition.teams.length; i++){
         var teamRow = teamTable.insertRow(i+1)
@@ -232,7 +223,7 @@ function fillInfo(){
 
         var name = ""
         var mail = ""
-        console.log(competition.teams[0].competitors[0].firstName)
+        //console.log(competition.teams[0].competitors[0].firstName)
         for(j = 0; j < competition.teams[i].competitors.length; j++){
             name = name + competition.teams[i].competitors[j].firstName + " " + competition.teams[i].competitors[j].lastName + '<br>'
         }

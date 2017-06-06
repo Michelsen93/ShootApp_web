@@ -54,10 +54,31 @@
 
     <!-- Main content -->
     <legend>Stevner</legend>
+
+    <div class="col-xs-2">
+        <h5> Søk Etter: </h5>
+    </div>
+    <br><br>
+    <div class="col-xs-2">
+
+        <select id="selected" class="form-control">
+            <option value="searchCompetitionNumber">Stevnenr.</option>
+            <option value="searchClub">Klubb</option>
+            <option value="competitionType">Stevne type</option>
+
+        </select>
+    </div>
+    <div class="col-xs-3">
+
+        <input type="text" id="searchText" class="form-control input-sm">
+    </div>
+    <button onclick="searchCompetition()" class="btn btn-primary">Søk</button>
+    <button onclick="load()" class="btn btn-secondary">Tilbakestill</button> <br><br>
+
     <div class="panel panel-default">
         <!-- Table -->
         <div class="scrollable">
-            <table class="table table-hover text-center" id="myTable">
+            <table class="table table-hover text-center" id="myTableCompetition">
                 <thead>
 
                 <tr>
@@ -66,7 +87,7 @@
                     <th class="text-center">Klubb</th>
                     <th class="text-center">Sted</th>
                     <th class="text-center">Stevne type</th>
-                    <th class="text-center"><Disiplin></Disiplin></th>
+                    <th class="text-center">Aktiv</th>
                 </tr>
                 </thead>
 
@@ -88,23 +109,49 @@
     <p class="text-muted">Bachelorprosjekt gruppe 4 ved HVL</p>
 </footer>
 
-<!-- Modal SlettStevne -->
-<div class="modal" id="popUpSlettStevne">
-    <div class="modal-dialog">
+<div class="modal" id="PopUpCompetitionInfo">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
-
             <div class="modal-header">
-                <span class="close">&times;</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body" id="modalBody">
 
-                <h5>Er du sikker på at du vil slette dette stevnet?</h5>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>Stevnenummer:</th>
+                        <td id="competitionNumber"></td>
+                    </tr>
+                    <tr>
+                        <th>Dato:</th>
+                        <td id="date"></td>
+                    </tr>
+                    <tr>
+                        <th>Klubb:</th>
+                        <td id="club"></td>
+                    </tr>
+                    <tr>
+                        <th>Sted:</th>
+                        <td id="place"></td>
+                    </tr>
+                    <tr>
+                        <th>Stevnetype:</th>
+                        <td id="competitionType"></td>
+                    </tr>
+
+                    </tbody>
+                </table>
 
 
             </div>
-            <div class="modal-body">
-                <button type="button" class="btn btn-secondary">Ja</button>
-                <button type="button" class="btn btn-primary">Nei</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="regCompetitor()">Legg til utøvere</button>
+                <button type="button" class="btn btn-primary" onclick="regTeam()">Legg til lag</button>
+                <button type="button" class="btn btn-primary" onclick="seeInfo()">Se mer info</button><br><br>
+                <button type="button" id="delete" class="btn btn-danger" class="close" data-dismiss="modal">Slett</button>
             </div>
-
         </div>
     </div>
 </div>

@@ -120,12 +120,13 @@ function outputUsers(item, index) {
     var cell4 = row.insertCell(3);
 
 
-    // Add some text to the new cells:
-    cell1.innerHTML = item.firstName + " " + item.lastName
-    cell2.innerHTML = item.mail
-    cell3.innerHTML = item.shooterId
-    cell4.innerHTML = '<button  class="btn btn-primary">Legg til</button>';
-    cell4.onclick = addToTeam
+        // Add some text to the new cells:
+        console.log(localStorage.getItem("competitionNumber"))
+        cell1.innerHTML = item.firstName + " " + item.lastName
+        cell2.innerHTML = item.mail
+        cell3.innerHTML = item.shooterId
+        cell4.innerHTML = '<button  class="btn btn-primary">Legg til</button>';
+        cell4.onclick = addToTeam
 
 }
 
@@ -234,18 +235,6 @@ function fillTeamBox() {
         }
         teamTable[i-1] = team
     }
-/*
-    if(teamTable.length > 0){
-        for(i = 0; i < teamTable.length; i++){
-            teamObject = {
-                teamNumber: teamTable[i].number,
-                startTime: teamTable[i].startTime,
-                competitionNumber: localStorage.getItem("competitionNumber")
-            }
-            //addTeam(teamObject)
-        }
-    }
-*/
     sleep(500)
 
     if(teamTable.length > 0){
@@ -267,7 +256,13 @@ function fillTeamBox() {
         }
     }
 
-    window.location.href='NyttStevne2.html'
+    if(localStorage.getItem("regTeam") == "regTeam"){
+        window.location.href = "StevneLagret.html";
+
+        localStorage.removeItem("regTeam")
+    }else{
+        window.location.href = "NyttStevne2.html";
+    }
 
 }
 

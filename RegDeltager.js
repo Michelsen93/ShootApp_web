@@ -178,5 +178,13 @@ function saveCompetitors() {
     }
 
     addCompetitor(competitor)
-    //window.location.href = "NyttStevne2.html";
+
+    if(localStorage.getItem("regDeltager") == "regDeltager"){
+        window.location.href = "StevneLagret.html";
+
+        localStorage.removeItem("regDeltager")
+    }else{
+        window.location.href = "NyttStevne2.html";
+    }
+
 }
