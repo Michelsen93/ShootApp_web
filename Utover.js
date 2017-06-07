@@ -31,6 +31,8 @@ function callback(json) {
 
 var person
 function fillModal(item) {
+    document.getElementById("myModalLabel").innerHTML = item.firstName + " " + item.lastName
+
     document.getElementById("tableName").innerHTML = item.firstName + " " + item.lastName
 
     document.getElementById("tableShooterId").innerHTML = item.shooterId
@@ -42,8 +44,6 @@ function fillModal(item) {
     document.getElementById("tableClub").innerHTML = item.club
 
     person = item
-
-
 
 }
 
