@@ -37,7 +37,7 @@ function fillModal(item) {
 
     document.getElementById("tableShooterId").innerHTML = item.shooterId
 
-    document.getElementById("tableMail").innerHTML = item.shooterId
+    document.getElementById("tableMail").innerHTML = item.mail
 
     document.getElementById("tablePhone").innerHTML = item.phone
 
