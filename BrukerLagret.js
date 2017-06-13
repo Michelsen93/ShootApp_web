@@ -31,6 +31,10 @@ function callback(json){
     var mail  = document.getElementById("mail");
     mail.innerHTML = jsPerson.mail;
 
+    //Phone
+    var phone = document.getElementById("phone");
+    phone.innerHTML = jsPerson.phone;
+
     //ShooterId
     var shooterId  = document.getElementById("shooterId");
     shooterId.innerHTML = jsPerson.shooterId;
