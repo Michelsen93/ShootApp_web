@@ -124,7 +124,7 @@ function updateView(response){
         newRow.appendChild(numberFiguresNode);
         newRow.appendChild(sumNode);
 
-        table.appendChild(newRow);
+        table.childNodes[1].appendChild(newRow);
 
     }
 }
