@@ -8,7 +8,7 @@
 window.onload = load;
 function load(){
 
-
+    console.log(localStorage.getItem("competitionNumber"))
     var person = getPersons(callback);
 
 }
@@ -160,7 +160,7 @@ function deleteTable(){
  * saves the class to the server
  */
 function saveCompetitors() {
-    var competitionNumber = localStorage.getItem("competitionNumber");
+    var competitionNumber = "HVL STAND"/*localStorage.getItem("competitionNumber")*/;
 
     var table = document.getElementById("tableRegUsers")
     var row

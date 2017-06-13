@@ -4,9 +4,9 @@
 
 window.onload = load;
 function load(){
-
+    console.log(localStorage.getItem("competitionNumber"))
     //deleteTable()
-    getCompetitionByCompetitionNumber(localStorage.getItem("competitionNumber"), callback)
+    getCompetitionByCompetitionNumber("HVL STAND"/*localStorage.getItem("competitionNumber")*/, callback)
 
 }
 
@@ -16,7 +16,7 @@ function callback(json) {
 
     competition = JSON.parse(json);
 
-
+    console.log(competition)
     //Stevneinfo
     var stevneInfo = document.getElementById("stevneInfo")
     stevneInfo.innerHTML =
@@ -58,7 +58,7 @@ function callback(json) {
         var cell3 = row.insertCell(2)
         var cell4 = row.insertCell(3)
         var cell5 = row.insertCell(4)
-
+        console.log(competition.standplasses[i].number)
         cell1.innerHTML = competition.standplasses[i].number
         cell2.innerHTML = competition.standplasses[i].name
         cell3.innerHTML = competition.standplasses[i].maxHits

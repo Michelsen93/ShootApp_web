@@ -117,6 +117,7 @@ function fillModal(item) {
     document.getElementById("modalBody").appendChild(btn)
 
     competition = item
+    console.log(competition.competitionNumber)
 
 }
 
@@ -171,11 +172,13 @@ function findCompetition(item, index) {
 
 function regCompetitor() {
     localStorage.setItem("regDeltager", "regDeltager")
+    localStorage.setItem("competitionNumber", competition.competitionNumber)
     window.location.href = "RegDeltagere.html"
 }
 
 function regTeam() {
     localStorage.setItem("regTeam", "regTeam")
+    localStorage.setItem("competitionNumber", competition.competitionNumber)
     window.location.href = "RegTeam.html"
 }
 
