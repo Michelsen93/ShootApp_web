@@ -35,91 +35,95 @@ function fillSelecter(jsStevne){
 }
 
 function findSelectedCompetition(){
+
+
     var table = document.getElementById("myTable");
-
     var selectedCompetitionNumber = document.getElementById("selected").value;
-    /*
-    for(var i = 0; i < activeCompetitions.length; i++){
-        if(selectedCompetitionNumber == activeCompetitions[i].competitionNumber){
-            var competition = stevner[i];
-        }
-    }
-    */
-    getScorecardsByCompetitionNumber(selectedCompetitionNumber, updateView)
+    window.setInterval(getScorecardsByCompetitionNumber(selectedCompetitionNumber, updateView), 5000);
 
-    function sortNumber(a,b) {
-        var sumA = 0;
-        var sumB = 0;
-        var bullA = 0;
-        var bullB = 0;
-        for(var result in a.results){
-            sumA+= result.hits + result.figures;
-            bullA += result.bullseyes;
-        }
-        for(var result in b.results){
-            sumB+= result.hits + result.figures;
-            bullB += result.bullseyes;
-        }
-        if(sumA == sumB){
-            return bullB - bullA;
-        }
-        return sumB - sumA;
-    }
 
-    function updateView(response){
-        var scorecards = JSON.parse(response);
 
-        scorecards = scorecards.sort(sortNumber);
-        console.log(scorecards);
-        for(var i = 0; i < scorecards.length; i++){
-            var treff = 0;
-            var innertreff = 0;
-            var figurer = 0;
-            var sum = 0;
-            for(var a = 0; a < scorecards[i].results.length; a++){
-                treff += scorecards[i].results[a].hits;
-                innertreff += scorecards[i].results[a].bullseyes;
-                figurer += scorecards[i].results[a].figures;
-            }
-            sum = treff + figurer;
-
-            console.log(scorecards[i]);
-            console.log(scorecards[i].competitor.lastName);
-            var newRow = document.createElement("tr");
-            var nameNode = document.createElement("td");
-
-            var name = document.createTextNode(scorecards[i].competitor.lastName);
-            nameNode.appendChild(name);
-
-            var clubNode = document.createElement("td");
-            var club = document.createTextNode(scorecards[i].competitor.club);
-            clubNode.appendChild(club);
-
-            var hitNode = document.createElement("td");
-            var hit = document.createTextNode(treff);
-            hitNode.appendChild(hit);
-
-            var bullsEyeNode = document.createElement("td");
-            var bullsEye = document.createTextNode(innertreff);
-            bullsEyeNode.appendChild(bullsEye);
-
-            var numberFiguresNode = document.createElement("td");
-            var numberFigures = document.createTextNode(figurer);
-            numberFiguresNode.appendChild(numberFigures);
-
-            var sumNode = document.createElement("td");
-            var sumN = document.createTextNode(sum);
-            sumNode.appendChild(sumN);
-
-            newRow.appendChild(nameNode);
-            newRow.appendChild(clubNode);
-            newRow.appendChild(hitNode);
-            newRow.appendChild(bullsEyeNode);
-            newRow.appendChild(numberFiguresNode);
-            newRow.appendChild(sumNode);
-            table.appendChild(newRow);
-
-        }
-    }
 }
 
+function sortNumber(a,b) {
+    var sumA = 0;
+    var sumB = 0;
+    var bullA = 0;
+    var bullB = 0;
+    for(var result in a.results){
+        sumA+= result.hits + result.figures;
+        bullA += result.bullseyes;
+    }
+    for(var result in b.results){
+        sumB+= result.hits + result.figures;
+        bullB += result.bullseyes;
+    }
+    if(sumA == sumB){
+        return bullB - bullA;
+    }
+    return sumB - sumA;
+}
+
+function updateView(response){
+    console.log("hei")
+    var scorecards = JSON.parse(response);
+
+    scorecards = scorecards.sort(sortNumber);
+    console.log(scorecards);
+
+    var table = document.getElementById("myTable");
+
+    while(1 < table.rows.length){
+        table.deleteRow(1);
+    }
+
+    for(var i = 0; i < scorecards.length; i++){
+        var treff = 0;
+        var innertreff = 0;
+        var figurer = 0;
+        var sum = 0;
+        for(var a = 0; a < scorecards[i].results.length; a++){
+            treff += scorecards[i].results[a].hits;
+            innertreff += scorecards[i].results[a].bullseyes;
+            figurer += scorecards[i].results[a].figures;
+        }
+        sum = treff + figurer;
+
+        console.log(scorecards[i]);
+        console.log(scorecards[i].competitor.lastName);
+        var newRow = document.createElement("tr");
+        var nameNode = document.createElement("td");
+
+        var name = document.createTextNode(scorecards[i].competitor.lastName);
+        nameNode.appendChild(name);
+
+        var clubNode = document.createElement("td");
+        var club = document.createTextNode(scorecards[i].competitor.club);
+        clubNode.appendChild(club);
+
+        var hitNode = document.createElement("td");
+        var hit = document.createTextNode(treff);
+        hitNode.appendChild(hit);
+
+        var bullsEyeNode = document.createElement("td");
+        var bullsEye = document.createTextNode(innertreff);
+        bullsEyeNode.appendChild(bullsEye);
+
+        var numberFiguresNode = document.createElement("td");
+        var numberFigures = document.createTextNode(figurer);
+        numberFiguresNode.appendChild(numberFigures);
+
+        var sumNode = document.createElement("td");
+        var sumN = document.createTextNode(sum);
+        sumNode.appendChild(sumN);
+
+        newRow.appendChild(nameNode);
+        newRow.appendChild(clubNode);
+        newRow.appendChild(hitNode);
+        newRow.appendChild(bullsEyeNode);
+        newRow.appendChild(numberFiguresNode);
+        newRow.appendChild(sumNode);
+        table.appendChild(newRow);
+
+    }
+}
