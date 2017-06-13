@@ -123,6 +123,7 @@ function updateView(response){
         newRow.appendChild(bullsEyeNode);
         newRow.appendChild(numberFiguresNode);
         newRow.appendChild(sumNode);
+
         table.appendChild(newRow);
 
     }
