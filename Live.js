@@ -46,17 +46,19 @@ function findSelectedCompetition(){
 }
 
 function sortNumber(a,b) {
+
     var sumA = 0;
     var sumB = 0;
     var bullA = 0;
     var bullB = 0;
-    for(var result in a.results){
-        sumA+= result.hits + result.figures;
-        bullA += result.bullseyes;
+    for(var i = 0; i<a.results.length; i++){
+
+        sumA+= a.results[i].hits + a.results[i].figures;
+        bullA += a.results[i].bullseyes;
     }
-    for(var result in b.results){
-        sumB+= result.hits + result.figures;
-        bullB += result.bullseyes;
+    for(var i = 0; i<b.results.length; i++){
+        sumB+= b.results[i].hits + b.results[i].figures;
+        bullB += b.results[i].bullseyes;
     }
     if(sumA == sumB){
         return bullB - bullA;
