@@ -12,6 +12,7 @@ function load(){
     var person = getPersons(callback);
 
 
+    console.log(table)
 
 }
 

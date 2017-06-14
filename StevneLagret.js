@@ -104,6 +104,7 @@ function callback(json) {
 
         var name = ""
         var mail = ""
+        console.log(competition)
         console.log(competition.teams[0].competitors[0].firstName)
         for(j = 0; j < competition.teams[i].competitors.length; j++){
             name = name + competition.teams[i].competitors[j].firstName + " " + competition.teams[i].competitors[j].lastName + '<br>'

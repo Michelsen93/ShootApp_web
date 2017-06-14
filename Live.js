@@ -79,11 +79,15 @@ function updateView(response){
         table.deleteRow(1);
     }
 
+
+
+
+    console.log(scorecards)
     for(var i = 0; i < scorecards.length; i++){
-        var treff = 0;
-        var innertreff = 0;
-        var figurer = 0;
-        var sum = 0;
+        treff = 0;
+        innertreff = 0;
+        figurer = 0;
+        sum = 0;
         for(var a = 0; a < scorecards[i].results.length; a++){
             treff += scorecards[i].results[a].hits;
             innertreff += scorecards[i].results[a].bullseyes;
@@ -96,9 +100,12 @@ function updateView(response){
         var newRow = document.createElement("tr");
         var nameNode = document.createElement("td");
 
+        //plassering index + 1
+
         var name = document.createTextNode(scorecards[i].competitor.lastName);
         nameNode.appendChild(name);
 
+        //endre til våpenklasse
         var clubNode = document.createElement("td");
         var club = document.createTextNode(scorecards[i].competitor.club);
         clubNode.appendChild(club);

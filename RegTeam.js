@@ -258,11 +258,11 @@ function fillTeamBox() {
 
     if(localStorage.getItem("regTeam") == "regTeam"){
         localStorage.removeItem("regTeam")
-        // window.location.href = "StevneLagret.html";
+        window.location.href = "StevneLagret.html";
 
 
     }else{
-        //window.location.href = "NyttStevne2.html";
+        window.location.href = "NyttStevne2.html";
     }
 
 }
