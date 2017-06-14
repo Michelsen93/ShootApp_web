@@ -101,36 +101,40 @@ function updateView(response){
         var nameNode = document.createElement("td");
 
         //plassering index + 1
+        var positionNode = document.createElement("td");
+        var posistion = document.createTextNode(i+1);
+        positionNode.appendChild(posistion);
 
-        var name = document.createTextNode(scorecards[i].competitor.lastName);
+        var name = document.createTextNode(scorecards[i].competitor.firstName + " " +scorecards[i].competitor.lastName);
         nameNode.appendChild(name);
 
         //endre til våpenklasse
-        var clubNode = document.createElement("td");
-        var club = document.createTextNode(scorecards[i].competitor.club);
-        clubNode.appendChild(club);
+        var weaponNode = document.createElement("td");
+        var weapon = document.createTextNode(scorecards[i].shootingGroup.name);
+        weaponNode.appendChild(weapon);
 
         var hitNode = document.createElement("td");
         var hit = document.createTextNode(treff);
         hitNode.appendChild(hit);
 
-        var bullsEyeNode = document.createElement("td");
-        var bullsEye = document.createTextNode(innertreff);
-        bullsEyeNode.appendChild(bullsEye);
-
         var numberFiguresNode = document.createElement("td");
         var numberFigures = document.createTextNode(figurer);
         numberFiguresNode.appendChild(numberFigures);
+
+        var bullsEyeNode = document.createElement("td");
+        var bullsEye = document.createTextNode(innertreff);
+        bullsEyeNode.appendChild(bullsEye);
 
         var sumNode = document.createElement("td");
         var sumN = document.createTextNode(sum);
         sumNode.appendChild(sumN);
 
+        newRow.appendChild(positionNode)
         newRow.appendChild(nameNode);
-        newRow.appendChild(clubNode);
+        newRow.appendChild(weaponNode);
         newRow.appendChild(hitNode);
-        newRow.appendChild(bullsEyeNode);
         newRow.appendChild(numberFiguresNode);
+        newRow.appendChild(bullsEyeNode);
         newRow.appendChild(sumNode);
 
         table.childNodes[1].appendChild(newRow);
